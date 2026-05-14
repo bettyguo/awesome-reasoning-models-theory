@@ -16,3 +16,4 @@ build/
 .ruff_cache/
 linkcheck-report.json
 node_modules/
+.claude/
