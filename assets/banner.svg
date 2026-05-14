@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" width="720" height="200">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0b1220"/>
+      <stop offset="100%" stop-color="#1f3057"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="200" fill="url(#g)"/>
+  <text x="40" y="80" font-family="Inter, system-ui, sans-serif" font-size="28" font-weight="700" fill="#f7fafc">
+    Awesome Reasoning Models Theory
+  </text>
+  <text x="40" y="120" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#cbd5e1">
+    Why do reasoning models actually work?
+  </text>
+  <text x="40" y="142" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#cbd5e1">
+    A theoretical and empirical map of the o-series / R1 / Claude-thinking paradigm.
+  </text>
+  <text x="40" y="172" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#94a3b8">
+    8 chapters · 5 reproduction notebooks · monthly benchmarks tracker
+  </text>
+</svg>
