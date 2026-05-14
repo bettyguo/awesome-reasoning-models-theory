@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Models · Awesome Reasoning Models Theory</title>
+  <meta name="description" content="A side-by-side comparison of the major reasoning models — DeepSeek-R1, OpenAI o-series, Claude with extended thinking, Gemini Deep Think, Qwen QwQ, s1, Tülu 3 — on architecture, training, verifier, and benchmark scores."/>
+  <meta name="theme-color" content="#0b1220"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .models-wrap { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+    .mod-controls { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-bottom: 22px; }
+    .mod-search {
+      flex: 1; min-width: 240px;
+      padding: 12px 16px; font-size: 0.95rem; font-family: inherit;
+      background: var(--bg-card); border: 1px solid var(--border-strong);
+      color: var(--fg); border-radius: 10px; outline: none;
+    }
+    .mod-search:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15); }
+    .mod-chips { display: flex; gap: 6px; flex-wrap: wrap; }
+    .mod-chip {
+      cursor: pointer; user-select: none;
+      padding: 6px 12px; font-size: 0.78rem; font-weight: 600;
+      background: var(--bg-card); border: 1px solid var(--border);
+      color: var(--fg-dim); border-radius: 6px;
+    }
+    .mod-chip[aria-pressed="true"] {
+      background: rgba(56, 189, 248, 0.12);
+      border-color: var(--accent); color: var(--accent);
+    }
+
+    .mod-grid {
+      display: grid; gap: 14px;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    }
+    .mod-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 22px;
+      display: flex; flex-direction: column; gap: 12px;
+      transition: border-color 140ms ease;
+    }
+    .mod-card:hover { border-color: var(--border-strong); }
+    .mod-card.lic-open    { border-top: 3px solid #34d399; }
+    .mod-card.lic-closed  { border-top: 3px solid #fb923c; }
+    .mod-card.lic-open-research { border-top: 3px solid #38bdf8; }
+
+    .mod-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+    .mod-name { font-size: 1.08rem; font-weight: 700; letter-spacing: -0.01em; margin: 0; color: var(--fg); }
+    .mod-vendor { font-size: 0.78rem; color: var(--fg-faint); font-family: 'JetBrains Mono', monospace; }
+
+    .mod-pills { display: flex; gap: 5px; flex-wrap: wrap; }
+    .mod-pill {
+      font-size: 0.66rem; font-weight: 700;
+      padding: 2px 7px; border-radius: 4px;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      background: var(--bg-card-hover); color: var(--fg-dim);
+    }
+    .mod-pill.lic-open    { background: rgba(52, 211, 153, 0.12); color: #6ee7b7; }
+    .mod-pill.lic-closed  { background: rgba(251, 146, 60, 0.12); color: #fdba74; }
+    .mod-pill.lic-open-research { background: rgba(56, 189, 248, 0.12); color: #7dd3fc; }
+    .mod-pill.date { background: rgba(148, 163, 184, 0.10); color: #cbd5e1; font-family: 'JetBrains Mono', monospace; letter-spacing: 0; text-transform: none; }
+
+    .mod-spec { display: grid; grid-template-columns: max-content 1fr; gap: 4px 14px; font-size: 0.86rem; }
+    .mod-spec dt { color: var(--fg-faint); font-weight: 500; }
+    .mod-spec dd { margin: 0; color: var(--fg-muted); }
+
+    .mod-scores { border-top: 1px solid var(--border); padding-top: 12px; }
+    .mod-scores .score-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-faint); margin-bottom: 8px; }
+    .mod-scores .score-row { display: grid; grid-template-columns: 1fr max-content; gap: 8px; align-items: baseline; padding: 3px 0; font-size: 0.85rem; }
+    .mod-scores .score-bench { color: var(--fg-muted); font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; }
+    .mod-scores .score-val { color: var(--fg); font-weight: 700; font-variant-numeric: tabular-nums; }
+
+    .mod-notes { font-size: 0.84rem; color: var(--fg-dim); border-top: 1px solid var(--border); padding-top: 10px; line-height: 1.5; }
+    .mod-source { font-size: 0.75rem; }
+
+    .empty-state { padding: 48px 24px; text-align: center; color: var(--fg-faint); border: 1px dashed var(--border-strong); border-radius: 10px; }
+
+    /* Comparison table view */
+    .mod-tableview {
+      overflow-x: auto;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 4px;
+      margin-top: 18px;
+    }
+    table.mod-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    table.mod-table th, table.mod-table td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--border); }
+    table.mod-table th { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg-faint); font-weight: 700; background: rgba(11, 18, 32, 0.5); position: sticky; top: 0; }
+    table.mod-table td { color: var(--fg-muted); }
+    table.mod-table tr:hover td { background: rgba(56, 189, 248, 0.04); }
+    table.mod-table .num { font-family: 'JetBrains Mono', monospace; font-variant-numeric: tabular-nums; color: var(--fg); }
+
+    .view-toggle { display: inline-flex; border: 1px solid var(--border-strong); border-radius: 8px; overflow: hidden; }
+    .view-toggle button {
+      background: var(--bg-card); border: none; color: var(--fg-dim);
+      padding: 8px 14px; cursor: pointer; font-family: inherit; font-size: 0.82rem; font-weight: 600;
+    }
+    .view-toggle button[aria-pressed="true"] { background: rgba(56, 189, 248, 0.15); color: var(--accent); }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a href="index.html" class="topnav-brand"><span class="dot"></span>Reasoning Models Theory</a>
+    <div class="topnav-links">
+      <a href="timeline.html">Timeline</a>
+      <a href="explore.html">Field map</a>
+      <a href="papers.html">Papers</a>
+      <a href="models.html">Models</a>
+      <a href="tracker.html">Tracker</a>
+      <a href="glossary.html">Glossary</a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory" class="topnav-cta">★ GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" style="padding-bottom: 40px;">
+  <div class="container">
+    <span class="chip">models · compared</span>
+    <h1 style="font-size: 2.4rem;">The reasoning model registry</h1>
+    <p class="hero-tagline" style="font-size: 1.05rem;">
+      A side-by-side view of the major closed and open reasoning models. Architecture, training recipe, verifier kind,
+      and the headline benchmark numbers as published — with the closed-model entries clearly flagged as vendor-reported.
+    </p>
+  </div>
+</header>
+
+<section style="padding-top: 30px;">
+  <div class="models-wrap">
+
+    <div class="mod-controls">
+      <input id="search" class="mod-search" type="text" placeholder="Search model, vendor, training…" autocomplete="off"/>
+      <div class="mod-chips" id="lic-chips">
+        <button class="mod-chip" data-val="open" aria-pressed="false">Open</button>
+        <button class="mod-chip" data-val="closed" aria-pressed="false">Closed</button>
+        <button class="mod-chip" data-val="open-research" aria-pressed="false">Research-license</button>
+      </div>
+      <div class="view-toggle" role="group" aria-label="View">
+        <button id="view-cards" aria-pressed="true">Cards</button>
+        <button id="view-table" aria-pressed="false">Table</button>
+      </div>
+    </div>
+
+    <p id="counter" style="font-size: 0.85rem; color: var(--fg-faint); margin: 0 0 14px; font-family: 'JetBrains Mono', monospace;">Loading…</p>
+
+    <div id="grid" class="mod-grid"></div>
+
+    <div id="tableview" class="mod-tableview" hidden>
+      <table class="mod-table">
+        <thead>
+          <tr>
+            <th>Model</th><th>Vendor</th><th>Released</th><th>License</th>
+            <th>Params (B)</th><th>Training</th>
+            <th>AIME-24 p@1</th><th>MATH-500</th><th>GPQA-D</th><th>SWE-V</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+
+    <div id="empty" class="empty-state" hidden>No models match.</div>
+
+    <div style="margin-top: 32px; padding: 18px 22px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; font-size: 0.88rem; color: var(--fg-dim);">
+      <strong style="color: var(--fg); display: block; margin-bottom: 8px;">A note on these numbers</strong>
+      <p style="margin: 0 0 10px;">All scores are <em>as published</em>. Where benchmarks have multiple slices (LiveCodeBench date cutoffs, SWE-bench harness variants), the cell uses the slice the vendor or paper headline-reported.</p>
+      <p style="margin: 0 0 10px;"><strong style="color: #fdba74;">Closed-model numbers are vendor-reported.</strong> They have not been independently reproduced by this list. Treat them as primary-source claims, not measurements.</p>
+      <p style="margin: 0;">Missing a model? <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/issues/new?labels=model-suggestion">Open an issue</a> &nbsp;·&nbsp; <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/docs/data/models.json">View raw models.json</a></p>
+    </div>
+  </div>
+</section>
+
+<footer style="margin-top: 60px;">
+  <div class="container">
+    <div>
+      <div class="topnav-brand" style="font-size: 1rem;"><span class="dot"></span>Reasoning Models Theory</div>
+      <p style="margin-top: 12px; font-size: 0.85rem; color: var(--fg-faint);">A living, theory-and-mechanism-first map.</p>
+    </div>
+    <div>
+      <h4>Site</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="timeline.html">Timeline</a></li>
+        <li><a href="papers.html">Papers</a></li>
+        <li><a href="tracker.html">Tracker</a></li>
+        <li><a href="glossary.html">Glossary</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Repo</h4>
+      <ul>
+        <li><a href="https://github.com/bettyguo/awesome-reasoning-models-theory">GitHub</a></li>
+        <li><a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/CONTRIBUTING.md">Contributing</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+const STATE = { models: [], q: "", lic: new Set(), view: "cards" };
+
+function escapeHTML(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c])); }
+
+function fmtParams(p, ap) {
+  if (p == null) return "—";
+  if (ap && ap !== p) return p + "B (" + ap + "B active)";
+  return p + "B";
+}
+
+function passes(m) {
+  if (STATE.lic.size && !STATE.lic.has(m.license)) return false;
+  if (STATE.q) {
+    const hay = (m.name + " " + m.vendor + " " + m.training + " " + m.architecture + " " + (m.notes || "")).toLowerCase();
+    if (!hay.includes(STATE.q.toLowerCase())) return false;
+  }
+  return true;
+}
+
+function renderCards(filtered) {
+  document.getElementById("grid").hidden = false;
+  document.getElementById("tableview").hidden = true;
+  document.getElementById("grid").innerHTML = filtered.map(m => {
+    const scoreRows = Object.entries(m.scores || {}).map(([k, v]) => `
+      <div class="score-row">
+        <span class="score-bench">${escapeHTML(k)}</span>
+        <span class="score-val">${typeof v === "number" ? v + "%" : escapeHTML(v)}</span>
+      </div>
+    `).join("");
+    return `
+      <article class="mod-card lic-${m.license}">
+        <div class="mod-head">
+          <h3 class="mod-name">${escapeHTML(m.name)}</h3>
+          <span class="mod-vendor">${escapeHTML(m.vendor)}</span>
+        </div>
+        <div class="mod-pills">
+          <span class="mod-pill lic-${m.license}">${m.license}</span>
+          <span class="mod-pill date">${escapeHTML(m.released)}</span>
+        </div>
+        <dl class="mod-spec">
+          <dt>Params</dt><dd>${fmtParams(m.params_b, m.active_params_b)}</dd>
+          <dt>Architecture</dt><dd>${escapeHTML(m.architecture)}</dd>
+          <dt>Training</dt><dd>${escapeHTML(m.training)}</dd>
+          <dt>Verifier</dt><dd>${escapeHTML(m.verifier)}</dd>
+          <dt>Thinking</dt><dd>${escapeHTML(m.thinking_default)}</dd>
+        </dl>
+        ${scoreRows ? `<div class="mod-scores"><div class="score-label">Reported scores</div>${scoreRows}</div>` : ""}
+        ${m.notes ? `<p class="mod-notes">${escapeHTML(m.notes)}</p>` : ""}
+        <div class="mod-source"><a href="${escapeHTML(m.primary_source)}" target="_blank" rel="noopener">Primary source →</a></div>
+      </article>
+    `;
+  }).join("");
+}
+
+function renderTable(filtered) {
+  document.getElementById("grid").hidden = true;
+  document.getElementById("tableview").hidden = false;
+  document.getElementById("tbody").innerHTML = filtered.map(m => {
+    const s = m.scores || {};
+    const cell = (v) => v == null ? "—" : (typeof v === "number" ? v + "%" : escapeHTML(v));
+    return `
+      <tr>
+        <td><strong style="color: var(--fg);">${escapeHTML(m.name)}</strong></td>
+        <td>${escapeHTML(m.vendor)}</td>
+        <td class="num">${escapeHTML(m.released)}</td>
+        <td><span class="mod-pill lic-${m.license}">${m.license}</span></td>
+        <td class="num">${fmtParams(m.params_b, m.active_params_b)}</td>
+        <td>${escapeHTML(m.training)}</td>
+        <td class="num">${cell(s["AIME-2024-pass1"])}</td>
+        <td class="num">${cell(s["MATH-500-pass1"])}</td>
+        <td class="num">${cell(s["GPQA-Diamond"])}</td>
+        <td class="num">${cell(s["SWE-bench-Verified"])}</td>
+      </tr>
+    `;
+  }).join("");
+}
+
+function render() {
+  const filtered = STATE.models.filter(passes);
+  document.getElementById("counter").textContent = filtered.length + " of " + STATE.models.length + " models";
+  document.getElementById("empty").hidden = filtered.length > 0;
+  if (STATE.view === "cards") renderCards(filtered);
+  else renderTable(filtered);
+}
+
+document.getElementById("lic-chips").addEventListener("click", e => {
+  const btn = e.target.closest(".mod-chip");
+  if (!btn) return;
+  const v = btn.dataset.val;
+  if (STATE.lic.has(v)) { STATE.lic.delete(v); btn.setAttribute("aria-pressed", "false"); }
+  else { STATE.lic.add(v); btn.setAttribute("aria-pressed", "true"); }
+  render();
+});
+
+document.getElementById("search").addEventListener("input", e => { STATE.q = e.target.value.trim(); render(); });
+
+document.getElementById("view-cards").addEventListener("click", () => {
+  STATE.view = "cards";
+  document.getElementById("view-cards").setAttribute("aria-pressed", "true");
+  document.getElementById("view-table").setAttribute("aria-pressed", "false");
+  render();
+});
+document.getElementById("view-table").addEventListener("click", () => {
+  STATE.view = "table";
+  document.getElementById("view-cards").setAttribute("aria-pressed", "false");
+  document.getElementById("view-table").setAttribute("aria-pressed", "true");
+  render();
+});
+
+(async () => {
+  try {
+    const res = await fetch("data/models.json");
+    const data = await res.json();
+    STATE.models = (data.models || []).slice().sort((a, b) => (b.released || "").localeCompare(a.released || ""));
+    render();
+  } catch (e) {
+    document.getElementById("counter").textContent = "Failed to load models.json";
+    console.error(e);
+  }
+})();
+</script>
+
+</body>
+</html>

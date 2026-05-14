@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Papers · Awesome Reasoning Models Theory</title>
+  <meta name="description" content="A searchable, filterable index of 60+ anchor papers in the reasoning-models literature. Filter by chapter, year, type, and open/closed status."/>
+  <meta name="theme-color" content="#0b1220"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .papers-wrap { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+    .pap-controls { display: grid; grid-template-columns: 2fr 1fr; gap: 14px; align-items: stretch; }
+    @media (max-width: 760px) { .pap-controls { grid-template-columns: 1fr; } }
+
+    .pap-search {
+      width: 100%;
+      padding: 14px 18px;
+      font-size: 1rem; font-family: inherit;
+      background: var(--bg-card); border: 1px solid var(--border-strong);
+      color: var(--fg); border-radius: 10px; outline: none;
+      transition: border-color 160ms ease;
+    }
+    .pap-search:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15); }
+    .pap-search::placeholder { color: var(--fg-faint); }
+
+    .pap-sort {
+      padding: 14px 18px;
+      font-size: 0.95rem; font-family: inherit;
+      background: var(--bg-card); border: 1px solid var(--border-strong);
+      color: var(--fg); border-radius: 10px; outline: none;
+      cursor: pointer; appearance: none;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%2394a3b8' d='M6 8L0 0h12z'/></svg>");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px;
+    }
+
+    .pap-filters { margin-top: 18px; }
+    .pap-filter-group { margin-bottom: 14px; }
+    .pap-filter-label {
+      display: block; font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--fg-faint); margin-bottom: 8px;
+    }
+    .pap-chips { display: flex; gap: 6px; flex-wrap: wrap; }
+    .pap-chip {
+      cursor: pointer; user-select: none;
+      padding: 5px 11px; font-size: 0.78rem; font-weight: 600;
+      background: var(--bg-card); border: 1px solid var(--border);
+      color: var(--fg-dim); border-radius: 6px;
+      transition: all 120ms ease;
+    }
+    .pap-chip:hover { border-color: var(--border-strong); color: var(--fg); }
+    .pap-chip[aria-pressed="true"] {
+      background: rgba(56, 189, 248, 0.12);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .pap-counter {
+      font-size: 0.85rem; color: var(--fg-faint);
+      margin: 18px 0 14px; font-family: 'JetBrains Mono', monospace;
+    }
+    .pap-counter button {
+      margin-left: 10px;
+      background: none; border: 1px solid var(--border-strong);
+      color: var(--fg-dim); cursor: pointer;
+      padding: 3px 9px; font-size: 0.75rem; border-radius: 5px;
+      font-family: inherit;
+    }
+    .pap-counter button:hover { color: var(--fg); border-color: var(--accent); }
+
+    .pap-list { display: flex; flex-direction: column; gap: 12px; }
+
+    .pap-card {
+      padding: 18px 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      border-left-width: 3px;
+      transition: all 140ms ease;
+    }
+    .pap-card:hover { border-color: var(--border-strong); transform: translateX(2px); }
+    .pap-card.ch-1 { border-left-color: #38bdf8; }
+    .pap-card.ch-2 { border-left-color: #34d399; }
+    .pap-card.ch-3 { border-left-color: #34d399; }
+    .pap-card.ch-4 { border-left-color: #34d399; }
+    .pap-card.ch-5 { border-left-color: #fb923c; }
+    .pap-card.ch-6 { border-left-color: #f472b6; }
+    .pap-card.ch-7 { border-left-color: #f472b6; }
+    .pap-card.ch-8 { border-left-color: #a78bfa; }
+
+    .pap-head {
+      display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+      margin-bottom: 6px;
+    }
+    .pap-title {
+      font-weight: 700; font-size: 1.02rem;
+      color: var(--fg); letter-spacing: -0.01em;
+      margin: 0;
+    }
+    .pap-title a { color: inherit; }
+    .pap-title a:hover { color: var(--accent); }
+    .pap-year {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem; color: var(--fg-faint);
+    }
+
+    .pap-meta {
+      display: flex; gap: 6px; flex-wrap: wrap;
+      margin-top: 6px; margin-bottom: 8px;
+    }
+    .pap-pill {
+      display: inline-block;
+      font-size: 0.66rem; font-weight: 700;
+      padding: 2px 7px; border-radius: 4px;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      background: var(--bg-card-hover); color: var(--fg-dim);
+    }
+    .pap-pill.ch    { background: rgba(56, 189, 248, 0.10); color: #7dd3fc; }
+    .pap-pill.type-paper       { background: rgba(56, 189, 248, 0.08); color: #7dd3fc; }
+    .pap-pill.type-blog        { background: rgba(167, 139, 250, 0.10); color: #c4b5fd; }
+    .pap-pill.type-techreport  { background: rgba(251, 146, 60, 0.10); color: #fdba74; }
+    .pap-pill.type-benchmark   { background: rgba(244, 114, 182, 0.10); color: #fbcfe8; }
+    .pap-pill.status-verified-open { background: rgba(52, 211, 153, 0.12); color: #6ee7b7; }
+    .pap-pill.status-verified      { background: rgba(125, 211, 252, 0.10); color: #7dd3fc; }
+    .pap-pill.status-vendor        { background: rgba(251, 113, 133, 0.10); color: #fda4af; }
+    .pap-pill.status-perspective   { background: rgba(148, 163, 184, 0.10); color: #cbd5e1; }
+
+    .pap-authors {
+      font-size: 0.82rem; color: var(--fg-faint);
+      margin: 0 0 6px; line-height: 1.4;
+    }
+    .pap-tldr {
+      font-size: 0.92rem; color: var(--fg-muted);
+      margin: 0; line-height: 1.5;
+    }
+    .pap-tldr mark {
+      background: rgba(56, 189, 248, 0.25);
+      color: var(--fg); padding: 0 2px; border-radius: 2px;
+    }
+
+    .empty-state {
+      padding: 48px 24px; text-align: center;
+      color: var(--fg-faint); border: 1px dashed var(--border-strong);
+      border-radius: 10px;
+    }
+    .legend-box {
+      margin-top: 28px; padding: 16px 18px;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 10px; font-size: 0.85rem; color: var(--fg-dim);
+    }
+    .legend-box h4 { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--fg-faint); margin: 0 0 10px; }
+    .legend-box code {
+      background: var(--bg); padding: 1px 5px; border-radius: 3px;
+      color: var(--fg-muted);
+    }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a href="index.html" class="topnav-brand"><span class="dot"></span>Reasoning Models Theory</a>
+    <div class="topnav-links">
+      <a href="timeline.html">Timeline</a>
+      <a href="explore.html">Field map</a>
+      <a href="papers.html">Papers</a>
+      <a href="tracker.html">Tracker</a>
+      <a href="glossary.html">Glossary</a>
+      <a href="cheatsheet.html">Cheat sheet</a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory" class="topnav-cta">★ GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" style="padding-bottom: 40px;">
+  <div class="container">
+    <span class="chip">papers · curated</span>
+    <h1 style="font-size: 2.4rem;">Papers, browsable</h1>
+    <p class="hero-tagline" style="font-size: 1.05rem;">
+      Search and filter the anchor papers across the eight chapters. Every entry has a primary-source URL and a one-sentence TL;DR you can scan.
+      Status pills flag whether weights are open, the result is independently reproduced, or the claim is vendor-only.
+    </p>
+  </div>
+</header>
+
+<section style="padding-top: 30px;">
+  <div class="papers-wrap">
+    <div class="pap-controls">
+      <input id="search" class="pap-search" type="text" placeholder="Search title, author, TL;DR…" autocomplete="off"/>
+      <select id="sort" class="pap-sort" aria-label="Sort">
+        <option value="year-desc">Newest first</option>
+        <option value="year-asc">Oldest first</option>
+        <option value="ch-asc">By chapter</option>
+        <option value="title-asc">By title</option>
+      </select>
+    </div>
+
+    <div class="pap-filters">
+      <div class="pap-filter-group">
+        <span class="pap-filter-label">Chapter</span>
+        <div id="chip-ch" class="pap-chips"></div>
+      </div>
+      <div class="pap-filter-group">
+        <span class="pap-filter-label">Type</span>
+        <div id="chip-type" class="pap-chips">
+          <button class="pap-chip" data-val="paper" aria-pressed="false">Paper</button>
+          <button class="pap-chip" data-val="blog" aria-pressed="false">Blog</button>
+          <button class="pap-chip" data-val="techreport" aria-pressed="false">Tech report</button>
+          <button class="pap-chip" data-val="benchmark" aria-pressed="false">Benchmark</button>
+        </div>
+      </div>
+      <div class="pap-filter-group">
+        <span class="pap-filter-label">Status</span>
+        <div id="chip-status" class="pap-chips">
+          <button class="pap-chip" data-val="verified-open" aria-pressed="false">Verified open</button>
+          <button class="pap-chip" data-val="verified" aria-pressed="false">Verified</button>
+          <button class="pap-chip" data-val="vendor" aria-pressed="false">Vendor-reported</button>
+          <button class="pap-chip" data-val="perspective" aria-pressed="false">Perspective</button>
+        </div>
+      </div>
+    </div>
+
+    <p id="counter" class="pap-counter">Loading…</p>
+    <div id="list" class="pap-list"></div>
+    <div id="empty" class="empty-state" hidden>No papers match these filters. Try clearing one.</div>
+
+    <div class="legend-box">
+      <h4>Status pills</h4>
+      <p style="margin: 0 0 6px;"><strong style="color: #6ee7b7;">verified open</strong> — primary source confirmed AND weights/code public.</p>
+      <p style="margin: 0 0 6px;"><strong style="color: #7dd3fc;">verified</strong> — primary source confirmed; may be closed weights.</p>
+      <p style="margin: 0 0 6px;"><strong style="color: #fda4af;">vendor-reported</strong> — number originates from a vendor blog or system card; no independent reproduction.</p>
+      <p style="margin: 0;"><strong style="color: #cbd5e1;">perspective</strong> — opinion / framing piece, cite for context, not as a result.</p>
+    </div>
+
+    <p style="margin-top: 28px; font-size: 0.85rem; color: var(--fg-faint);">
+      Missing a paper? <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/issues/new?labels=paper-suggestion">Suggest one →</a> &nbsp;·&nbsp;
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/docs/data/papers.json">View raw papers.json</a>
+    </p>
+  </div>
+</section>
+
+<footer style="margin-top: 60px;">
+  <div class="container">
+    <div>
+      <div class="topnav-brand" style="font-size: 1rem;"><span class="dot"></span>Reasoning Models Theory</div>
+      <p style="margin-top: 12px; font-size: 0.85rem; color: var(--fg-faint);">A living, theory-and-mechanism-first map.</p>
+    </div>
+    <div>
+      <h4>Site</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="timeline.html">Timeline</a></li>
+        <li><a href="explore.html">Field map</a></li>
+        <li><a href="tracker.html">Tracker</a></li>
+        <li><a href="glossary.html">Glossary</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Repo</h4>
+      <ul>
+        <li><a href="https://github.com/bettyguo/awesome-reasoning-models-theory">GitHub</a></li>
+        <li><a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/CONTRIBUTING.md">Contributing</a></li>
+        <li><a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/WANTED.md">WANTED gaps</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+const CHAPTER_TITLES = {
+  1: "CoT & Scratchpads",
+  2: "Test-Time Compute",
+  3: "Sampling & Verification",
+  4: "Search at Inference",
+  5: "RL for Reasoning",
+  6: "Overthinking & Length",
+  7: "Faithfulness of Traces",
+  8: "Theoretical Frameworks"
+};
+
+const STATE = {
+  papers: [],
+  q: "",
+  ch: new Set(),
+  type: new Set(),
+  status: new Set(),
+  sort: "year-desc"
+};
+
+function escapeHTML(s) {
+  return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
+}
+
+function highlight(text, q) {
+  if (!q) return escapeHTML(text);
+  const escaped = escapeHTML(text);
+  const re = new RegExp("(" + q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")", "ig");
+  return escaped.replace(re, "<mark>$1</mark>");
+}
+
+function buildChapterChips() {
+  const wrap = document.getElementById("chip-ch");
+  wrap.innerHTML = "";
+  for (let i = 1; i <= 8; i++) {
+    const b = document.createElement("button");
+    b.className = "pap-chip";
+    b.dataset.val = String(i);
+    b.setAttribute("aria-pressed", "false");
+    b.textContent = "Ch " + i + " · " + CHAPTER_TITLES[i];
+    wrap.appendChild(b);
+  }
+}
+
+function bindChips(containerId, stateSet) {
+  document.getElementById(containerId).addEventListener("click", e => {
+    const btn = e.target.closest(".pap-chip");
+    if (!btn) return;
+    const val = btn.dataset.val;
+    if (stateSet.has(val)) { stateSet.delete(val); btn.setAttribute("aria-pressed", "false"); }
+    else { stateSet.add(val); btn.setAttribute("aria-pressed", "true"); }
+    render();
+  });
+}
+
+function clearAll() {
+  STATE.q = ""; STATE.ch.clear(); STATE.type.clear(); STATE.status.clear();
+  document.getElementById("search").value = "";
+  document.querySelectorAll(".pap-chip[aria-pressed='true']").forEach(b => b.setAttribute("aria-pressed", "false"));
+  render();
+}
+
+function passes(p) {
+  if (STATE.ch.size && !STATE.ch.has(String(p.chapter))) return false;
+  if (STATE.type.size && !STATE.type.has(p.type)) return false;
+  if (STATE.status.size && !STATE.status.has(p.status)) return false;
+  if (STATE.q) {
+    const hay = (p.title + " " + p.authors + " " + p.tldr + " " + (p.venue || "")).toLowerCase();
+    if (!hay.includes(STATE.q.toLowerCase())) return false;
+  }
+  return true;
+}
+
+function sortPapers(papers) {
+  const out = papers.slice();
+  switch (STATE.sort) {
+    case "year-asc":  out.sort((a,b) => a.year - b.year || a.title.localeCompare(b.title)); break;
+    case "year-desc": out.sort((a,b) => b.year - a.year || a.title.localeCompare(b.title)); break;
+    case "ch-asc":    out.sort((a,b) => a.chapter - b.chapter || b.year - a.year); break;
+    case "title-asc": out.sort((a,b) => a.title.localeCompare(b.title)); break;
+  }
+  return out;
+}
+
+function render() {
+  const filtered = STATE.papers.filter(passes);
+  const sorted = sortPapers(filtered);
+  const counter = document.getElementById("counter");
+  const totalActive = STATE.ch.size + STATE.type.size + STATE.status.size + (STATE.q ? 1 : 0);
+  let txt = sorted.length + " of " + STATE.papers.length + " papers";
+  if (totalActive) txt += " · " + totalActive + " filter" + (totalActive === 1 ? "" : "s") + " active";
+  counter.innerHTML = txt + (totalActive ? ' <button onclick="clearAll()">Clear filters</button>' : "");
+
+  const list = document.getElementById("list");
+  const empty = document.getElementById("empty");
+  if (!sorted.length) { list.innerHTML = ""; empty.hidden = false; return; }
+  empty.hidden = true;
+
+  list.innerHTML = sorted.map(p => {
+    const chTitle = CHAPTER_TITLES[p.chapter] || "?";
+    return `
+      <article class="pap-card ch-${p.chapter}">
+        <div class="pap-head">
+          <h3 class="pap-title"><a href="${escapeHTML(p.url)}" target="_blank" rel="noopener">${highlight(p.title, STATE.q)}</a></h3>
+          <span class="pap-year">${p.year}${p.venue ? " · " + escapeHTML(p.venue) : ""}</span>
+        </div>
+        <div class="pap-meta">
+          <span class="pap-pill ch">CH ${p.chapter} · ${escapeHTML(chTitle)}</span>
+          <span class="pap-pill type-${p.type}">${p.type}</span>
+          <span class="pap-pill status-${p.status}">${p.status.replace("-", " ")}</span>
+        </div>
+        <p class="pap-authors">${highlight(p.authors, STATE.q)}</p>
+        <p class="pap-tldr">${highlight(p.tldr, STATE.q)}</p>
+      </article>
+    `;
+  }).join("");
+}
+
+async function init() {
+  buildChapterChips();
+  bindChips("chip-ch", STATE.ch);
+  bindChips("chip-type", STATE.type);
+  bindChips("chip-status", STATE.status);
+
+  document.getElementById("search").addEventListener("input", e => {
+    STATE.q = e.target.value.trim();
+    render();
+  });
+  document.getElementById("sort").addEventListener("change", e => {
+    STATE.sort = e.target.value;
+    render();
+  });
+
+  try {
+    const res = await fetch("data/papers.json");
+    const data = await res.json();
+    STATE.papers = data.papers || [];
+    render();
+  } catch (err) {
+    document.getElementById("counter").textContent = "Failed to load papers.json. See console.";
+    console.error(err);
+  }
+}
+
+init();
+</script>
+
+</body>
+</html>

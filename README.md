@@ -9,9 +9,9 @@
   <a href="LICENSE-code"><img src="https://img.shields.io/badge/code-MIT-green.svg" alt="MIT"></a>
   <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/actions/workflows/linkcheck.yml"><img src="https://github.com/bettyguo/awesome-reasoning-models-theory/actions/workflows/linkcheck.yml/badge.svg" alt="Structure + link check"></a>
   <img src="https://img.shields.io/badge/chapters-8-818cf8.svg" alt="8 chapters"/>
-  <img src="https://img.shields.io/badge/papers-120%2B-34d399.svg" alt="120+ papers"/>
-  <img src="https://img.shields.io/badge/notebooks-5-fb923c.svg" alt="5 notebooks"/>
-  <img src="https://img.shields.io/badge/benchmarks%20tracked-14-f472b6.svg" alt="14 benchmarks tracked"/>
+  <img src="https://img.shields.io/badge/papers-60%2B%20indexed-34d399.svg" alt="60+ indexed papers"/>
+  <img src="https://img.shields.io/badge/models-13%20compared-fb923c.svg" alt="13 models compared"/>
+  <img src="https://img.shields.io/badge/notebooks-5-f472b6.svg" alt="5 notebooks"/>
   <img src="https://img.shields.io/badge/essays-7-7dd3fc.svg" alt="7 essays"/>
 </p>
 
@@ -20,6 +20,8 @@
     <a href="https://bettyguo.github.io/awesome-reasoning-models-theory">→ Open the live site</a> &nbsp;·&nbsp;
     <a href="https://bettyguo.github.io/awesome-reasoning-models-theory/timeline.html">Timeline</a> &nbsp;·&nbsp;
     <a href="https://bettyguo.github.io/awesome-reasoning-models-theory/explore.html">Field map</a> &nbsp;·&nbsp;
+    <a href="https://bettyguo.github.io/awesome-reasoning-models-theory/papers.html">Papers</a> &nbsp;·&nbsp;
+    <a href="https://bettyguo.github.io/awesome-reasoning-models-theory/models.html">Models</a> &nbsp;·&nbsp;
     <a href="https://bettyguo.github.io/awesome-reasoning-models-theory/tracker.html">Tracker</a> &nbsp;·&nbsp;
     <a href="https://bettyguo.github.io/awesome-reasoning-models-theory/glossary.html">Glossary</a> &nbsp;·&nbsp;
     <a href="https://bettyguo.github.io/awesome-reasoning-models-theory/cheatsheet.html">Cheat sheet</a>
@@ -182,6 +184,23 @@ Which inference strategy wins on which problem? At fixed compute budget:
 | Test-time training | 🟠 | 🟠 | 🔴 | 🟠 | 🟢 |
 
 🟢 well-suited · 🟠 partial / verifier-dependent · 🔴 known to underperform.
+
+## Browse the literature, browse the models
+
+Two interactive registries on the live site:
+
+- [**Papers**](https://bettyguo.github.io/awesome-reasoning-models-theory/papers.html) — 60+ anchor papers with chapter / year / type / status filters and free-text search across title, authors, and TL;DR. Backed by [`docs/data/papers.json`](docs/data/papers.json).
+- [**Models**](https://bettyguo.github.io/awesome-reasoning-models-theory/models.html) — 13 reasoning models compared on architecture, training recipe, verifier kind, and headline benchmark scores. Cards or compact-table view. Backed by [`docs/data/models.json`](docs/data/models.json).
+
+Both data files are public schemas; PRs welcome.
+
+## Family tree of reasoning models
+
+How today's open and closed reasoners trace back to their bases. The dashed lavender arrow is R1's distillation trail — the largest single open-source distribution-shift event of 2025.
+
+<p align="center">
+  <img src="assets/model-genealogy.svg" alt="Family tree of major reasoning models, 2024-2026" width="1100"/>
+</p>
 
 ## Benchmarks tracker
 

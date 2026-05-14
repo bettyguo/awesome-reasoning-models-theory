@@ -1,0 +1,278 @@
+{
+  "_meta": {
+    "description": "Reasoning-model registry. Numbers are best-known public values; closed-model entries cite vendor sources.",
+    "license_legend": {
+      "open": "Weights downloadable + permissive license",
+      "open-research": "Weights available under research-only license",
+      "closed": "API-only, weights not released"
+    },
+    "last_updated": "2026-05-14"
+  },
+  "models": [
+    {
+      "id": "deepseek-r1",
+      "name": "DeepSeek-R1",
+      "vendor": "DeepSeek-AI",
+      "released": "2025-01-20",
+      "license": "open",
+      "params_b": 671,
+      "active_params_b": 37,
+      "architecture": "MoE (DeepSeekMoE)",
+      "training": "Base SFT (cold start) + RLVR (GRPO) + SFT + RLVR",
+      "verifier": "rule-based outcome",
+      "thinking_default": "always-on",
+      "scores": {
+        "AIME-2024-pass1": 79.8,
+        "AIME-2024-cons64": 86.7,
+        "MATH-500-pass1": 97.3,
+        "GPQA-Diamond": 71.5,
+        "Codeforces-percentile": 96.3,
+        "LiveCodeBench": 65.9
+      },
+      "primary_source": "https://arxiv.org/abs/2501.12948",
+      "notes": "The defining open reasoning model. R1-Zero (pure RL from base) is the conceptual breakthrough; R1 adds a cold-start SFT for readability."
+    },
+    {
+      "id": "deepseek-r1-zero",
+      "name": "DeepSeek-R1-Zero",
+      "vendor": "DeepSeek-AI",
+      "released": "2025-01-20",
+      "license": "open",
+      "params_b": 671,
+      "active_params_b": 37,
+      "architecture": "MoE (DeepSeekMoE)",
+      "training": "Base + RLVR (GRPO) only — no SFT",
+      "verifier": "rule-based outcome",
+      "thinking_default": "always-on",
+      "scores": {
+        "AIME-2024-pass1": 71.0,
+        "AIME-2024-cons64": 86.7,
+        "MATH-500-pass1": 95.9,
+        "GPQA-Diamond": 73.3
+      },
+      "primary_source": "https://arxiv.org/abs/2501.12948",
+      "notes": "Pure-RL ablation. Strong reasoning but readability/language-mixing issues. Headline evidence that reasoning is RL-elicitable from a strong base."
+    },
+    {
+      "id": "deepseek-r1-distill-qwen-32b",
+      "name": "R1-Distill-Qwen-32B",
+      "vendor": "DeepSeek-AI",
+      "released": "2025-01-20",
+      "license": "open",
+      "params_b": 32,
+      "active_params_b": 32,
+      "architecture": "Dense (Qwen2.5-32B base)",
+      "training": "SFT on R1-generated chains",
+      "verifier": "—",
+      "thinking_default": "always-on",
+      "scores": {
+        "AIME-2024-pass1": 72.6,
+        "MATH-500-pass1": 94.3,
+        "GPQA-Diamond": 62.1
+      },
+      "primary_source": "https://arxiv.org/abs/2501.12948",
+      "notes": "Distillation of R1 into a Qwen base. Per-parameter, the most efficient open reasoner of early 2025."
+    },
+    {
+      "id": "openai-o1",
+      "name": "OpenAI o1",
+      "vendor": "OpenAI",
+      "released": "2024-09-12",
+      "license": "closed",
+      "params_b": null,
+      "active_params_b": null,
+      "architecture": "undisclosed",
+      "training": "RL with verifiable + judge rewards (per system card)",
+      "verifier": "undisclosed",
+      "thinking_default": "always-on",
+      "scores": {
+        "AIME-2024-pass1": 83.3,
+        "MATH-500-pass1": 94.8,
+        "GPQA-Diamond": 78.0,
+        "Codeforces-percentile": 89.0
+      },
+      "primary_source": "https://openai.com/index/learning-to-reason-with-llms/",
+      "notes": "The release that defined the era. Vendor-reported numbers; reasoning trace is hidden from users by policy."
+    },
+    {
+      "id": "openai-o3-mini",
+      "name": "OpenAI o3-mini",
+      "vendor": "OpenAI",
+      "released": "2025-01-31",
+      "license": "closed",
+      "params_b": null,
+      "active_params_b": null,
+      "architecture": "undisclosed",
+      "training": "Successor of o1 lineage, RL-on-reasoning",
+      "verifier": "undisclosed",
+      "thinking_default": "configurable (low/med/high effort)",
+      "scores": {
+        "AIME-2024-pass1": 87.3,
+        "GPQA-Diamond": 79.7,
+        "Codeforces-percentile": 96.0
+      },
+      "primary_source": "https://openai.com/index/openai-o3-mini/",
+      "notes": "First public reasoner with explicit effort dial. Reasoning-effort = direct test-time compute control surfaced to users."
+    },
+    {
+      "id": "openai-o3",
+      "name": "OpenAI o3",
+      "vendor": "OpenAI",
+      "released": "2025-04-16",
+      "license": "closed",
+      "params_b": null,
+      "active_params_b": null,
+      "architecture": "undisclosed",
+      "training": "Larger-compute o-lineage successor",
+      "verifier": "undisclosed",
+      "thinking_default": "always-on",
+      "scores": {
+        "AIME-2024-pass1": 91.6,
+        "GPQA-Diamond": 87.7,
+        "Codeforces-percentile": 99.5,
+        "SWE-bench-Verified": 71.7
+      },
+      "primary_source": "https://openai.com/index/introducing-o3-and-o4-mini/",
+      "notes": "The frontier closed reasoner of mid-2025. Heavy inference-time compute; vendor reports suggest > 2700 Codeforces Elo."
+    },
+    {
+      "id": "claude-3-7-sonnet-extthink",
+      "name": "Claude 3.7 Sonnet (extended thinking)",
+      "vendor": "Anthropic",
+      "released": "2025-02-24",
+      "license": "closed",
+      "params_b": null,
+      "active_params_b": null,
+      "architecture": "undisclosed",
+      "training": "RL with verifiable + judge rewards (system card)",
+      "verifier": "undisclosed",
+      "thinking_default": "configurable (token budget)",
+      "scores": {
+        "AIME-2024-pass1": 80.0,
+        "GPQA-Diamond": 84.8,
+        "SWE-bench-Verified": 70.3
+      },
+      "primary_source": "https://www.anthropic.com/news/claude-3-7-sonnet",
+      "notes": "First Anthropic reasoner with explicit token-budget surface. Same model with vs without extended thinking — a controlled comparison vendors rarely publish."
+    },
+    {
+      "id": "gemini-deep-think",
+      "name": "Gemini Deep Think",
+      "vendor": "Google DeepMind",
+      "released": "2025-07-21",
+      "license": "closed",
+      "params_b": null,
+      "active_params_b": null,
+      "architecture": "undisclosed",
+      "training": "Heavy parallel sampling + verification at inference",
+      "verifier": "ensemble + symbolic",
+      "thinking_default": "always-on (Deep Think mode)",
+      "scores": {
+        "AIME-2024-pass1": 84.0,
+        "GPQA-Diamond": 84.4,
+        "IMO-2025": "Gold (5/6 problems)"
+      },
+      "primary_source": "https://deepmind.google/discover/blog/advanced-version-of-gemini-with-deep-think-officially-achieves-gold-medal-standard-at-the-international-mathematical-olympiad/",
+      "notes": "First IMO gold by a frontier-LLM-style system. Combines parallel CoT with structured verification."
+    },
+    {
+      "id": "qwen-qwq-32b",
+      "name": "QwQ-32B-Preview",
+      "vendor": "Qwen / Alibaba",
+      "released": "2024-11-28",
+      "license": "open",
+      "params_b": 32,
+      "active_params_b": 32,
+      "architecture": "Dense (Qwen2.5-32B base)",
+      "training": "SFT + RL on long-CoT reasoning",
+      "verifier": "rule-based outcome",
+      "thinking_default": "always-on",
+      "scores": {
+        "AIME-2024-pass1": 50.0,
+        "MATH-500-pass1": 90.6,
+        "GPQA-Diamond": 65.2
+      },
+      "primary_source": "https://qwenlm.github.io/blog/qwq-32b-preview/",
+      "notes": "First major open reasoner. Predates R1 by ~2 months. Showed long-CoT RL was reproducible outside US labs."
+    },
+    {
+      "id": "qwen-qwq-plus",
+      "name": "QwQ-Plus / Qwen3-Reasoning",
+      "vendor": "Qwen / Alibaba",
+      "released": "2025-04-29",
+      "license": "open",
+      "params_b": null,
+      "active_params_b": null,
+      "architecture": "MoE (Qwen3 family)",
+      "training": "Qwen3 base + SFT + RLVR",
+      "verifier": "rule-based + judge",
+      "thinking_default": "configurable",
+      "scores": {
+        "AIME-2024-pass1": 85.7,
+        "MATH-500-pass1": 97.6,
+        "GPQA-Diamond": 73.0
+      },
+      "primary_source": "https://qwenlm.github.io/blog/qwen3/",
+      "notes": "Qwen3 with explicit thinking mode. Open-weights frontier-class reasoning by mid-2025."
+    },
+    {
+      "id": "s1-32b",
+      "name": "s1-32B",
+      "vendor": "Stanford / Muennighoff et al.",
+      "released": "2025-01-31",
+      "license": "open",
+      "params_b": 32,
+      "active_params_b": 32,
+      "architecture": "Dense (Qwen2.5-32B-Instruct base)",
+      "training": "SFT on 1k curated reasoning traces only — no RL",
+      "verifier": "—",
+      "thinking_default": "always-on (with budget forcing)",
+      "scores": {
+        "AIME-2024-pass1": 56.7,
+        "MATH-500-pass1": 93.0,
+        "GPQA-Diamond": 59.6
+      },
+      "primary_source": "https://arxiv.org/abs/2501.19393",
+      "notes": "Argues TTC is largely a budgeting trick. SFT on tiny curated set + budget forcing reaches surprising AIME numbers."
+    },
+    {
+      "id": "tulu-3-405b",
+      "name": "Tülu 3 (405B)",
+      "vendor": "Allen AI",
+      "released": "2024-11-21",
+      "license": "open",
+      "params_b": 405,
+      "active_params_b": 405,
+      "architecture": "Dense (Llama-3.1-405B base)",
+      "training": "SFT + DPO + RLVR (named here for the first time)",
+      "verifier": "rule-based outcome",
+      "thinking_default": "off (instructable)",
+      "scores": {
+        "MATH-500-pass1": 67.3,
+        "GPQA-Diamond": 50.8
+      },
+      "primary_source": "https://arxiv.org/abs/2411.15124",
+      "notes": "Names and demonstrates RLVR. Predates R1 by weeks; the term 'verifiable rewards' enters the field here."
+    },
+    {
+      "id": "open-reasoner-zero-7b",
+      "name": "Open-Reasoner-Zero-7B",
+      "vendor": "Open community / HKUST + collaborators",
+      "released": "2025-03-31",
+      "license": "open",
+      "params_b": 7,
+      "active_params_b": 7,
+      "architecture": "Dense (Qwen2.5-7B base)",
+      "training": "Pure RLVR from base (R1-Zero recipe)",
+      "verifier": "rule-based outcome",
+      "thinking_default": "always-on",
+      "scores": {
+        "AIME-2024-pass1": 17.9,
+        "MATH-500-pass1": 81.6,
+        "GPQA-Diamond": 35.6
+      },
+      "primary_source": "https://arxiv.org/abs/2503.24290",
+      "notes": "Smallest credible R1-Zero-style reproduction. Establishes the recipe is portable to ~10B-class bases."
+    }
+  ]
+}
