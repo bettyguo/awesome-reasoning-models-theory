@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Field map · Awesome Reasoning Models Theory</title>
+  <meta name="description" content="The eight-chapter field map: mechanism dependencies and open debates."/>
+  <meta name="theme-color" content="#0b1220"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a href="index.html" class="topnav-brand"><span class="dot"></span>Reasoning Models Theory</a>
+    <div class="topnav-links">
+      <a href="timeline.html">Timeline</a>
+      <a href="explore.html" style="color: var(--fg);">Field map</a>
+      <a href="cheatsheet.html">Cheat sheet</a>
+      <a href="FAQ.html">FAQ</a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory" class="topnav-cta">★ GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<div class="timeline-page">
+  <span class="chip">Field map</span>
+  <h1 style="margin-top: 16px;">The eight chapters, related</h1>
+  <p style="font-size: 1.05rem; color: var(--fg-muted); max-width: 720px;">
+    Solid arrows are mechanism dependencies. Dashed arrows are open debates.
+    Click any chapter card below to jump to its full annotation on GitHub.
+  </p>
+
+  <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin: 32px 0;">
+    <img src="assets/field-map.svg" alt="Field map" style="width: 100%; height: auto; display: block;"/>
+  </div>
+
+  <h2 style="margin-top: 48px;">Chapter cards</h2>
+  <p>Click for the full chapter on GitHub.</p>
+
+  <div class="chapters-grid" style="margin-top: 24px;">
+    <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/chapters/01-cot-and-scratchpads.md" class="chapter-card cat-foundation">
+      <div class="ch-num">CH 01</div>
+      <h3>CoT &amp; Scratchpads</h3>
+      <p>Compute-extension: intermediate tokens give a fixed-depth transformer unbounded serial steps.</p>
+    </a>
+    <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/chapters/02-test-time-compute-scaling.md" class="chapter-card cat-inference">
+      <div class="ch-num">CH 02</div>
+      <h3>Test-Time Compute Scaling</h3>
+      <p>Snell, s1, R1, o1 — accuracy vs inference compute, regime-dependent.</p>
+    </a>
+    <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/chapters/03-sampling-and-verification.md" class="chapter-card cat-inference">
+      <div class="ch-num">CH 03</div>
+      <h3>Sampling &amp; Verification</h3>
+      <p>Self-consistency, best-of-N, ORMs, PRMs. Verifier-side scaling is real.</p>
+    </a>
+    <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/chapters/04-search-at-inference.md" class="chapter-card cat-inference">
+      <div class="ch-num">CH 04</div>
+      <h3>Search at Inference</h3>
+      <p>ToT, GoT, AlphaProof, recursive aggregation. Where explicit search still dominates.</p>
+    </a>
+    <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/chapters/05-rl-for-reasoning.md" class="chapter-card cat-training">
+      <div class="ch-num">CH 05</div>
+      <h3>RL for Reasoning</h3>
+      <p>R1-Zero, GRPO, Tülu, RLVR. Elicitation, not learning.</p>
+    </a>
+    <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/chapters/06-overthinking-and-optimal-length.md" class="chapter-card cat-failure">
+      <div class="ch-num">CH 06</div>
+      <h3>Overthinking &amp; Length</h3>
+      <p>Chen 2024, Hassid, Yang, Chain of Draft. Length should be conditional on difficulty.</p>
+    </a>
+    <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/chapters/07-faithfulness-of-reasoning.md" class="chapter-card cat-failure">
+      <div class="ch-num">CH 07</div>
+      <h3>Faithfulness of Traces</h3>
+      <p>Turpin, Lanham, Anthropic 2025. The chain is not the computation.</p>
+    </a>
+    <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/chapters/08-theoretical-frameworks.md" class="chapter-card cat-synthesis">
+      <div class="ch-num">CH 08</div>
+      <h3>Theoretical Frameworks</h3>
+      <p>Compute-depth, program synthesis, Bayes-over-thoughts. Three accounts, no unification.</p>
+    </a>
+  </div>
+
+  <h2 style="margin-top: 56px;">Reading paths</h2>
+  <p>Cross-chapter sequences calibrated for skim / weekend / research depth.</p>
+  <div class="tocish" style="margin-top: 24px;">
+    <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/docs/reading-paths.md#path-1--what-is-the-o1--r1-paradigm-in-two-evenings">
+      <div class="item-label">PATH 1</div>
+      <div class="item-title">The o1 / R1 paradigm in two evenings</div>
+      <div class="item-desc">For the practitioner needing the dominant recipe end-to-end.</div>
+    </a>
+    <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/docs/reading-paths.md#path-2--i-dont-trust-cot-as-thought-convince-me-one-way-or-the-other">
+      <div class="item-label">PATH 2</div>
+      <div class="item-title">Is CoT thought, or rationalization?</div>
+      <div class="item-desc">For the reader entering the faithfulness debate.</div>
+    </a>
+    <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/docs/reading-paths.md#path-3--is-reasoning-search-or-rl">
+      <div class="item-label">PATH 3</div>
+      <div class="item-title">Is reasoning search or RL?</div>
+      <div class="item-desc">Where explicit search wins; where RL absorbs it.</div>
+    </a>
+    <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/docs/reading-paths.md#path-4--theory-of-why-cot-helps-formal--informal">
+      <div class="item-label">PATH 4</div>
+      <div class="item-title">Theory of why CoT helps</div>
+      <div class="item-desc">Formal + informal. Crosses both lists.</div>
+    </a>
+    <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/docs/reading-paths.md#path-5--the-overthinking-debate">
+      <div class="item-label">PATH 5</div>
+      <div class="item-title">The overthinking debate</div>
+      <div class="item-desc">Chain length, calibration, length-misallocation.</div>
+    </a>
+    <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/docs/reading-paths.md#path-6--rl-for-reasoning-fast-track">
+      <div class="item-label">PATH 6</div>
+      <div class="item-title">RL-for-reasoning, fast track</div>
+      <div class="item-desc">For someone implementing RLVR on their own model.</div>
+    </a>
+    <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/docs/reading-paths.md#path-7--sampling-and-verification-fast-track">
+      <div class="item-label">PATH 7</div>
+      <div class="item-title">Sampling and verification, fast track</div>
+      <div class="item-desc">For the inference-side practitioner.</div>
+    </a>
+  </div>
+</div>
+
+<footer style="margin-top: 48px;">
+  <div class="container">
+    <div>
+      <div class="topnav-brand" style="font-size: 1rem;"><span class="dot"></span>Reasoning Models Theory</div>
+      <p style="margin-top: 12px; font-size: 0.85rem; color: var(--fg-faint);">A living theoretical map.</p>
+    </div>
+    <div>
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="timeline.html">Timeline</a></li>
+        <li><a href="explore.html">Field map</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Docs</h4>
+      <ul>
+        <li><a href="cheatsheet.html">Cheat sheet</a></li>
+        <li><a href="FAQ.html">FAQ</a></li>
+        <li><a href="reading-paths.html">Reading paths</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Repo</h4>
+      <ul>
+        <li><a href="https://github.com/bettyguo/awesome-reasoning-models-theory">GitHub</a></li>
+        <li><a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/WANTED.md">WANTED gaps</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

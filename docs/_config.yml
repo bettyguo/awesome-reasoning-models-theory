@@ -1,0 +1,29 @@
+title: Awesome Reasoning Models Theory
+description: A theoretical and empirical map of the o-series / R1 / Claude-thinking paradigm.
+url: "https://bettyguo.github.io/awesome-reasoning-models-theory"
+repository: bettyguo/awesome-reasoning-models-theory
+
+# We provide custom HTML pages (index.html, timeline.html, explore.html).
+# Remaining markdown files (FAQ, reading-paths, bibtex, model-families, cheatsheet)
+# are rendered with the cayman theme as fallback.
+theme: jekyll-theme-cayman
+
+markdown: kramdown
+kramdown:
+  syntax_highlighter: rouge
+
+include:
+  - _redirects
+
+exclude:
+  - "*.bak"
+  - vendor
+  - node_modules
+  - Gemfile
+  - Gemfile.lock
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default

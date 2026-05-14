@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Timeline · Awesome Reasoning Models Theory</title>
+  <meta name="description" content="An interactive timeline of the reasoning-model paradigm shift, 2022–2026."/>
+  <meta name="theme-color" content="#0b1220"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a href="index.html" class="topnav-brand"><span class="dot"></span>Reasoning Models Theory</a>
+    <div class="topnav-links">
+      <a href="timeline.html" style="color: var(--fg);">Timeline</a>
+      <a href="explore.html">Field map</a>
+      <a href="cheatsheet.html">Cheat sheet</a>
+      <a href="FAQ.html">FAQ</a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory" class="topnav-cta">★ GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<div class="timeline-page">
+  <span class="chip">Interactive</span>
+  <h1 style="margin-top: 16px;">Reasoning models, 2022–2026</h1>
+  <p style="font-size: 1.05rem; color: var(--fg-muted); max-width: 720px;">
+    Click a milestone to read the primary source. Filter by type using the buttons below.
+    Items group by quarter; the line tracks the field's primary evolutionary path.
+  </p>
+
+  <div class="tl-legend" style="margin: 28px 0 8px;">
+    <button class="tl-filter" data-filter="all" style="background: var(--bg-card); border: 1px solid var(--accent); color: var(--fg); padding: 6px 14px; border-radius: 6px; cursor: pointer; font-size: 0.85rem;">All</button>
+    <button class="tl-filter" data-filter="paper" style="background: var(--bg-card); border: 1px solid var(--border-strong); color: var(--fg-dim); padding: 6px 14px; border-radius: 6px; cursor: pointer; font-size: 0.85rem;">
+      <span class="dot" style="background: var(--accent)"></span>Papers
+    </button>
+    <button class="tl-filter" data-filter="model" style="background: var(--bg-card); border: 1px solid var(--border-strong); color: var(--fg-dim); padding: 6px 14px; border-radius: 6px; cursor: pointer; font-size: 0.85rem;">
+      <span class="dot" style="background: var(--accent-2)"></span>Models
+    </button>
+    <button class="tl-filter" data-filter="benchmark" style="background: var(--bg-card); border: 1px solid var(--border-strong); color: var(--fg-dim); padding: 6px 14px; border-radius: 6px; cursor: pointer; font-size: 0.85rem;">
+      <span class="dot" style="background: var(--accent-warm)"></span>Benchmarks
+    </button>
+  </div>
+
+  <div class="timeline-canvas">
+    <div class="tl-row" id="timeline-row">
+      <!-- populated by JS -->
+    </div>
+    <div class="tl-line"></div>
+  </div>
+
+  <div id="tl-detail" style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 28px; margin-top: 32px;">
+    <div class="eyebrow">Detail</div>
+    <h3 id="tl-detail-title" style="margin: 8px 0;">Select a milestone above to see details</h3>
+    <p id="tl-detail-desc" style="color: var(--fg-muted);">Each milestone has a primary source. Click any card to expand here.</p>
+    <p id="tl-detail-link" style="margin-top: 12px;"></p>
+  </div>
+
+  <section style="border: none; padding: 56px 0 24px;">
+    <div class="eyebrow">Read the chapters</div>
+    <h2>Each milestone is annotated in the corresponding chapter</h2>
+    <p style="font-size: 0.95rem;">
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory#the-eight-chapters">→ Eight-chapter index</a>
+      &nbsp; · &nbsp;
+      <a href="explore.html">→ Open the field map</a>
+    </p>
+  </section>
+</div>
+
+<script>
+const MILESTONES = [
+  { date: "2022-01", kind: "paper",     title: "Chain-of-Thought Prompting",
+    desc: "Wei et al. show that prompting LLMs with intermediate reasoning lifts multi-step accuracy. Names the phenomenon.",
+    chapter: "1", url: "https://arxiv.org/abs/2201.11903" },
+  { date: "2022-03", kind: "paper",     title: "Self-Consistency",
+    desc: "Wang et al. — sample K chains, majority-vote. The verifier-free baseline still hard to beat.",
+    chapter: "3", url: "https://arxiv.org/abs/2203.11171" },
+  { date: "2023-05", kind: "paper",     title: "Tree of Thoughts",
+    desc: "Yao et al. — generalize CoT to a search tree with branch evaluation and pruning.",
+    chapter: "4", url: "https://arxiv.org/abs/2305.10601" },
+  { date: "2023-05", kind: "paper",     title: "Let's Verify Step by Step (PRMs)",
+    desc: "Lightman et al. — process reward models beat outcome reward models at the same labeling budget.",
+    chapter: "3", url: "https://arxiv.org/abs/2305.20050" },
+  { date: "2024-02", kind: "paper",     title: "DeepSeekMath / GRPO",
+    desc: "Shao et al. introduce Group Relative Policy Optimization. The algorithm R1 uses at scale.",
+    chapter: "5", url: "https://arxiv.org/abs/2402.03300" },
+  { date: "2024-07", kind: "model",     title: "AlphaProof IMO silver",
+    desc: "DeepMind: pretrained LM + AlphaZero RL on Lean. 4/6 IMO 2024 problems solved.",
+    chapter: "4", url: "https://deepmind.google/blog/ai-solves-imo-problems-at-silver-medal-level/" },
+  { date: "2024-08", kind: "paper",     title: "Test-Time Compute Scaling",
+    desc: "Snell et al. — inference compute can substitute for a 14× larger model under optimal allocation.",
+    chapter: "2", url: "https://arxiv.org/abs/2408.03314" },
+  { date: "2024-09", kind: "model",     title: "OpenAI o1 announcement",
+    desc: "The headline test-time-compute curve on AIME and Codeforces. Closed-source, no methodology disclosed.",
+    chapter: "2", url: "https://openai.com/index/learning-to-reason-with-llms/" },
+  { date: "2024-11", kind: "model",     title: "Tülu 3 — named RLVR",
+    desc: "Lambert et al. introduce the 'RLVR' name for the verifiable-reward training family.",
+    chapter: "5", url: "https://arxiv.org/abs/2411.15124" },
+  { date: "2024-12", kind: "paper",     title: "Don't think much for 2+3 (overthinking)",
+    desc: "Chen et al. — long chains on trivial problems measurably hurt accuracy. Naming paper for the phenomenon.",
+    chapter: "6", url: "https://arxiv.org/abs/2412.21187" },
+  { date: "2025-01", kind: "model",     title: "DeepSeek-R1 / R1-Zero",
+    desc: "Open-recipe paradigm shift. R1-Zero shows pure RL from base reaches o1-class. The field's epistemic anchor.",
+    chapter: "5", url: "https://arxiv.org/abs/2501.12948" },
+  { date: "2025-01", kind: "paper",     title: "s1: Simple Test-Time Scaling",
+    desc: "Muennighoff et al. — cleanest open reproduction of the test-time-compute scaling curve. Introduces budget forcing.",
+    chapter: "2", url: "https://arxiv.org/abs/2501.19393" },
+  { date: "2025-02", kind: "model",     title: "Claude 3.7 with extended thinking",
+    desc: "Anthropic — first Claude with public 'extended thinking' mode and explicit reasoning-budget control.",
+    chapter: "5", url: "https://www.anthropic.com/news" },
+  { date: "2025-02", kind: "paper",     title: "Towards Thinking-Optimal Scaling",
+    desc: "Yang et al. — chain length should be conditioned on problem difficulty. Bridges Ch 2 and Ch 6.",
+    chapter: "6", url: "https://arxiv.org/abs/2502.18080" },
+  { date: "2025-05", kind: "paper",     title: "Reasoning Models Don't Always Say What They Think",
+    desc: "Anthropic — RL-trained reasoners can still be unfaithful. Specific reward-hacking-induced unfaithfulness identified.",
+    chapter: "7", url: "https://arxiv.org/abs/2505.05410" },
+  { date: "2025-07", kind: "model",     title: "Gemini Deep Think — IMO gold",
+    desc: "Google DeepMind — vendor-reported gold-medal-equivalent score at IMO 2025.",
+    chapter: "4", url: "https://deepmind.google/blog/advanced-version-of-gemini-with-deep-think-officially-achieves-gold-medal-standard-at-the-international-mathematical-olympiad/" },
+  { date: "2025-11", kind: "paper",     title: "AlphaProof in Nature",
+    desc: "DeepMind publishes the AlphaProof methodology — RL + Lean formal proofs — in Nature.",
+    chapter: "4", url: "https://www.nature.com/articles/s41586-025-09833-y" },
+  { date: "2026-03", kind: "benchmark", title: "ARC-AGI-3 launch",
+    desc: "Chollet's abstraction-and-reasoning v3, with a new generation-and-search structure. SOTA unstable; track quarterly.",
+    chapter: "—", url: "https://arcprize.org/" }
+];
+
+function render(filter) {
+  const row = document.getElementById('timeline-row');
+  row.innerHTML = '';
+  const items = filter === 'all' ? MILESTONES : MILESTONES.filter(m => m.kind === filter);
+  items.forEach(m => {
+    const card = document.createElement('div');
+    card.className = 'tl-card ' + m.kind;
+    card.innerHTML = `
+      <div class="date">${m.date} · CH ${m.chapter}</div>
+      <h4>${m.title}</h4>
+      <p>${m.desc.substring(0, 90)}${m.desc.length > 90 ? '…' : ''}</p>
+    `;
+    card.addEventListener('click', () => showDetail(m));
+    row.appendChild(card);
+  });
+}
+
+function showDetail(m) {
+  document.getElementById('tl-detail-title').textContent = m.title;
+  document.getElementById('tl-detail-desc').innerHTML =
+    `<span class="chip" style="margin-right: 8px;">${m.date}</span>` +
+    `<span class="chip" style="margin-right: 8px;">${m.kind}</span>` +
+    `<span class="chip">Chapter ${m.chapter}</span><br/><br/>${m.desc}`;
+  document.getElementById('tl-detail-link').innerHTML =
+    `<a href="${m.url}" target="_blank" rel="noopener">→ Primary source</a>`;
+}
+
+document.querySelectorAll('.tl-filter').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tl-filter').forEach(b => {
+      b.style.borderColor = 'var(--border-strong)';
+      b.style.color = 'var(--fg-dim)';
+    });
+    btn.style.borderColor = 'var(--accent)';
+    btn.style.color = 'var(--fg)';
+    render(btn.dataset.filter);
+  });
+});
+
+// Initial render
+render('all');
+</script>
+
+<footer style="margin-top: 48px;">
+  <div class="container">
+    <div>
+      <div class="topnav-brand" style="font-size: 1rem;"><span class="dot"></span>Reasoning Models Theory</div>
+      <p style="margin-top: 12px; font-size: 0.85rem; color: var(--fg-faint);">A living theoretical map.</p>
+    </div>
+    <div>
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="timeline.html">Timeline</a></li>
+        <li><a href="explore.html">Field map</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Docs</h4>
+      <ul>
+        <li><a href="cheatsheet.html">Cheat sheet</a></li>
+        <li><a href="FAQ.html">FAQ</a></li>
+        <li><a href="reading-paths.html">Reading paths</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Repo</h4>
+      <ul>
+        <li><a href="https://github.com/bettyguo/awesome-reasoning-models-theory">GitHub</a></li>
+        <li><a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/WANTED.md">WANTED gaps</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

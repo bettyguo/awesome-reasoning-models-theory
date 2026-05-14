@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Awesome Reasoning Models Theory · Why do reasoning models actually work?</title>
+  <meta name="description" content="A theory-and-mechanism-first map of the o-series / R1 / Claude-thinking paradigm. Eight argued chapters, five reproduction notebooks, a monthly benchmarks tracker, and explicit engagement with the faithfulness and overthinking debates most lists hedge."/>
+  <meta property="og:title" content="Awesome Reasoning Models Theory"/>
+  <meta property="og:description" content="Why do reasoning models actually work? Eight chapters of mechanism, five reproductions, a living tracker."/>
+  <meta property="og:type" content="website"/>
+  <meta name="theme-color" content="#0b1220"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a href="index.html" class="topnav-brand"><span class="dot"></span>Reasoning Models Theory</a>
+    <div class="topnav-links">
+      <a href="timeline.html">Timeline</a>
+      <a href="explore.html">Field map</a>
+      <a href="cheatsheet.html">Cheat sheet</a>
+      <a href="FAQ.html">FAQ</a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory" class="topnav-cta">★ GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <span class="chip">awesome-list · theory-first</span>
+    <h1>Why do reasoning models actually work?</h1>
+    <p class="hero-tagline">
+      A theory-and-mechanism-first map of the o-series / R1 / Claude-thinking paradigm.
+      Eight argued chapters, five reproduction notebooks, a monthly benchmarks tracker,
+      and explicit engagement with the faithfulness and overthinking debates most lists hedge.
+    </p>
+    <div class="hero-ctas">
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory" class="btn btn-primary">
+        Read on GitHub <span>→</span>
+      </a>
+      <a href="timeline.html" class="btn btn-secondary">Interactive timeline</a>
+      <a href="explore.html" class="btn btn-secondary">The field map</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="num">8</div><div class="label">argued chapters</div></div>
+      <div class="hero-stat"><div class="num">90+</div><div class="label">annotated papers</div></div>
+      <div class="hero-stat"><div class="num">5</div><div class="label">reproduction notebooks</div></div>
+      <div class="hero-stat"><div class="num">10</div><div class="label">benchmarks tracked</div></div>
+      <div class="hero-stat"><div class="num">7</div><div class="label">reading paths</div></div>
+      <div class="hero-stat"><div class="num">6</div><div class="label">synthesis essays</div></div>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="container">
+    <div class="eyebrow">The arc</div>
+    <h2>From CoT prompting to RL-for-reasoning in 36 months</h2>
+    <p>
+      The 2022–2026 trajectory: chain-of-thought prompting → process reward models →
+      test-time compute scaling → o1 → DeepSeek-R1 → the overthinking and faithfulness debates.
+      Each transition produced a recipe; each recipe shifted what "reasoning" meant.
+      The interactive timeline lets you click any milestone.
+    </p>
+
+    <div class="timeline-mini">
+      <div class="tl-legend">
+        <span><span class="dot" style="background: var(--accent)"></span>paper</span>
+        <span><span class="dot" style="background: var(--accent-2)"></span>model</span>
+        <span><span class="dot" style="background: var(--accent-warm)"></span>benchmark</span>
+      </div>
+      <div class="timeline-track">
+        <div class="timeline-dots">
+          <span class="timeline-dot" title="CoT prompting (2022)"></span>
+          <span class="timeline-dot" title="PRMs / ToT (2023)"></span>
+          <span class="timeline-dot model" title="AlphaProof IMO (2024-07)"></span>
+          <span class="timeline-dot" title="Test-time scaling (2024-08)"></span>
+          <span class="timeline-dot model" title="o1 (2024-09)"></span>
+          <span class="timeline-dot model" title="R1 (2025-01)"></span>
+          <span class="timeline-dot model" title="Claude 3.7 thinking (2025-02)"></span>
+          <span class="timeline-dot" title="Anthropic faithfulness paper (2025-05)"></span>
+          <span class="timeline-dot model" title="Gemini Deep Think IMO gold (2025-07)"></span>
+          <span class="timeline-dot bench" title="ARC-AGI-3 launch (2026-03)"></span>
+        </div>
+      </div>
+      <div class="timeline-labels">
+        <span>2022<br/>CoT</span>
+        <span>2023<br/>PRMs</span>
+        <span>2024-07<br/>AlphaProof</span>
+        <span>2024-08<br/>Snell</span>
+        <span>2024-09<br/>o1</span>
+        <span>2025-01<br/>R1</span>
+        <span>2025-02<br/>Claude 3.7</span>
+        <span>2025-05<br/>Faithfulness</span>
+        <span>2025-07<br/>Gemini gold</span>
+        <span>2026-03<br/>ARC-AGI-3</span>
+      </div>
+      <p style="margin: 28px 0 0; font-size: 0.85rem;">
+        <a href="timeline.html">→ Open the interactive timeline</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="eyebrow">Eight chapters</div>
+    <h2>Each argues a position about how reasoning works</h2>
+    <p>
+      Most awesome-lists aggregate titles. This one argues mechanisms.
+      Each chapter has a TL;DR, the proposed mechanism, 10+ annotated papers, the live debates, reading paths, and an open-problems list.
+    </p>
+    <div class="chapters-grid">
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/chapters/01-cot-and-scratchpads.md" class="chapter-card cat-foundation">
+        <div class="ch-num">CH 01 · FOUNDATION</div>
+        <h3>CoT &amp; Scratchpads</h3>
+        <p>Intermediate tokens turn a fixed-depth forward pass into an unbounded serial program.</p>
+      </a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/chapters/02-test-time-compute-scaling.md" class="chapter-card cat-inference">
+        <div class="ch-num">CH 02 · INFERENCE</div>
+        <h3>Test-Time Compute Scaling</h3>
+        <p>Inference compute trades off against parameters with task-dependent exchange rate.</p>
+      </a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/chapters/03-sampling-and-verification.md" class="chapter-card cat-inference">
+        <div class="ch-num">CH 03 · INFERENCE</div>
+        <h3>Sampling &amp; Verification</h3>
+        <p>Reranking and voting over samples extract quality faster than improving any single sample.</p>
+      </a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/chapters/04-search-at-inference.md" class="chapter-card cat-inference">
+        <div class="ch-num">CH 04 · INFERENCE</div>
+        <h3>Search at Inference</h3>
+        <p>Structured exploration over CoT prefixes recovers solutions a greedy decode misses.</p>
+      </a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/chapters/05-rl-for-reasoning.md" class="chapter-card cat-training">
+        <div class="ch-num">CH 05 · TRAINING</div>
+        <h3>RL for Reasoning</h3>
+        <p>RL with verifiable rewards reshapes the policy toward long, self-correcting chains.</p>
+      </a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/chapters/06-overthinking-and-optimal-length.md" class="chapter-card cat-failure">
+        <div class="ch-num">CH 06 · FAILURE</div>
+        <h3>Overthinking &amp; Length</h3>
+        <p>Beyond a task-dependent optimum, more CoT hurts — long chains compound errors.</p>
+      </a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/chapters/07-faithfulness-of-reasoning.md" class="chapter-card cat-failure">
+        <div class="ch-num">CH 07 · FAILURE</div>
+        <h3>Faithfulness of Traces</h3>
+        <p>CoTs often post-hoc rationalize. The visible chain isn't always the computation.</p>
+      </a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/chapters/08-theoretical-frameworks.md" class="chapter-card cat-synthesis">
+        <div class="ch-num">CH 08 · SYNTHESIS</div>
+        <h3>Theoretical Frameworks</h3>
+        <p>Three accounts compete and partly cooperate: compute-depth, program synthesis, Bayes-over-thoughts.</p>
+      </a>
+    </div>
+    <p style="margin-top: 24px; font-size: 0.9rem;">
+      <a href="explore.html">→ Open the field map (interactive)</a>
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="eyebrow">Why this list is different</div>
+    <h2>Not an aggregator. An argument.</h2>
+    <div class="compare">
+      <div class="compare-card">
+        <h3>Typical awesome-reasoning list</h3>
+        <ul>
+          <li>Flat list of titles + URLs</li>
+          <li>Mixes prompt-engineering tricks with theoretical results</li>
+          <li>No engagement with debates or open problems</li>
+          <li>Closed-model marketing claims listed as fact</li>
+          <li>Static; ages poorly post-release-cycle</li>
+        </ul>
+      </div>
+      <div class="compare-card this">
+        <h3>Awesome Reasoning Models Theory</h3>
+        <ul>
+          <li>Chapter-as-position; each argues a mechanism</li>
+          <li>Five-criterion bar for entries (primary source, mechanism-not-phenomenon)</li>
+          <li>Explicit "Debates" section per chapter</li>
+          <li>Every closed-model number flagged with (vendor-reported)</li>
+          <li>Monthly tracker digest + WANTED gap list</li>
+          <li>Five reproduction notebooks at single-GPU scale</li>
+          <li>Sister-list scope split, boundary cases enumerated</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="eyebrow">Field map</div>
+    <h2>How the eight chapters depend on each other</h2>
+    <p>
+      Solid arrows are mechanism dependencies. Dashed are open debates. Color marks the role:
+      foundation (blue), inference-time (green), training-time (orange), failure modes (pink), synthesis (purple).
+    </p>
+    <div class="feature-img" style="margin-top: 24px;">
+      <img src="assets/field-map.svg" alt="Field map of the eight chapters and their interconnections" loading="lazy"/>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="eyebrow">Reproductions you can run</div>
+    <h2>Five notebooks, single-GPU runnable</h2>
+    <p>
+      Each notebook isolates one chapter's empirical claim and reproduces it at single-A10G scale (or CPU for the toys).
+      Documented hardware, documented caveats, runnable end-to-end.
+    </p>
+    <div class="tocish">
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/notebooks/01-test-time-compute-scaling.ipynb">
+        <div class="item-label">Notebook 01 · CH 2</div>
+        <div class="item-title">Test-time compute scaling</div>
+        <div class="item-desc">Qwen2.5-Math-1.5B on MATH-500, log-x token-budget sweep, plot accuracy.</div>
+      </a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/notebooks/02-best-of-n-vs-self-consistency.ipynb">
+        <div class="item-label">Notebook 02 · CH 3</div>
+        <div class="item-title">BoN vs self-consistency</div>
+        <div class="item-desc">At fixed budget, compare long-CoT vs self-consistency vs BoN-with-PRM.</div>
+      </a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/notebooks/03-tiny-r1-zero-style-training.ipynb">
+        <div class="item-label">Notebook 03 · CH 5</div>
+        <div class="item-title">Tiny R1-Zero GRPO run</div>
+        <div class="item-desc">Qwen2.5-0.5B + GSM8K + trl GRPOTrainer. See the signal in an hour.</div>
+      </a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/notebooks/04-overthinking-demo.ipynb">
+        <div class="item-label">Notebook 04 · CH 6</div>
+        <div class="item-title">Overthinking on trivial problems</div>
+        <div class="item-desc">R1-distilled vs base on 2+3-class questions; reproduce Chen et al. 2024.</div>
+      </a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/notebooks/05-process-reward-model-toy.ipynb">
+        <div class="item-label">Notebook 05 · CH 3</div>
+        <div class="item-title">PRM vs ORM toy</div>
+        <div class="item-desc">Synthetic stepwise arithmetic. CPU-only, ~ 5 minutes. PRM beats ORM cleanly.</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="eyebrow">One opinion</div>
+    <p class="quote">
+      "The chain of thought is the model's behavior, not its computation. Reasoning-model gains come from RL elicitation of latent capability, structured by the training distribution and amortized at inference. None of the three current theoretical frameworks alone is sufficient — and the most useful research moves the frontier where they conflict."
+      <span class="quote-source">— from <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/essays/why-do-reasoning-models-work-a-synthesis.md">Why do reasoning models work? A synthesis</a></span>
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="eyebrow">Essays</div>
+    <h2>Long-form syntheses</h2>
+    <p>Where a survey paragraph isn't enough.</p>
+    <div class="tocish">
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/essays/why-do-reasoning-models-work-a-synthesis.md">
+        <div class="item-label">Essay 01</div>
+        <div class="item-title">Why do reasoning models work? A synthesis.</div>
+        <div class="item-desc">A four-component layered account; what each component explains and doesn't.</div>
+      </a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/essays/is-cot-faithful-the-state-of-the-debate.md">
+        <div class="item-label">Essay 02</div>
+        <div class="item-title">Is CoT faithful? The state of the debate.</div>
+        <div class="item-desc">Camp A (oversight-via-behavior) vs Camp B (faithfulness-as-objective). Where we land.</div>
+      </a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/essays/search-vs-rl-the-deep-tension.md">
+        <div class="item-label">Essay 03</div>
+        <div class="item-title">Search vs RL: the deep tension.</div>
+        <div class="item-desc">Two stories about reasoning. Why both have evidence, neither suffices.</div>
+      </a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/essays/common-misconceptions.md">
+        <div class="item-label">Essay 04</div>
+        <div class="item-title">Common misconceptions about reasoning models.</div>
+        <div class="item-desc">Twelve claims that circulate; why each is misleading; what to say instead.</div>
+      </a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/essays/closed-open-gap-tracked.md">
+        <div class="item-label">Essay 05</div>
+        <div class="item-title">The closed–open gap, tracked.</div>
+        <div class="item-desc">Four transitions, a cycle, and what's timing vs structural.</div>
+      </a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/essays/how-to-read-a-reasoning-paper.md">
+        <div class="item-label">Essay 06</div>
+        <div class="item-title">How to read a reasoning-model paper.</div>
+        <div class="item-desc">A triage checklist for the 30+ papers landing weekly. Red flags. What to look for.</div>
+      </a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/essays/reasoning-and-mechanistic-interpretability.md">
+        <div class="item-label">Essay 07</div>
+        <div class="item-title">Reasoning and mechanistic interpretability.</div>
+        <div class="item-desc">The open gap and what's likely to move first.</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="eyebrow">Auxiliary docs</div>
+    <h2>Reading paths, glossary, BibTeX, model families</h2>
+    <div class="tocish">
+      <a href="reading-paths.html">
+        <div class="item-label">DOC</div>
+        <div class="item-title">7 cross-chapter reading paths</div>
+        <div class="item-desc">Sequenced, depth-calibrated (skim / weekend / research).</div>
+      </a>
+      <a href="cheatsheet.html">
+        <div class="item-label">DOC</div>
+        <div class="item-title">Cheat sheet</div>
+        <div class="item-desc">One-page reference: recipe, strategies, tests, top-5 papers.</div>
+      </a>
+      <a href="model-families.html">
+        <div class="item-label">DOC</div>
+        <div class="item-title">Model families catalog</div>
+        <div class="item-desc">Closed (o-series, Claude thinking, Gemini) and open (DeepSeek, Qwen, Tulu).</div>
+      </a>
+      <a href="bibtex.html">
+        <div class="item-label">DOC</div>
+        <div class="item-title">BibTeX exports</div>
+        <div class="item-desc">Machine-readable citations for 30+ anchor papers, by chapter.</div>
+      </a>
+      <a href="FAQ.html">
+        <div class="item-label">DOC</div>
+        <div class="item-title">FAQ</div>
+        <div class="item-desc">Predictable scope and curation questions, answered honestly.</div>
+      </a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/GLOSSARY.md">
+        <div class="item-label">DOC</div>
+        <div class="item-title">Glossary</div>
+        <div class="item-desc">60+ field-specific terms (GRPO, RLVR, PRM, ORM, ...).</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="eyebrow">Cite the list</div>
+    <h2>If this map is useful to your research</h2>
+    <pre style="background: var(--bg-card); border: 1px solid var(--border); padding: 20px; border-radius: 8px; overflow-x: auto; color: var(--fg-muted); font-size: 0.86rem;">@misc{awesome_reasoning_models_theory_2026,
+  title  = {Awesome Reasoning Models Theory: A theoretical and
+            empirical map of the o-series / R1 / Claude-thinking paradigm},
+  year   = {2026},
+  url    = {https://github.com/bettyguo/awesome-reasoning-models-theory},
+  note   = {Living document}
+}</pre>
+    <p style="margin-top: 16px;">
+      <a href="bibtex.html">→ BibTeX for the anchor papers (per chapter)</a>
+    </p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>
+      <div class="topnav-brand" style="font-size: 1rem;"><span class="dot"></span>Reasoning Models Theory</div>
+      <p style="margin-top: 12px; font-size: 0.85rem; color: var(--fg-faint);">
+        A living, theory-and-mechanism-first map. Curated since 2026.
+      </p>
+    </div>
+    <div>
+      <h4>The repo</h4>
+      <ul>
+        <li><a href="https://github.com/bettyguo/awesome-reasoning-models-theory">GitHub</a></li>
+        <li><a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/CONTRIBUTING.md">Contributing</a></li>
+        <li><a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/WANTED.md">WANTED gaps</a></li>
+        <li><a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/CHANGELOG.md">Changelog</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Site</h4>
+      <ul>
+        <li><a href="timeline.html">Timeline</a></li>
+        <li><a href="explore.html">Field map</a></li>
+        <li><a href="cheatsheet.html">Cheat sheet</a></li>
+        <li><a href="FAQ.html">FAQ</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Sister list</h4>
+      <ul>
+        <li><a href="https://github.com/bettyguo/awesome-llm-reasoning-foundations">Reasoning Foundations</a></li>
+      </ul>
+      <h4 style="margin-top: 20px;">License</h4>
+      <ul>
+        <li><a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/LICENSE-content">Content · CC0</a></li>
+        <li><a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/LICENSE-code">Code · MIT</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-meta">
+    Built with cite-don't-fabricate as the policy. Disagreement welcome.
+  </div>
+</footer>
+
+</body>
+</html>

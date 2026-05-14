@@ -1,3 +1,7 @@
+# CI-only — populated by the Pages workflow, never commit.
+docs/assets/
+_site/
+
 __pycache__/
 *.pyc
 *.pyo
