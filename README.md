@@ -22,6 +22,7 @@
     <a href="https://bettyguo.github.io/awesome-reasoning-models-theory/explore.html">Field map</a> &nbsp;·&nbsp;
     <a href="https://bettyguo.github.io/awesome-reasoning-models-theory/papers.html">Papers</a> &nbsp;·&nbsp;
     <a href="https://bettyguo.github.io/awesome-reasoning-models-theory/models.html">Models</a> &nbsp;·&nbsp;
+    <a href="https://bettyguo.github.io/awesome-reasoning-models-theory/myths.html">Myths</a> &nbsp;·&nbsp;
     <a href="https://bettyguo.github.io/awesome-reasoning-models-theory/tracker.html">Tracker</a> &nbsp;·&nbsp;
     <a href="https://bettyguo.github.io/awesome-reasoning-models-theory/glossary.html">Glossary</a> &nbsp;·&nbsp;
     <a href="https://bettyguo.github.io/awesome-reasoning-models-theory/cheatsheet.html">Cheat sheet</a>
@@ -193,6 +194,14 @@ Two interactive registries on the live site:
 - [**Models**](https://bettyguo.github.io/awesome-reasoning-models-theory/models.html) — 13 reasoning models compared on architecture, training recipe, verifier kind, and headline benchmark scores. Cards or compact-table view. Backed by [`docs/data/models.json`](docs/data/models.json).
 
 Both data files are public schemas; PRs welcome.
+
+## AIME 2024 — the 18-month sprint
+
+How the field's headline math benchmark moved from 13.4% (GPT-4o, May 2024) to 91.6% (o3, April 2025), with R1 closing the open-vs-closed gap to ~4 months.
+
+<p align="center">
+  <img src="assets/benchmark-progression.svg" alt="AIME 2024 score progression across major reasoning models, May 2024 to April 2025" width="1100"/>
+</p>
 
 ## Family tree of reasoning models
 

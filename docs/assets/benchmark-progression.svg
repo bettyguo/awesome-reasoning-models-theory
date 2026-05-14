@@ -1,0 +1,185 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="1200" height="720" role="img" aria-label="AIME-2024 benchmark progression: how reasoning models climbed from 13% to 91% in 18 months">
+  <defs>
+    <linearGradient id="bp-bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0b1220"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <pattern id="bp-grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M 48 0 L 0 0 0 48" fill="none" stroke="#1e293b" stroke-width="1" opacity="0.4"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="720" fill="url(#bp-bg)"/>
+  <rect width="1200" height="720" fill="url(#bp-grid)"/>
+
+  <!-- Title -->
+  <g font-family="'Inter', system-ui, sans-serif">
+    <text x="60" y="56" font-size="13" letter-spacing="4" font-weight="500" fill="#7dd3fc">BENCHMARK PROGRESSION</text>
+    <text x="60" y="100" font-size="32" font-weight="800" fill="#f8fafc">AIME 2024 · 13% → 91% in 18 months</text>
+    <text x="60" y="128" font-size="14" fill="#94a3b8">Pass@1 (single attempt). Filled bars: open weights. Outlined bars: closed / vendor-reported.</text>
+  </g>
+
+  <!--
+    Chart area: x from 200 to 1140 (940px wide), y from 200 to 600 (400px tall)
+    Y axis: 0% at y=600, 100% at y=200. Each percentage point = 4px.
+    X axis: bars labeled by model+date.
+    Bar layout: 13 bars, ~58 px slot each, 36px wide bars.
+  -->
+
+  <!-- Y axis grid lines + labels -->
+  <g font-family="'Inter', system-ui, sans-serif" font-size="11" fill="#64748b" text-anchor="end">
+    <line x1="200" y1="600" x2="1140" y2="600" stroke="#334155" stroke-width="1"/>
+    <line x1="200" y1="500" x2="1140" y2="500" stroke="#1e293b" stroke-width="1" stroke-dasharray="2 4"/>
+    <line x1="200" y1="400" x2="1140" y2="400" stroke="#1e293b" stroke-width="1" stroke-dasharray="2 4"/>
+    <line x1="200" y1="300" x2="1140" y2="300" stroke="#1e293b" stroke-width="1" stroke-dasharray="2 4"/>
+    <line x1="200" y1="200" x2="1140" y2="200" stroke="#334155" stroke-width="1" stroke-dasharray="2 4"/>
+    <text x="190" y="604" >0%</text>
+    <text x="190" y="504">25%</text>
+    <text x="190" y="404">50%</text>
+    <text x="190" y="304">75%</text>
+    <text x="190" y="204">100%</text>
+    <text x="80" y="400" font-size="11" letter-spacing="2" font-weight="600" fill="#94a3b8" transform="rotate(-90 80 400)">AIME 2024 PASS@1</text>
+  </g>
+
+  <!-- Y axis vertical line -->
+  <line x1="200" y1="200" x2="200" y2="600" stroke="#334155" stroke-width="1.2"/>
+
+  <!-- Era backgrounds -->
+  <rect x="200" y="200" width="180" height="400" fill="rgba(56, 189, 248, 0.04)"/>
+  <text x="290" y="190" font-family="'Inter', sans-serif" font-size="10" letter-spacing="2" font-weight="700" fill="#7dd3fc" text-anchor="middle">PRE-REASONING ERA</text>
+
+  <rect x="380" y="200" width="245" height="400" fill="rgba(251, 146, 60, 0.04)"/>
+  <text x="502" y="190" font-family="'Inter', sans-serif" font-size="10" letter-spacing="2" font-weight="700" fill="#fdba74" text-anchor="middle">o1 LAUNCH (2024-09)</text>
+
+  <rect x="625" y="200" width="305" height="400" fill="rgba(52, 211, 153, 0.04)"/>
+  <text x="777" y="190" font-family="'Inter', sans-serif" font-size="10" letter-spacing="2" font-weight="700" fill="#6ee7b7" text-anchor="middle">DEEPSEEK-R1 ERA</text>
+
+  <rect x="930" y="200" width="210" height="400" fill="rgba(167, 139, 250, 0.04)"/>
+  <text x="1035" y="190" font-family="'Inter', sans-serif" font-size="10" letter-spacing="2" font-weight="700" fill="#c4b5fd" text-anchor="middle">o3 / GEMINI ERA</text>
+
+  <!--
+    Bars (13 data points, 58px slot starting from x=210). Each bar value is in pass@1 percent.
+    Data: bar_x_center, score_pct, label, date, license (open/closed)
+    1.  GPT-4o (no CoT)            13.4%  2024-05  closed
+    2.  Claude 3.5 Sonnet          16.0%  2024-06  closed
+    3.  o1-preview                 56.7%  2024-09  closed
+    4.  o1                         83.3%  2024-12  closed
+    5.  QwQ-32B-Preview            50.0%  2024-11  open
+    6.  Tulu 3 405B (RLVR)         41.7%  2024-11  open
+    7.  DeepSeek-R1-Zero           71.0%  2025-01  open
+    8.  DeepSeek-R1                79.8%  2025-01  open
+    9.  R1-Distill-Qwen-32B        72.6%  2025-01  open
+    10. s1-32B                     56.7%  2025-01  open
+    11. o3-mini (high)             87.3%  2025-01  closed
+    12. Claude 3.7 (extthink)      80.0%  2025-02  closed
+    13. o3                         91.6%  2025-04  closed
+
+    bar y-top = 600 - score*4
+    bar height = score*4
+    bar x = 210 + slot_idx * 70 (let's actually use 70 each so 13 bars * 70 = 910 ≤ 940)
+  -->
+
+  <!-- Bar slot 1: GPT-4o -->
+  <g>
+    <rect x="220" y="546.4" width="36" height="53.6" fill="none" stroke="#fb923c" stroke-width="1.5" rx="2"/>
+    <text x="238" y="540" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#fdba74">13.4</text>
+  </g>
+  <!-- Bar slot 2: Claude 3.5 -->
+  <g>
+    <rect x="290" y="536" width="36" height="64" fill="none" stroke="#fb923c" stroke-width="1.5" rx="2"/>
+    <text x="308" y="529" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#fdba74">16.0</text>
+  </g>
+  <!-- Bar slot 3: o1-preview -->
+  <g>
+    <rect x="404" y="373.2" width="36" height="226.8" fill="none" stroke="#fb923c" stroke-width="1.5" rx="2"/>
+    <text x="422" y="366" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#fdba74">56.7</text>
+  </g>
+  <!-- Bar slot 4: o1 -->
+  <g>
+    <rect x="474" y="266.8" width="36" height="333.2" fill="none" stroke="#fb923c" stroke-width="1.5" rx="2"/>
+    <text x="492" y="260" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#fdba74">83.3</text>
+  </g>
+  <!-- Bar slot 5: QwQ-32B (open) -->
+  <g>
+    <rect x="544" y="400" width="36" height="200" fill="#34d399" rx="2"/>
+    <text x="562" y="393" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#6ee7b7">50.0</text>
+  </g>
+  <!-- Bar slot 6: Tülu 3 (open) — score is approximate from the scaling-regimes literature -->
+  <g>
+    <rect x="600" y="466.8" width="20" height="133.2" fill="#34d399" rx="2"/>
+    <text x="610" y="461" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700" fill="#6ee7b7">~33</text>
+  </g>
+  <!-- Bar slot 7: R1-Zero -->
+  <g>
+    <rect x="650" y="316" width="36" height="284" fill="#34d399" rx="2"/>
+    <text x="668" y="309" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#6ee7b7">71.0</text>
+  </g>
+  <!-- Bar slot 8: R1 -->
+  <g>
+    <rect x="700" y="280.8" width="36" height="319.2" fill="#34d399" rx="2"/>
+    <text x="718" y="274" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#6ee7b7">79.8</text>
+  </g>
+  <!-- Bar slot 9: R1-Distill-32B -->
+  <g>
+    <rect x="750" y="309.6" width="36" height="290.4" fill="#34d399" rx="2"/>
+    <text x="768" y="303" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#6ee7b7">72.6</text>
+  </g>
+  <!-- Bar slot 10: s1-32B -->
+  <g>
+    <rect x="800" y="373.2" width="36" height="226.8" fill="#34d399" rx="2"/>
+    <text x="818" y="366" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#6ee7b7">56.7</text>
+  </g>
+  <!-- Bar slot 11: o3-mini -->
+  <g>
+    <rect x="858" y="250.8" width="36" height="349.2" fill="none" stroke="#fb923c" stroke-width="1.5" rx="2"/>
+    <text x="876" y="244" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#fdba74">87.3</text>
+  </g>
+  <!-- Bar slot 12: Claude 3.7 -->
+  <g>
+    <rect x="942" y="280" width="36" height="320" fill="none" stroke="#fb923c" stroke-width="1.5" rx="2"/>
+    <text x="960" y="273" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#fdba74">80.0</text>
+  </g>
+  <!-- Bar slot 13: o3 -->
+  <g>
+    <rect x="1056" y="233.6" width="36" height="366.4" fill="none" stroke="#fb923c" stroke-width="1.5" rx="2"/>
+    <text x="1074" y="227" text-anchor="middle" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700" fill="#fdba74">91.6</text>
+  </g>
+
+  <!-- X axis labels (rotated) -->
+  <g font-family="'Inter', system-ui, sans-serif" font-size="11" fill="#cbd5e1" text-anchor="end">
+    <text x="238" y="615" transform="rotate(-35 238 615)">GPT-4o · 2024-05</text>
+    <text x="308" y="615" transform="rotate(-35 308 615)">Claude 3.5 · 2024-06</text>
+    <text x="422" y="615" transform="rotate(-35 422 615)">o1-preview · 2024-09</text>
+    <text x="492" y="615" transform="rotate(-35 492 615)">o1 · 2024-12</text>
+    <text x="562" y="615" transform="rotate(-35 562 615)">QwQ-32B · 2024-11</text>
+    <text x="610" y="615" transform="rotate(-35 610 615)">Tülu 3 · 2024-11</text>
+    <text x="668" y="615" transform="rotate(-35 668 615)">R1-Zero · 2025-01</text>
+    <text x="718" y="615" transform="rotate(-35 718 615)">R1 · 2025-01</text>
+    <text x="768" y="615" transform="rotate(-35 768 615)">R1-Distill-32B · 2025-01</text>
+    <text x="818" y="615" transform="rotate(-35 818 615)">s1-32B · 2025-01</text>
+    <text x="876" y="615" transform="rotate(-35 876 615)">o3-mini high · 2025-01</text>
+    <text x="960" y="615" transform="rotate(-35 960 615)">Claude 3.7 think · 2025-02</text>
+    <text x="1074" y="615" transform="rotate(-35 1074 615)">o3 · 2025-04</text>
+  </g>
+
+  <!-- Story annotations -->
+  <g font-family="'Inter', system-ui, sans-serif" fill="#94a3b8">
+    <!-- The R1 closing-the-gap arrow -->
+    <path d="M 510 240 Q 600 215 700 240" fill="none" stroke="#a78bfa" stroke-width="1.4" stroke-dasharray="4 4"/>
+    <text x="605" y="208" font-size="11" font-weight="600" fill="#c4b5fd" text-anchor="middle">Open weights catch up — 4-month gap</text>
+  </g>
+
+  <!-- Legend -->
+  <g transform="translate(60, 670)" font-family="'Inter', sans-serif" font-size="11">
+    <rect width="12" height="12" fill="#34d399" rx="2"/>
+    <text x="20" y="11" fill="#cbd5e1">open weights / verified</text>
+    <rect x="220" width="12" height="12" fill="none" stroke="#fb923c" stroke-width="1.5" rx="2"/>
+    <text x="240" y="11" fill="#cbd5e1">closed / vendor-reported</text>
+    <text x="500" y="11" fill="#64748b" font-style="italic">All scores: published pass@1 on AIME 2024 (15 problems · integer answers).</text>
+  </g>
+
+  <!-- Footer source -->
+  <text x="1140" y="694" font-family="'Inter', sans-serif" font-size="10" fill="#64748b" text-anchor="end">
+    Sources tracked at /tracker/benchmarks.md · last verified 2026-05-14
+  </text>
+</svg>

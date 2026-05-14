@@ -95,6 +95,7 @@
       <a href="explore.html">Field map</a>
       <a href="papers.html">Papers</a>
       <a href="models.html">Models</a>
+      <a href="myths.html">Myths</a>
       <a href="tracker.html" style="color: var(--fg);">Tracker</a>
       <a href="glossary.html">Glossary</a>
       <a href="cheatsheet.html">Cheat sheet</a>
@@ -140,7 +141,16 @@
 
     <div class="tracker-grid" id="tracker-grid"></div>
 
-    <h2 style="margin-top: 48px;">Methodological gotchas</h2>
+    <h2 style="margin-top: 56px;">AIME 2024 · the 18-month sprint</h2>
+    <p style="color: var(--fg-muted);">
+      How the field's headline reasoning benchmark moved from <strong>13.4%</strong> (GPT-4o, May 2024) to <strong>91.6%</strong> (o3, April 2025).
+      The R1 release closed the open–closed gap to ~4 months for AIME-class math.
+    </p>
+    <div class="feature-img" style="margin-top: 18px;">
+      <img src="assets/benchmark-progression.svg" alt="AIME 2024 score progression across major reasoning models, May 2024 to April 2025" loading="lazy" style="width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--border);"/>
+    </div>
+
+    <h2 style="margin-top: 56px;">Methodological gotchas</h2>
     <ul style="color: var(--fg-muted);">
       <li><strong>AIME pass@1 vs cons@64</strong> are not directly comparable. Always check.</li>
       <li><strong>LiveCodeBench</strong> is date-cutoff designed; the slice (problem date range) materially affects scores.</li>

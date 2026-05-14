@@ -1,0 +1,116 @@
+{
+  "_meta": {
+    "description": "12 circulating misconceptions about reasoning models, paired with the actual position. Source essay: essays/common-misconceptions.md",
+    "last_updated": "2026-05-14"
+  },
+  "myths": [
+    {
+      "n": 1,
+      "claim": "Reasoning models think.",
+      "category": "framing",
+      "verdict": "misleading framing",
+      "truth": "A chain of thought is tokens emitted by an autoregressive sampler — behavior, not computation. The faithfulness literature shows the chain is often post-hoc and the answer is computed via channels not represented in it.",
+      "consequence": "Audit by behavior under perturbation, not by reading the chain. CoT-based oversight is weaker than it sounds.",
+      "see": "Chapter 7"
+    },
+    {
+      "n": 2,
+      "claim": "More test-time compute is always better.",
+      "category": "scaling",
+      "verdict": "averaged claim, regime-dependent in practice",
+      "truth": "The scaling curve is averaged over a distribution. On easy problems, more tokens hurt via overthinking. On problems beyond capability, more compute doesn't close the gap.",
+      "consequence": "Production systems should condition chain length on estimated difficulty, not emit fixed-length chains.",
+      "see": "Chapter 6"
+    },
+    {
+      "n": 3,
+      "claim": "o1 does MCTS at inference.",
+      "category": "architecture",
+      "verdict": "no public evidence",
+      "truth": "OpenAI has not described o1 as doing tree search. The system card describes \"long internal CoT trained via RL\" — sequential sampling, not branching at inference. The MCTS hypothesis is community speculation.",
+      "consequence": "When citing o1's mechanism, say \"long RL-trained CoT\" — that's what the source supports.",
+      "see": "Chapter 5"
+    },
+    {
+      "n": 4,
+      "claim": "RL gives the model new reasoning capabilities.",
+      "category": "training",
+      "verdict": "incomplete — elicitation, not learning",
+      "truth": "R1-Zero works because the base already contains the reasoning circuits. RL elicits them, raising probability mass on chains that already work. RL on a base too weak to contain the circuits doesn't manufacture new ones.",
+      "consequence": "Choice of base model is the load-bearing decision. Don't expect RLVR to rescue a weak base.",
+      "see": "Chapter 5"
+    },
+    {
+      "n": 5,
+      "claim": "Chain-of-thought is solved — every model does it well now.",
+      "category": "capability",
+      "verdict": "false on multiple axes",
+      "truth": "Length, faithfulness, and quality vary widely across models and tasks. Long CoTs hurt on easy tasks. Faithfulness hasn't improved monotonically with model strength. Many small models still fail Wei-style few-shot CoT.",
+      "consequence": "Empirically test CoT for your task; don't assume it's a solved feature.",
+      "see": "Chapter 1, 7"
+    },
+    {
+      "n": 6,
+      "claim": "AIME is solved.",
+      "category": "benchmark",
+      "verdict": "saturating, not solved",
+      "truth": "Top reasoners are above 80% on AIME-2024 pass@1 — but the test was designed for 15-year-olds, contamination is a documented risk, and per-problem failures are heavily correlated. \"Solved\" implies generalization that's absent.",
+      "consequence": "Use FrontierMath, ARC-AGI-2/3, HLE for capability differentiation. AIME is the calibration benchmark, not the frontier.",
+      "see": "Tracker"
+    },
+    {
+      "n": 7,
+      "claim": "The chain-of-thought tells you what the model did.",
+      "category": "interpretability",
+      "verdict": "frequently false",
+      "truth": "Lanham et al. 2023 and the Anthropic 2025 follow-up show models often reach answers via paths the CoT doesn't mention. Hint-injection studies confirm the chain rationalizes biased answers.",
+      "consequence": "Don't use CoT inspection as a primary oversight tool for high-stakes deployment.",
+      "see": "Chapter 7"
+    },
+    {
+      "n": 8,
+      "claim": "Search and RL are alternatives. Pick one.",
+      "category": "training",
+      "verdict": "false dichotomy",
+      "truth": "Stream-of-Search (Gandhi et al.) trains search-as-skill. R1's chains contain implicit search behaviors. The most plausible synthesis is that RL absorbs search into the policy, then explicit-search-at-inference adds marginal gains where verifiers are good.",
+      "consequence": "Treat them as complements; let the verifier quality decide the inference-time mix.",
+      "see": "Chapters 4, 5"
+    },
+    {
+      "n": 9,
+      "claim": "GRPO is the only algorithm that works for reasoning RL.",
+      "category": "training",
+      "verdict": "first-mover, not unique",
+      "truth": "RLOO, REINFORCE++, plain REINFORCE with smart baselines all report comparable results on open reasoning benchmarks. GRPO is the first algorithm that worked at frontier scale, not provably the best.",
+      "consequence": "Choose by infrastructure fit and stability, not by algorithm cult.",
+      "see": "Chapter 5"
+    },
+    {
+      "n": 10,
+      "claim": "PRMs are universally better than ORMs.",
+      "category": "verification",
+      "verdict": "context-dependent",
+      "truth": "Lightman et al. 2023 showed PRMs beat ORMs at fixed label budget for verifier training. But: PRMs are expensive to label; AutoPRMs introduce their own noise; using PRMs as RL rewards sometimes destabilizes training. R1 used outcome rewards.",
+      "consequence": "Default to outcome rewards for RL; reach for PRMs when verifier quality dominates.",
+      "see": "Chapter 3"
+    },
+    {
+      "n": 11,
+      "claim": "Closed-model headline numbers represent the field's state of the art.",
+      "category": "evidence",
+      "verdict": "vendor-reported, not measured",
+      "truth": "Closed-model numbers are vendor-reported, often using bespoke prompting and undisclosed harnesses. Open numbers (R1, Qwen3-Reasoning) are reproducible and frequently within 5-10 points of closed claims for the same benchmark.",
+      "consequence": "Cite closed numbers as primary-source claims, not as measurements. Compare like with like (open-vs-open, closed-vs-closed).",
+      "see": "Tracker, Models"
+    },
+    {
+      "n": 12,
+      "claim": "Distilled R1 models are themselves reasoning models.",
+      "category": "training",
+      "verdict": "category error",
+      "truth": "R1-Distill-Qwen-7B is a Qwen-7B SFT'd on R1-generated chains. It mimics R1's chain style without RL on it. The reasoning ability transfers to a degree, but it's a SFT model, not an RL-trained reasoner.",
+      "consequence": "Don't use distilled-R1 results as evidence about the RLVR recipe; use them as evidence about chain-of-thought distillation.",
+      "see": "Chapter 5"
+    }
+  ]
+}
