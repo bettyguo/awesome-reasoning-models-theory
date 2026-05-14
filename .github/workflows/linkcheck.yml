@@ -1,0 +1,33 @@
+name: Link check
+
+on:
+  schedule:
+    - cron: "0 8 * * 1"   # Monday 08:00 UTC
+  pull_request:
+    paths:
+      - "chapters/**"
+      - "essays/**"
+      - "tracker/**"
+      - "README.md"
+      - "GLOSSARY.md"
+      - "DECISIONS.md"
+      - "CONTRIBUTING.md"
+      - "scripts/verify_citations.py"
+      - ".github/workflows/linkcheck.yml"
+  workflow_dispatch:
+
+jobs:
+  linkcheck:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python scripts/verify_citations.py --report linkcheck-report.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: linkcheck-report
+          path: linkcheck-report.json

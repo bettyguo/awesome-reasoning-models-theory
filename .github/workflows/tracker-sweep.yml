@@ -1,0 +1,35 @@
+name: Tracker monthly sweep
+
+on:
+  schedule:
+    - cron: "0 12 1 * *"  # 1st of each month, 12:00 UTC
+  workflow_dispatch:
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - id: sweep
+        run: |
+          set +e
+          python scripts/update_benchmarks.py | tee sweep.log
+          echo "exitcode=$?" >> "$GITHUB_OUTPUT"
+      - name: Open digest PR
+        if: steps.sweep.outputs.exitcode == '3'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: "tracker: monthly sweep skeleton"
+          branch: tracker/monthly-sweep
+          title: "Tracker monthly sweep skeleton"
+          body: |
+            Auto-generated digest skeleton for this month. The script flagged
+            stale cells in `tracker/benchmarks.md`; please verify against
+            primary sources and fill in the digest body before merging.
+          add-paths: tracker/digests/
