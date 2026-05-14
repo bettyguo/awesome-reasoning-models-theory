@@ -4,7 +4,18 @@ All notable changes to this list. Format inspired by [Keep a Changelog](https://
 
 ## [Unreleased]
 
-### Added
+### Added (this release)
+- **Interactive benchmarks tracker** at `docs/tracker.html` — JSON-driven, filterable by open / closed / mixed, sourced cell-by-cell.
+- **Searchable glossary** at `docs/glossary.html` — full-text search + category filter over 60+ terms (`docs/data/glossary.json`).
+- **Field map upgrade** (`docs/explore.html`) — schools-of-thought cards, the 5 open debates with side-by-side arguments, and the method × task matrix.
+- **Three new SVG visuals**: `assets/schools-of-thought.svg` (the 5 mechanistic accounts as a radial map), `assets/method-task-matrix.svg` (which strategy for which problem), `assets/closed-vs-open.svg` (the closed→open gap by benchmark).
+- **`docs/controversies.md`** — the 12 open fault lines in reasoning-model research, each with both sides and supporting evidence.
+- **`docs/index-of-evidence.md`** — every load-bearing claim in the chapters, paired with its strongest supporting source and a strength flag (✅ / 🟡 / 🔴).
+- **Mermaid diagrams in 7 of 8 chapters** — a "mechanism in one diagram" callout right after each TL;DR. Diagrams: CoT compute-extension (Ch 1), test-time-compute decision tree (Ch 2), three selection regimes (Ch 3), search topology zoo (Ch 4), R1 recipe pipeline (Ch 5), accuracy-vs-length curves (Ch 6), Lanham faithfulness battery (Ch 7), three-accounts diagram (Ch 8).
+- **README upgrades** — 60-second tour table, mermaid timeline of the 2022–2026 arc, schools-of-thought summary table, method × task matrix, closed-vs-open chart, expanded badges (now 5 stat badges).
+- **Site data layer** — `docs/data/{timeline,benchmarks,glossary,chapters}.json` powering the interactive pages.
+
+### Added (earlier in cycle)
 - **GitHub Pages live site** at `docs/` with custom HTML pages (`index.html`, `timeline.html`, `explore.html`) and a shared dark-theme stylesheet. Markdown docs (FAQ, reading-paths, bibtex, model-families, cheatsheet) render via Jekyll.
 - **Interactive timeline** at `docs/timeline.html` — filterable by paper / model / benchmark, click-for-detail.
 - **Field map page** at `docs/explore.html` — embeds the eight-chapter dependency graph + reading-path index.

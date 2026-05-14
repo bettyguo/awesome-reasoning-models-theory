@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Benchmarks tracker · Awesome Reasoning Models Theory</title>
+  <meta name="description" content="A living, source-cited tracker of the benchmarks the reasoning-models field is currently chasing. Updated monthly."/>
+  <meta name="theme-color" content="#0b1220"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .tracker-grid { margin-top: 24px; }
+    table.tracker {
+      width: 100%; border-collapse: separate; border-spacing: 0;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 10px; overflow: hidden; font-size: 0.92rem;
+    }
+    .tracker th, .tracker td {
+      padding: 10px 12px; text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .tracker th {
+      background: var(--bg-card-hover); color: var(--fg-dim);
+      font-weight: 600; font-size: 0.78rem;
+      text-transform: uppercase; letter-spacing: 0.08em;
+    }
+    .tracker tr:last-child td { border-bottom: none; }
+    .tracker tr:hover td { background: rgba(56, 189, 248, 0.04); }
+    .tracker .num {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700; color: var(--fg);
+    }
+    .tracker .badge {
+      display: inline-block; font-size: 0.7rem; font-weight: 700;
+      padding: 2px 7px; border-radius: 4px; letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .b-open { background: rgba(52, 211, 153, 0.15); color: var(--accent-green); }
+    .b-closed { background: rgba(244, 114, 182, 0.15); color: var(--accent-pink); }
+    .b-mixed { background: rgba(251, 146, 60, 0.15); color: var(--accent-warm); }
+    .b-na { background: rgba(100, 116, 139, 0.15); color: var(--fg-faint); }
+    .group-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px; margin-bottom: 22px;
+    }
+    .group-card h3 {
+      margin: 0 0 14px;
+      display: flex; align-items: baseline; gap: 12px;
+    }
+    .group-card h3 .ct { font-size: 0.78rem; font-weight: 600; color: var(--fg-faint); letter-spacing: 0.08em; text-transform: uppercase; }
+    .filter-bar { display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0; }
+    .filter-bar .chip {
+      cursor: pointer; user-select: none;
+      padding: 6px 12px; font-size: 0.82rem; font-weight: 600;
+      background: var(--bg-card); border: 1px solid var(--border-strong);
+      color: var(--fg-dim); border-radius: 6px;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+    .filter-bar .chip[aria-pressed="true"] {
+      background: rgba(56, 189, 248, 0.12);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .stat-row {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px; margin-bottom: 32px;
+    }
+    .stat-card {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 16px 18px;
+    }
+    .stat-card .num {
+      font-size: 1.6rem; font-weight: 800; color: var(--accent);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .stat-card .label { font-size: 0.82rem; color: var(--fg-dim); margin-top: 4px; }
+    .key-note {
+      background: rgba(56, 189, 248, 0.06);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 10px;
+      padding: 16px 18px; margin: 20px 0;
+      font-size: 0.92rem; color: var(--fg-muted);
+    }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a href="index.html" class="topnav-brand"><span class="dot"></span>Reasoning Models Theory</a>
+    <div class="topnav-links">
+      <a href="timeline.html">Timeline</a>
+      <a href="explore.html">Field map</a>
+      <a href="tracker.html" style="color: var(--fg);">Tracker</a>
+      <a href="glossary.html">Glossary</a>
+      <a href="cheatsheet.html">Cheat sheet</a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory" class="topnav-cta">★ GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" style="padding: 80px 0 32px;">
+  <div class="container">
+    <span class="chip">Living document</span>
+    <h1 style="margin-top: 12px;">The benchmarks tracker</h1>
+    <p class="hero-tagline">
+      Reasoning benchmark numbers — sourced, dated, and honest about what's vendor-reported vs. independently verifiable.
+      Refreshed monthly. As-of <strong id="asof">—</strong>.
+    </p>
+    <div class="stat-row">
+      <div class="stat-card"><div class="num" id="stat-bm">—</div><div class="label">benchmarks tracked</div></div>
+      <div class="stat-card"><div class="num" id="stat-rows">—</div><div class="label">rows / data points</div></div>
+      <div class="stat-card"><div class="num" id="stat-open">—</div><div class="label">🟢 open / verifiable</div></div>
+      <div class="stat-card"><div class="num" id="stat-closed">—</div><div class="label">🔴 closed / vendor-reported</div></div>
+    </div>
+  </div>
+</header>
+
+<section style="padding-top: 32px;">
+  <div class="container">
+    <div class="eyebrow">Filter</div>
+    <h2>Show me only…</h2>
+    <div class="filter-bar" id="filter-bar">
+      <button class="chip" data-type="all" aria-pressed="true">All</button>
+      <button class="chip" data-type="open" aria-pressed="false">Open weights / verifiable</button>
+      <button class="chip" data-type="closed" aria-pressed="false">Closed / vendor-reported</button>
+      <button class="chip" data-type="mixed" aria-pressed="false">Mixed</button>
+    </div>
+
+    <div class="key-note">
+      <strong>How to read.</strong> <strong>pass@1</strong> = single-attempt accuracy (the post-o1 standard).
+      <strong>cons@k</strong> = consensus / majority-vote over k samples — <em>not</em> the same as pass@k.
+      🟢 = open weights, methods public. 🔴 = vendor-reported only. 🟠 = mixed / partial.
+      Cells without a number (—) mean the curator could not verify a stable headline number; see the source link.
+    </div>
+
+    <div class="tracker-grid" id="tracker-grid"></div>
+
+    <h2 style="margin-top: 48px;">Methodological gotchas</h2>
+    <ul style="color: var(--fg-muted);">
+      <li><strong>AIME pass@1 vs cons@64</strong> are not directly comparable. Always check.</li>
+      <li><strong>LiveCodeBench</strong> is date-cutoff designed; the slice (problem date range) materially affects scores.</li>
+      <li><strong>SWE-bench Verified</strong> scores depend heavily on the agent harness — different numbers without comparable harnesses.</li>
+      <li><strong>Vendor cherry-picking</strong> — closed-model reports sometimes use bespoke prompting that isn't replicable. Prefer system-card / paper sources over blog screenshots.</li>
+      <li><strong>Contamination</strong> — AIME, MATH, Codeforces problem statements appear widely on the web. Models pretrained after the contest date may have seen them.</li>
+    </ul>
+
+    <h2 style="margin-top: 48px;">Want a deeper dig?</h2>
+    <div class="tocish">
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/tracker/benchmarks.md">
+        <div class="item-label">SOURCE-OF-TRUTH</div>
+        <div class="item-title">Markdown tracker</div>
+        <div class="item-desc">The full table with every methodological note.</div>
+      </a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/tree/main/tracker/digests">
+        <div class="item-label">MONTHLY</div>
+        <div class="item-title">Digest log</div>
+        <div class="item-desc">What moved on the table this month, plus context.</div>
+      </a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/scripts/update_benchmarks.py">
+        <div class="item-label">SCRIPT</div>
+        <div class="item-title">update_benchmarks.py</div>
+        <div class="item-desc">The automation behind the monthly refresh.</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>
+      <div class="topnav-brand" style="font-size: 1rem;"><span class="dot"></span>Reasoning Models Theory</div>
+      <p style="margin-top: 12px; font-size: 0.85rem; color: var(--fg-faint);">A living theoretical map.</p>
+    </div>
+    <div>
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="timeline.html">Timeline</a></li>
+        <li><a href="explore.html">Field map</a></li>
+        <li><a href="tracker.html">Tracker</a></li>
+        <li><a href="glossary.html">Glossary</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Repo</h4>
+      <ul>
+        <li><a href="https://github.com/bettyguo/awesome-reasoning-models-theory">GitHub</a></li>
+        <li><a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/CONTRIBUTING.md">Contributing</a></li>
+        <li><a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/WANTED.md">WANTED gaps</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>License</h4>
+      <ul>
+        <li><a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/LICENSE-content">Content · CC0</a></li>
+        <li><a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/LICENSE-code">Code · MIT</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+const escapeHTML = s => String(s ?? "").replace(/[&<>"']/g, c => ({
+  "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+}[c]));
+
+(async () => {
+  let data;
+  try {
+    const res = await fetch("data/benchmarks.json");
+    data = await res.json();
+  } catch (e) {
+    document.getElementById("tracker-grid").innerHTML =
+      '<p style="color: var(--fg-dim);">Could not load tracker data. Visit <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/tracker/benchmarks.md">the markdown tracker</a> instead.</p>';
+    return;
+  }
+
+  document.getElementById("asof").textContent = data.asof;
+  const allRows = data.groups.flatMap(g => g.rows);
+  const benchmarks = new Set(allRows.map(r => r.benchmark)).size;
+  document.getElementById("stat-bm").textContent = benchmarks;
+  document.getElementById("stat-rows").textContent = allRows.length;
+  document.getElementById("stat-open").textContent = allRows.filter(r => r.type === "open").length;
+  document.getElementById("stat-closed").textContent = allRows.filter(r => r.type === "closed").length;
+
+  function tableForGroup(group) {
+    const rows = group.rows.map(r => {
+      const score = r.score == null ? "—" : `${r.score}`;
+      const badgeClass = ({ open: "b-open", closed: "b-closed", mixed: "b-mixed" })[r.type] || "b-na";
+      const badgeLabel = ({ open: "open", closed: "closed", mixed: "mixed" })[r.type] || "n/a";
+      const note = r.note ? `<span style="color: var(--fg-faint)"> · ${escapeHTML(r.note)}</span>` : "";
+      const src = r.source && r.source.startsWith("http")
+        ? `<a href="${escapeHTML(r.source)}" target="_blank" rel="noopener">source ↗</a>${note}`
+        : `<span style="color: var(--fg-faint)">${escapeHTML(r.source || "")}</span>${note}`;
+      return `
+        <tr data-type="${r.type}">
+          <td>${escapeHTML(r.benchmark)}</td>
+          <td><span style="color: var(--fg-dim)">${escapeHTML(r.metric)}</span></td>
+          <td>${escapeHTML(r.model)}</td>
+          <td class="num">${score}</td>
+          <td><span class="badge ${badgeClass}">${badgeLabel}</span></td>
+          <td>${src}</td>
+        </tr>
+      `;
+    }).join("");
+    return `
+      <div class="group-card">
+        <h3>${escapeHTML(group.name)} <span class="ct">${group.rows.length} rows</span></h3>
+        <table class="tracker">
+          <thead><tr>
+            <th>Benchmark</th><th>Metric</th><th>Model</th><th>Score</th><th>Type</th><th>Source</th>
+          </tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
+    `;
+  }
+
+  document.getElementById("tracker-grid").innerHTML = data.groups.map(tableForGroup).join("");
+
+  document.getElementById("filter-bar").addEventListener("click", e => {
+    const btn = e.target.closest(".chip");
+    if (!btn) return;
+    const type = btn.dataset.type;
+    document.querySelectorAll("#filter-bar .chip").forEach(c => c.setAttribute("aria-pressed", "false"));
+    btn.setAttribute("aria-pressed", "true");
+    document.querySelectorAll("table.tracker tbody tr").forEach(tr => {
+      tr.style.display = (type === "all" || tr.dataset.type === type) ? "" : "none";
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

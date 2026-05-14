@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Glossary · Awesome Reasoning Models Theory</title>
+  <meta name="description" content="A searchable glossary of the reasoning-models field — 60+ terms across training, inference, evaluation, theory, and failure modes."/>
+  <meta name="theme-color" content="#0b1220"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .glossary-wrap { max-width: 980px; margin: 0 auto; padding: 0 24px; }
+    .gloss-search {
+      width: 100%;
+      padding: 14px 18px;
+      font-size: 1rem; font-family: inherit;
+      background: var(--bg-card); border: 1px solid var(--border-strong);
+      color: var(--fg); border-radius: 10px; outline: none;
+      transition: border-color 160ms ease;
+    }
+    .gloss-search:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15); }
+    .gloss-search::placeholder { color: var(--fg-faint); }
+
+    .gloss-cats { display: flex; gap: 8px; flex-wrap: wrap; margin: 22px 0 18px; }
+    .gloss-cats .chip {
+      cursor: pointer; user-select: none;
+      padding: 6px 12px; font-size: 0.82rem; font-weight: 600;
+      background: var(--bg-card); border: 1px solid var(--border-strong);
+      color: var(--fg-dim); border-radius: 6px;
+      letter-spacing: 0; text-transform: none;
+    }
+    .gloss-cats .chip[aria-pressed="true"] {
+      background: rgba(56, 189, 248, 0.12);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .gloss-counter {
+      font-size: 0.85rem; color: var(--fg-faint);
+      margin: 0 0 22px; font-family: 'JetBrains Mono', monospace;
+    }
+
+    .gloss-list {
+      display: grid; gap: 14px;
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 760px) { .gloss-list { grid-template-columns: 1fr; } }
+
+    .gloss-term {
+      padding: 16px 18px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      transition: border-color 160ms ease;
+    }
+    .gloss-term:hover { border-color: var(--border-strong); }
+    .gloss-term .term {
+      font-weight: 700; color: var(--fg); font-size: 1rem;
+      letter-spacing: -0.01em;
+    }
+    .gloss-term .cat-pill {
+      display: inline-block; vertical-align: middle;
+      font-size: 0.65rem; font-weight: 700;
+      padding: 2px 7px; border-radius: 4px;
+      background: var(--bg-card-hover); color: var(--fg-faint);
+      margin-left: 8px; letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .gloss-term .def {
+      margin-top: 6px; color: var(--fg-muted);
+      font-size: 0.92rem; line-height: 1.5;
+    }
+    .gloss-term mark {
+      background: rgba(56, 189, 248, 0.25);
+      color: var(--fg); padding: 0 2px; border-radius: 2px;
+    }
+
+    .empty-state {
+      padding: 48px 24px; text-align: center;
+      color: var(--fg-faint); border: 1px dashed var(--border-strong);
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="topnav-inner">
+    <a href="index.html" class="topnav-brand"><span class="dot"></span>Reasoning Models Theory</a>
+    <div class="topnav-links">
+      <a href="timeline.html">Timeline</a>
+      <a href="explore.html">Field map</a>
+      <a href="tracker.html">Tracker</a>
+      <a href="glossary.html" style="color: var(--fg);">Glossary</a>
+      <a href="cheatsheet.html">Cheat sheet</a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory" class="topnav-cta">★ GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" style="padding: 80px 0 32px;">
+  <div class="container">
+    <span class="chip">Searchable</span>
+    <h1 style="margin-top: 12px;">Glossary</h1>
+    <p class="hero-tagline">
+      The reasoning-models vocabulary moves fast and overlaps inconsistently. <strong id="g-total">—</strong> terms across training, inference, evaluation, theory, and failure modes — definitions tuned for a 2026 reader.
+    </p>
+  </div>
+</header>
+
+<section style="padding-top: 24px;">
+  <div class="glossary-wrap">
+    <input id="gloss-search" class="gloss-search" type="search" placeholder="Search 60+ terms — try 'GRPO', 'pass@k', or 'faithful'…" autocomplete="off"/>
+    <div id="gloss-cats" class="gloss-cats"></div>
+    <p class="gloss-counter" id="gloss-counter"></p>
+    <div id="gloss-list" class="gloss-list"></div>
+  </div>
+
+  <div class="container" style="margin-top: 56px;">
+    <div class="eyebrow">Want the full reference?</div>
+    <div class="tocish">
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/GLOSSARY.md">
+        <div class="item-label">SOURCE</div>
+        <div class="item-title">GLOSSARY.md</div>
+        <div class="item-desc">The canonical markdown version, with cross-references and footnotes.</div>
+      </a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/CONTRIBUTING.md">
+        <div class="item-label">CONTRIBUTE</div>
+        <div class="item-title">Add a missing term</div>
+        <div class="item-desc">Field is moving fast — PRs to add or refine welcome.</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div>
+      <div class="topnav-brand" style="font-size: 1rem;"><span class="dot"></span>Reasoning Models Theory</div>
+      <p style="margin-top: 12px; font-size: 0.85rem; color: var(--fg-faint);">A living theoretical map.</p>
+    </div>
+    <div>
+      <h4>Pages</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="timeline.html">Timeline</a></li>
+        <li><a href="explore.html">Field map</a></li>
+        <li><a href="tracker.html">Tracker</a></li>
+        <li><a href="glossary.html">Glossary</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Repo</h4>
+      <ul>
+        <li><a href="https://github.com/bettyguo/awesome-reasoning-models-theory">GitHub</a></li>
+        <li><a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/CONTRIBUTING.md">Contributing</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>License</h4>
+      <ul>
+        <li><a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/LICENSE-content">Content · CC0</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+const escapeHTML = s => String(s ?? "").replace(/[&<>"']/g, c => ({
+  "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+}[c]));
+
+(async () => {
+  let data;
+  try {
+    const res = await fetch("data/glossary.json");
+    data = await res.json();
+  } catch (e) {
+    document.getElementById("gloss-list").innerHTML =
+      '<p class="empty-state">Could not load glossary data. Visit <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/GLOSSARY.md">GLOSSARY.md</a>.</p>';
+    return;
+  }
+
+  const catNames = {
+    training: "Training",
+    inference: "Inference",
+    evaluation: "Evaluation",
+    theory: "Theory",
+    failure: "Failure modes"
+  };
+  const cats = ["training", "inference", "evaluation", "theory", "failure"];
+
+  document.getElementById("g-total").textContent = data.length;
+
+  const catRow = document.getElementById("gloss-cats");
+  catRow.innerHTML = `
+    <button class="chip" data-cat="all" aria-pressed="true">All (${data.length})</button>
+    ${cats.map(c => `<button class="chip" data-cat="${c}" aria-pressed="false">${catNames[c]} (${data.filter(d => d.cat === c).length})</button>`).join("")}
+  `;
+
+  let activeCat = "all";
+  let query = "";
+  const list = document.getElementById("gloss-list");
+  const counter = document.getElementById("gloss-counter");
+
+  function highlight(text, q) {
+    const safe = escapeHTML(text);
+    if (!q) return safe;
+    const re = new RegExp("(" + q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")", "ig");
+    return safe.replace(re, "<mark>$1</mark>");
+  }
+
+  function render() {
+    const q = query.trim().toLowerCase();
+    const filtered = data.filter(d => {
+      const matchCat = activeCat === "all" || d.cat === activeCat;
+      const matchQ = !q || d.term.toLowerCase().includes(q) || d.def.toLowerCase().includes(q);
+      return matchCat && matchQ;
+    });
+    if (filtered.length === 0) {
+      list.innerHTML = '<div class="empty-state">No matches. Try a broader query, or remove the category filter.</div>';
+      counter.textContent = `0 of ${data.length} terms`;
+      return;
+    }
+    list.innerHTML = filtered.map(d => `
+      <article class="gloss-term">
+        <div><span class="term">${highlight(d.term, q)}</span><span class="cat-pill">${catNames[d.cat]}</span></div>
+        <div class="def">${highlight(d.def, q)}</div>
+      </article>
+    `).join("");
+    counter.textContent = `${filtered.length} of ${data.length} terms${query ? ' matching "' + escapeHTML(query) + '"' : ''}`;
+  }
+
+  catRow.addEventListener("click", e => {
+    const btn = e.target.closest(".chip");
+    if (!btn) return;
+    activeCat = btn.dataset.cat;
+    document.querySelectorAll("#gloss-cats .chip").forEach(c => c.setAttribute("aria-pressed", "false"));
+    btn.setAttribute("aria-pressed", "true");
+    render();
+  });
+
+  document.getElementById("gloss-search").addEventListener("input", e => {
+    query = e.target.value || "";
+    render();
+  });
+
+  render();
+})();
+</script>
+
+</body>
+</html>

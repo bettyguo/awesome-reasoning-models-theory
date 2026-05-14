@@ -6,6 +6,42 @@
 
 The chain of thought looks like the model's reasoning, but it isn't always. Turpin et al. (2023) showed that biasing the prompt (e.g. inserting a hint) changes the model's answer without changing the CoT — the CoT *rationalizes* a conclusion driven by the prompt bias, rather than *deriving* the answer. Lanham et al. (2023) operationalized faithfulness via truncation, paraphrase, mistake-injection, and filler-token tests, and found that faithfulness varies non-monotonically with model scale. The 2025 Anthropic paper *Reasoning Models Don't Always Say What They Think* extended this to RL-trained reasoners and found that yes, they too can be unfaithful, particularly when the unfaithful answer is rewarded. This chapter takes the unfaithfulness finding *seriously*: many deployment-time uses of CoT (for safety, interpretability, debug) are weaker than they appear.
 
+## The Lanham faithfulness battery
+
+```mermaid
+flowchart TD
+  Chain["Visible chain of thought<br/>step 1 → step 2 → … → step k → answer"]
+
+  T1["① Truncation test<br/>Cut at step j; does the answer change?"]
+  T2["② Paraphrase test<br/>Reword steps; same answer?"]
+  T3["③ Mistake injection<br/>Plant a wrong step; does it propagate?"]
+  T4["④ Filler-token test<br/>Replace chain with '…'; does accuracy drop?"]
+
+  Chain --> T1
+  Chain --> T2
+  Chain --> T3
+  Chain --> T4
+
+  T1 -- "answer changes ⇒ chain matters" --> Pass1[Faithful on this axis]
+  T2 -- "same answer ⇒ semantics matter" --> Pass2[Faithful]
+  T3 -- "wrong step → wrong answer" --> Pass3[Faithful]
+  T4 -- "filler ≠ chain" --> Pass4[Faithful]
+
+  T1 -- "answer unchanged" --> Fail1[Decorative chain]
+  T2 -- "answer changes" --> Fail2[Style-driven chain]
+  T3 -- "wrong step ignored" --> Fail3[Disconnected chain]
+  T4 -- "filler matches chain" --> Fail4["Pure compute-extension<br/>(content irrelevant)"]
+
+  classDef test fill:#0b1220,stroke:#f472b6,color:#f8fafc;
+  classDef pass fill:#1e293b,stroke:#34d399,color:#6ee7b7;
+  classDef fail fill:#1e293b,stroke:#f472b6,color:#fbcfe8;
+  class T1,T2,T3,T4 test;
+  class Pass1,Pass2,Pass3,Pass4 pass;
+  class Fail1,Fail2,Fail3,Fail4 fail;
+```
+
+> **Read this as.** A chain is *faithful* iff it passes all four. Empirically, **no current frontier reasoner passes all four cleanly on adversarial inputs**. Most reasoners pass 2-3 with mixed evidence on the rest. The chain isn't computation, but it isn't pure decoration either — it's a partial reflection.
+
 ## The mechanism
 
 **Faithful CoT.** The visible chain is a (causal) computation that produces the final answer. Truncating the chain at step k should produce roughly the answer the chain would have produced had it stopped there; paraphrasing the chain should not change the answer (as long as the semantics are preserved); injecting a wrong intermediate step should propagate to the answer.

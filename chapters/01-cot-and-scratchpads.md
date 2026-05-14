@@ -6,6 +6,32 @@
 
 A constant-depth transformer can only compute what TC0 circuits compute in one forward pass. Letting it emit intermediate tokens — a *chain of thought* or *scratchpad* — and feed them back as input lifts this ceiling: with T intermediate tokens, the model effectively runs T serial computational steps. Empirically, this is what makes CoT prompting (Wei et al. 2022) work on multi-step problems, and it is what reasoning models industrialize. But the mechanism is real *only when the visible chain participates in the computation*: when it doesn't (the faithfulness failures of Ch 7), CoT is just decoration over a different process.
 
+## The mechanism in one diagram
+
+```mermaid
+flowchart LR
+  Q[Question] --> F1[Forward pass 1]
+  F1 -->|emit token t₁| C1["t₁"]
+  C1 --> F2[Forward pass 2]
+  F2 -->|emit token t₂| C2["t₂"]
+  C2 --> F3[…]
+  F3 --> FT[Forward pass T]
+  FT --> A[Answer]
+
+  subgraph CoT["chain of thought · T tokens · T extra serial steps"]
+    C1
+    C2
+    F3
+  end
+
+  classDef step fill:#0b1220,stroke:#38bdf8,color:#f8fafc;
+  classDef tok fill:#1e293b,stroke:#7dd3fc,color:#bae6fd;
+  class F1,F2,F3,FT step;
+  class C1,C2 tok;
+```
+
+> **Read this as.** Each emitted CoT token is *both* an output of forward pass *k* and an input to forward pass *k+1*. T tokens of CoT = T extra serial computation steps. A constant-depth transformer in TC₀ thereby reaches problems that require deeper computation — *if* the chain content participates causally in the answer. (The "if" is what Chapter 7 interrogates.)
+
 ## The mechanism
 
 Two complementary perspectives. Take them together; either alone is misleading.

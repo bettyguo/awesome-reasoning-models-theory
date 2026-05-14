@@ -1,0 +1,209 @@
+[
+  {
+    "date": "2022-01",
+    "title": "Chain-of-Thought Prompting",
+    "who": "Wei et al., Google",
+    "category": "paper",
+    "why": "Showed that emitting intermediate reasoning tokens lifts performance on multi-step tasks — the seed of the entire era.",
+    "url": "https://arxiv.org/abs/2201.11903",
+    "chapter": 1
+  },
+  {
+    "date": "2022-03",
+    "title": "Self-Consistency",
+    "who": "Wang et al., Google",
+    "category": "paper",
+    "why": "Sample many CoTs, take majority vote — first widely-used inference-time scaling technique for reasoning.",
+    "url": "https://arxiv.org/abs/2203.11171",
+    "chapter": 3
+  },
+  {
+    "date": "2022-05",
+    "title": "Zero-shot CoT (\"Let's think step by step\")",
+    "who": "Kojima et al.",
+    "category": "paper",
+    "why": "CoT can be elicited without exemplars — a single prompt unlocks the behavior.",
+    "url": "https://arxiv.org/abs/2205.11916",
+    "chapter": 1
+  },
+  {
+    "date": "2023-05",
+    "title": "Process Reward Models (Let's Verify Step by Step)",
+    "who": "Lightman et al., OpenAI",
+    "category": "paper",
+    "why": "Step-level supervision beats outcome-only supervision for verifiers — reframes the verification problem.",
+    "url": "https://arxiv.org/abs/2305.20050",
+    "chapter": 3
+  },
+  {
+    "date": "2023-05",
+    "title": "Tree of Thoughts",
+    "who": "Yao et al., Princeton/DeepMind",
+    "category": "paper",
+    "why": "Explicit tree search over CoT branches with self-evaluation — generalizes self-consistency to tree topology.",
+    "url": "https://arxiv.org/abs/2305.10601",
+    "chapter": 4
+  },
+  {
+    "date": "2023-07",
+    "title": "Turpin et al. — CoT can be unfaithful",
+    "who": "Turpin, Michael, Perez, Bowman",
+    "category": "paper",
+    "why": "Models often generate post-hoc rationalizations. The visible chain ≠ the computation that produced the answer.",
+    "url": "https://arxiv.org/abs/2305.04388",
+    "chapter": 7
+  },
+  {
+    "date": "2024-02",
+    "title": "DeepSeekMath / GRPO",
+    "who": "Shao et al., DeepSeek",
+    "category": "recipe",
+    "why": "Group Relative Policy Optimization. Cheaper, more stable than PPO for verifiable-reward RL — the workhorse algorithm of the R1 era.",
+    "url": "https://arxiv.org/abs/2402.03300",
+    "chapter": 5
+  },
+  {
+    "date": "2024-04",
+    "title": "Stream of Search",
+    "who": "Gandhi et al., Stanford",
+    "category": "paper",
+    "why": "Train models to internalize search behavior — pre-R1 evidence that search-like CoT is trainable, not just inferable.",
+    "url": "https://arxiv.org/abs/2404.03683",
+    "chapter": 5
+  },
+  {
+    "date": "2024-07",
+    "title": "AlphaProof — IMO silver",
+    "who": "Google DeepMind",
+    "category": "model",
+    "why": "Reasoning system reaches IMO silver-medal performance. Theorem-prover-augmented LLM, not pure CoT — but a milestone.",
+    "url": "https://deepmind.google/discover/blog/ai-solves-imo-problems-at-silver-medal-level/",
+    "chapter": 4
+  },
+  {
+    "date": "2024-08",
+    "title": "Test-time compute scaling laws",
+    "who": "Snell, Lee, Xu, Kumar — UC Berkeley/Google",
+    "category": "paper",
+    "why": "Crystallizes the regularity: optimally-spent inference compute can outperform parameter scaling on reasoning tasks.",
+    "url": "https://arxiv.org/abs/2408.03314",
+    "chapter": 2
+  },
+  {
+    "date": "2024-09",
+    "title": "OpenAI o1 announcement",
+    "who": "OpenAI",
+    "category": "model",
+    "why": "Long internal CoTs trained via RL with verifiable rewards. Made test-time-compute scaling a product story; the scaling plot became iconic.",
+    "url": "https://openai.com/index/learning-to-reason-with-llms/",
+    "chapter": 5
+  },
+  {
+    "date": "2024-11",
+    "title": "Tülu 3 — RLVR named",
+    "who": "Lambert et al., AI2",
+    "category": "recipe",
+    "why": "First open recipe to formally name and document RL-from-Verifiable-Rewards. Concurrent with R1's research.",
+    "url": "https://arxiv.org/abs/2411.15124",
+    "chapter": 5
+  },
+  {
+    "date": "2024-12",
+    "title": "\"Don't think 2+3=?\" — Overthinking",
+    "who": "Chen et al.",
+    "category": "paper",
+    "why": "Reasoning models burn hundreds of tokens on trivial problems and sometimes get them wrong. The first canonical overthinking paper.",
+    "url": "https://arxiv.org/abs/2412.21187",
+    "chapter": 6
+  },
+  {
+    "date": "2025-01",
+    "title": "DeepSeek-R1 / R1-Zero",
+    "who": "DeepSeek-AI",
+    "category": "model",
+    "why": "Pure RL from base (no SFT seed) produces o1-class reasoning. Open weights, open recipe — the field's defining release.",
+    "url": "https://arxiv.org/abs/2501.12948",
+    "chapter": 5
+  },
+  {
+    "date": "2025-01",
+    "title": "s1 — Simple Test-Time Scaling",
+    "who": "Muennighoff et al.",
+    "category": "paper",
+    "why": "Tiny SFT dataset (1k traces) + budget forcing matches o1-preview. Suggests the bar for reasoning is low if the elicitation is right.",
+    "url": "https://arxiv.org/abs/2501.19393",
+    "chapter": 2
+  },
+  {
+    "date": "2025-02",
+    "title": "Claude 3.7 Sonnet — extended thinking",
+    "who": "Anthropic",
+    "category": "model",
+    "why": "First Claude with user-controllable thinking budget. Productionized the test-time-compute knob.",
+    "url": "https://www.anthropic.com/news/claude-3-7-sonnet",
+    "chapter": 2
+  },
+  {
+    "date": "2025-02",
+    "title": "Towards Thinking-Optimal Scaling",
+    "who": "Yang et al.",
+    "category": "paper",
+    "why": "Optimal CoT length is task-dependent and well below the model's default. Framework for choosing the right budget.",
+    "url": "https://arxiv.org/abs/2502.18080",
+    "chapter": 6
+  },
+  {
+    "date": "2025-04",
+    "title": "Reasoning models can also be efficient — open reproductions",
+    "who": "SimpleRL, Open-Reasoner-Zero, verl",
+    "category": "recipe",
+    "why": "Independent reproductions of R1 on Qwen-7B, Mistral-7B confirm the recipe is base-model-agnostic and not DeepSeek-specific.",
+    "url": "https://github.com/hkust-nlp/simpleRL-reason",
+    "chapter": 5
+  },
+  {
+    "date": "2025-05",
+    "title": "Anthropic — Reasoning model faithfulness",
+    "who": "Anthropic alignment team",
+    "category": "paper",
+    "why": "Re-runs faithfulness probes on Claude with extended thinking; finds reasoning RL only partly fixes the post-hoc-rationalization problem.",
+    "url": "https://www.anthropic.com/research/reasoning-models-dont-always-say-what-they-think",
+    "chapter": 7
+  },
+  {
+    "date": "2025-05",
+    "title": "Don't Overthink it — shorter chains often win",
+    "who": "Hassid et al.",
+    "category": "paper",
+    "why": "At fixed budget, preferring shorter thinking chains beats longer ones on most reasoning benchmarks. Inverse-of-the-default finding.",
+    "url": "https://arxiv.org/abs/2505.17813",
+    "chapter": 6
+  },
+  {
+    "date": "2025-07",
+    "title": "Gemini Deep Think — IMO gold",
+    "who": "Google DeepMind",
+    "category": "model",
+    "why": "Pure-LLM (no formal solver) reasoning system reaches IMO gold-medal performance.",
+    "url": "https://deepmind.google/discover/blog/advanced-version-of-gemini-with-deep-think-officially-achieves-gold-medal-standard-at-the-international-mathematical-olympiad/",
+    "chapter": 5
+  },
+  {
+    "date": "2025-09",
+    "title": "Recursive Self-Aggregation",
+    "who": "Venkatraman et al.",
+    "category": "paper",
+    "why": "Loop: sample chains → summarize → resample. Trades depth for branching. Often beats single-pass long CoT at fixed budget.",
+    "url": "https://arxiv.org/abs/2509.26626",
+    "chapter": 4
+  },
+  {
+    "date": "2026-03",
+    "title": "ARC-AGI-3 launches",
+    "who": "ARC Prize Foundation",
+    "category": "benchmark",
+    "why": "New generation-and-search structure designed to resist the R1-era recipe. Where the next round of SOTA chases happen.",
+    "url": "https://arcprize.org/",
+    "chapter": null
+  }
+]

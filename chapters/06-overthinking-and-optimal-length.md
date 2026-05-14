@@ -6,6 +6,20 @@
 
 The 2024–2025 reaction to the "more thinking is better" framing: longer chains routinely *hurt* accuracy on easy problems, and shorter chains often match or beat longer ones on hard problems at fixed budget. Chen et al. (2024) coined "overthinking" with the canonical example: ask a reasoning model `"2 + 3 = ?"` and watch it emit 200+ tokens of reconsideration. "Don't Overthink it" (2025) shows preference-modeling toward shorter chains as a training fix. The mechanism is plausible: each additional reasoning step has a non-zero error rate; chains compound. The optimal chain length is task-dependent — both flooring it and cap-ping it must respect this.
 
+## The optimum, in one diagram
+
+```mermaid
+xychart-beta
+  title "Stylized accuracy vs chain length, by task difficulty"
+  x-axis "Chain length T (tokens)" [50, 200, 800, 3200, 12800]
+  y-axis "Accuracy" 0 --> 100
+  line "easy task" [85, 88, 86, 78, 65]
+  line "medium task" [55, 70, 82, 84, 78]
+  line "hard task" [20, 35, 55, 72, 78]
+```
+
+> **Read this as.** Each task class has its own *optimum*. Easy tasks peak at short chains and degrade past it (the overthinking regime). Hard tasks have a much higher optimum but also asymptote. **A reasoner that always emits maximum-length chains is mis-allocated for ~⅔ of typical workloads.** The "thinking-optimal scaling" line of work (Yang 2025) is about finding the optimum per problem instead of using a fixed default.
+
 ## The mechanism
 
 Each reasoning step is a stochastic operation with some error probability ε per step. A T-step chain that requires *every* step to be correct has success probability `(1-ε)^T` — exponentially decaying in T. With self-correction the picture is friendlier (the model can recover from a wrong step), but the basic intuition stands: more steps means more opportunities for accumulated error if the model doesn't course-correct.

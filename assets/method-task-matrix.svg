@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 620" width="1100" height="620" role="img" aria-label="Method × task matrix for reasoning techniques">
+  <defs>
+    <linearGradient id="mtbg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0b1220"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <pattern id="mtgrid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M 48 0 L 0 0 0 48" fill="none" stroke="#1e293b" stroke-width="1" opacity="0.5"/>
+    </pattern>
+  </defs>
+  <rect width="1100" height="620" fill="url(#mtbg)"/>
+  <rect width="1100" height="620" fill="url(#mtgrid)"/>
+
+  <!-- Title -->
+  <g font-family="'Inter', system-ui, sans-serif">
+    <text x="60" y="56" font-size="13" letter-spacing="4" font-weight="500" fill="#7dd3fc">METHOD × TASK MATRIX</text>
+    <text x="60" y="100" font-size="28" font-weight="800" fill="#f8fafc">Pick the right technique for the problem at hand</text>
+    <text x="60" y="124" font-size="13" fill="#94a3b8">At fixed compute budget, this strategy is the right choice when the problem looks like the column.</text>
+  </g>
+
+  <!-- Header -->
+  <g font-family="'Inter', sans-serif" font-size="11" font-weight="700" fill="#94a3b8" letter-spacing="1">
+    <text x="60" y="186">STRATEGY</text>
+    <text x="500" y="186" text-anchor="middle">MATH (closed)</text>
+    <text x="620" y="186" text-anchor="middle">CODE (unit-test)</text>
+    <text x="740" y="186" text-anchor="middle">OPEN-WRITING</text>
+    <text x="860" y="186" text-anchor="middle">MULTI-HOP QA</text>
+    <text x="980" y="186" text-anchor="middle">OOD (ARC-AGI)</text>
+  </g>
+
+  <!-- Header underline -->
+  <line x1="60" y1="200" x2="1040" y2="200" stroke="#1e293b" stroke-width="1.5"/>
+
+  <!-- Row template values: row, label, [m,c,o,q,a] where 1=●green 0.5=○amber 0=×pink -->
+  <!-- Row 1: Greedy long-CoT -->
+  <g transform="translate(0, 220)">
+    <text x="60" y="22" font-family="'Inter', sans-serif" font-size="14" fill="#f8fafc">Greedy long-CoT</text>
+    <text x="500" y="22" text-anchor="middle" font-size="22" fill="#fb923c">○</text>
+    <text x="620" y="22" text-anchor="middle" font-size="22" fill="#fb923c">○</text>
+    <text x="740" y="22" text-anchor="middle" font-size="22" fill="#34d399">●</text>
+    <text x="860" y="22" text-anchor="middle" font-size="22" fill="#fb923c">○</text>
+    <text x="980" y="22" text-anchor="middle" font-size="22" fill="#f472b6">×</text>
+    <line x1="60" y1="40" x2="1040" y2="40" stroke="#1e293b"/>
+  </g>
+
+  <!-- Row 2: Self-consistency -->
+  <g transform="translate(0, 268)">
+    <text x="60" y="22" font-family="'Inter', sans-serif" font-size="14" fill="#f8fafc">Self-consistency (cons@K)</text>
+    <text x="500" y="22" text-anchor="middle" font-size="22" fill="#34d399">●</text>
+    <text x="620" y="22" text-anchor="middle" font-size="22" fill="#34d399">●</text>
+    <text x="740" y="22" text-anchor="middle" font-size="22" fill="#f472b6">×</text>
+    <text x="860" y="22" text-anchor="middle" font-size="22" fill="#fb923c">○</text>
+    <text x="980" y="22" text-anchor="middle" font-size="22" fill="#f472b6">×</text>
+    <line x1="60" y1="40" x2="1040" y2="40" stroke="#1e293b"/>
+  </g>
+
+  <!-- Row 3: Best-of-N + PRM -->
+  <g transform="translate(0, 316)">
+    <text x="60" y="22" font-family="'Inter', sans-serif" font-size="14" fill="#f8fafc">Best-of-N + PRM</text>
+    <text x="500" y="22" text-anchor="middle" font-size="22" fill="#34d399">●</text>
+    <text x="620" y="22" text-anchor="middle" font-size="22" fill="#34d399">●</text>
+    <text x="740" y="22" text-anchor="middle" font-size="22" fill="#fb923c">○</text>
+    <text x="860" y="22" text-anchor="middle" font-size="22" fill="#34d399">●</text>
+    <text x="980" y="22" text-anchor="middle" font-size="22" fill="#fb923c">○</text>
+    <line x1="60" y1="40" x2="1040" y2="40" stroke="#1e293b"/>
+  </g>
+
+  <!-- Row 4: Tree of Thoughts -->
+  <g transform="translate(0, 364)">
+    <text x="60" y="22" font-family="'Inter', sans-serif" font-size="14" fill="#f8fafc">Tree of Thoughts</text>
+    <text x="500" y="22" text-anchor="middle" font-size="22" fill="#34d399">●</text>
+    <text x="620" y="22" text-anchor="middle" font-size="22" fill="#fb923c">○</text>
+    <text x="740" y="22" text-anchor="middle" font-size="22" fill="#fb923c">○</text>
+    <text x="860" y="22" text-anchor="middle" font-size="22" fill="#34d399">●</text>
+    <text x="980" y="22" text-anchor="middle" font-size="22" fill="#fb923c">○</text>
+    <line x1="60" y1="40" x2="1040" y2="40" stroke="#1e293b"/>
+  </g>
+
+  <!-- Row 5: Recursive self-aggregation -->
+  <g transform="translate(0, 412)">
+    <text x="60" y="22" font-family="'Inter', sans-serif" font-size="14" fill="#f8fafc">Recursive self-aggregation</text>
+    <text x="500" y="22" text-anchor="middle" font-size="22" fill="#34d399">●</text>
+    <text x="620" y="22" text-anchor="middle" font-size="22" fill="#fb923c">○</text>
+    <text x="740" y="22" text-anchor="middle" font-size="22" fill="#34d399">●</text>
+    <text x="860" y="22" text-anchor="middle" font-size="22" fill="#34d399">●</text>
+    <text x="980" y="22" text-anchor="middle" font-size="22" fill="#fb923c">○</text>
+    <line x1="60" y1="40" x2="1040" y2="40" stroke="#1e293b"/>
+  </g>
+
+  <!-- Row 6: RLVR-trained reasoner (single pass) -->
+  <g transform="translate(0, 460)">
+    <text x="60" y="22" font-family="'Inter', sans-serif" font-size="14" fill="#f8fafc">RLVR-trained reasoner (single pass)</text>
+    <text x="500" y="22" text-anchor="middle" font-size="22" fill="#34d399">●</text>
+    <text x="620" y="22" text-anchor="middle" font-size="22" fill="#34d399">●</text>
+    <text x="740" y="22" text-anchor="middle" font-size="22" fill="#fb923c">○</text>
+    <text x="860" y="22" text-anchor="middle" font-size="22" fill="#fb923c">○</text>
+    <text x="980" y="22" text-anchor="middle" font-size="22" fill="#f472b6">×</text>
+    <line x1="60" y1="40" x2="1040" y2="40" stroke="#1e293b"/>
+  </g>
+
+  <!-- Row 7: Test-time training -->
+  <g transform="translate(0, 508)">
+    <text x="60" y="22" font-family="'Inter', sans-serif" font-size="14" fill="#f8fafc">Test-time training</text>
+    <text x="500" y="22" text-anchor="middle" font-size="22" fill="#fb923c">○</text>
+    <text x="620" y="22" text-anchor="middle" font-size="22" fill="#fb923c">○</text>
+    <text x="740" y="22" text-anchor="middle" font-size="22" fill="#f472b6">×</text>
+    <text x="860" y="22" text-anchor="middle" font-size="22" fill="#fb923c">○</text>
+    <text x="980" y="22" text-anchor="middle" font-size="22" fill="#34d399">●</text>
+  </g>
+
+  <!-- Legend -->
+  <g transform="translate(60, 580)" font-family="'Inter', sans-serif">
+    <text x="0" y="0" font-size="11" letter-spacing="2" fill="#94a3b8" font-weight="600">LEGEND</text>
+    <g transform="translate(80, -2)">
+      <text x="0" y="6" font-size="20" fill="#34d399">●</text>
+      <text x="22" y="6" font-size="12" fill="#cbd5e1">well-suited</text>
+      <text x="160" y="6" font-size="20" fill="#fb923c">○</text>
+      <text x="182" y="6" font-size="12" fill="#cbd5e1">partial / verifier-dependent</text>
+      <text x="400" y="6" font-size="20" fill="#f472b6">×</text>
+      <text x="422" y="6" font-size="12" fill="#cbd5e1">known to underperform</text>
+    </g>
+  </g>
+</svg>

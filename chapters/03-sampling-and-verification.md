@@ -6,6 +6,33 @@
 
 A reasoning model that gets the right answer 30% of the time on one sample may get it 80% of the time across 32 samples — *if* you can identify the right one. The two routes are *self-consistency* (majority vote, no verifier) and *best-of-N* (rerank with a verifier). Cobbe et al. (2021) and Wang et al. (2022) established the empirical phenomenon. Lightman et al. (2023) showed that *process* reward models — verifiers that score intermediate steps — train better than *outcome* reward models at the same labeling budget. The current frontier: scaling laws for the verifier (Liu et al. 2025), and dealing with imperfect verifiers without amplifying their errors (Rohatgi et al. 2025).
 
+## Three selection regimes, in one diagram
+
+```mermaid
+flowchart LR
+  Q[Question] --> S["Sample N chains<br/>c₁, c₂, …, c_N"]
+  S --> R1{Selection regime}
+
+  R1 -->|"no verifier"| MV[Majority vote<br/>self-consistency]
+  R1 -->|"learned outcome verifier"| BoNo[Best-of-N + ORM]
+  R1 -->|"learned step verifier"| BoNp[Best-of-N + PRM<br/>scores each intermediate step]
+
+  MV --> AnsMV[Answer]
+  BoNo --> AnsORM[Answer]
+  BoNp --> AnsPRM[Answer]
+
+  AnsMV -.->|"weakest"| Strength
+  AnsORM -.->|"medium"| Strength
+  AnsPRM -.->|"strongest at fixed label budget"| Strength[Selection signal]
+
+  classDef step fill:#0b1220,stroke:#a78bfa,color:#f8fafc;
+  classDef sel fill:#1e293b,stroke:#34d399,color:#6ee7b7;
+  class S,R1 step;
+  class MV,BoNo,BoNp sel;
+```
+
+> **Read this as.** Coverage `pass@N = 1−(1−p)^N` is the same regardless of which regime you pick — it's the *selection* that varies. PRMs win on the selection axis at fixed label budget (Lightman 2023), but they're expensive to label; ORMs and majority vote are cheaper, weaker.
+
 ## The mechanism
 
 Frame the model's output as a distribution `p(answer | question)`. If the right answer has mass `p`, drawing N samples gets you `pass@N = 1 - (1-p)^N` — coverage. The hard part is *selection*: picking the right answer when multiple appear.

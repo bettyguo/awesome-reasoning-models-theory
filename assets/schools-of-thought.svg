@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="1200" height="720" role="img" aria-label="Five schools of thought on why reasoning models work">
+  <defs>
+    <linearGradient id="sotbg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0b1220"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <pattern id="sotgrid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M 48 0 L 0 0 0 48" fill="none" stroke="#1e293b" stroke-width="1" opacity="0.5"/>
+    </pattern>
+    <radialGradient id="hub" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="720" fill="url(#sotbg)"/>
+  <rect width="1200" height="720" fill="url(#sotgrid)"/>
+
+  <!-- Title -->
+  <g font-family="'Inter', system-ui, sans-serif">
+    <text x="60" y="56" font-size="13" letter-spacing="4" font-weight="500" fill="#7dd3fc">FIVE SCHOOLS OF THOUGHT</text>
+    <text x="60" y="100" font-size="32" font-weight="800" fill="#f8fafc">Why do reasoning models actually work?</text>
+    <text x="60" y="128" font-size="14" fill="#94a3b8">Five mechanistic accounts in active circulation. Most are partly true; none alone explains everything.</text>
+  </g>
+
+  <!-- Center hub -->
+  <g transform="translate(600, 400)">
+    <circle r="200" fill="url(#hub)"/>
+    <circle r="84" fill="#0b1220" stroke="#38bdf8" stroke-width="2"/>
+    <text text-anchor="middle" y="-8" font-family="'Inter', sans-serif" font-size="13" letter-spacing="3" fill="#7dd3fc" font-weight="600">THE QUESTION</text>
+    <text text-anchor="middle" y="18" font-family="'Inter', sans-serif" font-size="16" fill="#f8fafc" font-weight="700">Why CoT helps?</text>
+  </g>
+
+  <!-- 5 nodes around the hub -->
+  <!-- Node 1: Compute-depth (top) -->
+  <g transform="translate(600, 180)">
+    <line x1="0" y1="84" x2="0" y2="220" stroke="#38bdf8" stroke-width="1.6" stroke-opacity="0.4"/>
+    <rect x="-150" y="-30" width="300" height="84" rx="10" fill="#0b1220" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="0" y="-8" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" letter-spacing="2" font-weight="700" fill="#7dd3fc">SCHOOL 1 · FORMAL</text>
+    <text x="0" y="14" text-anchor="middle" font-family="'Inter', sans-serif" font-size="16" font-weight="700" fill="#f8fafc">Compute-depth extension</text>
+    <text x="0" y="36" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" fill="#cbd5e1">CoT escapes TC₀ → T extra serial steps</text>
+  </g>
+
+  <!-- Node 2: Implicit search (top right) -->
+  <g transform="translate(940, 280)">
+    <line x1="-30" y1="44" x2="-340" y2="120" stroke="#a78bfa" stroke-width="1.6" stroke-opacity="0.4"/>
+    <rect x="-150" y="-30" width="300" height="84" rx="10" fill="#0b1220" stroke="#a78bfa" stroke-width="1.5"/>
+    <text x="0" y="-8" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" letter-spacing="2" font-weight="700" fill="#c4b5fd">SCHOOL 2 · OPERATIONAL</text>
+    <text x="0" y="14" text-anchor="middle" font-family="'Inter', sans-serif" font-size="16" font-weight="700" fill="#f8fafc">Implicit / amortized search</text>
+    <text x="0" y="36" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" fill="#cbd5e1">Greedy decoding mimics search</text>
+  </g>
+
+  <!-- Node 3: Program synthesis (bottom right) -->
+  <g transform="translate(940, 540)">
+    <line x1="-30" y1="-30" x2="-340" y2="-130" stroke="#fb923c" stroke-width="1.6" stroke-opacity="0.4"/>
+    <rect x="-150" y="-30" width="300" height="84" rx="10" fill="#0b1220" stroke="#fb923c" stroke-width="1.5"/>
+    <text x="0" y="-8" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" letter-spacing="2" font-weight="700" fill="#fdba74">SCHOOL 3 · SYMBOLIC</text>
+    <text x="0" y="14" text-anchor="middle" font-family="'Inter', sans-serif" font-size="16" font-weight="700" fill="#f8fafc">Program synthesis</text>
+    <text x="0" y="36" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" fill="#cbd5e1">CoT = source code of small programs</text>
+  </g>
+
+  <!-- Node 4: Bayesian (bottom left) -->
+  <g transform="translate(260, 540)">
+    <line x1="180" y1="-30" x2="280" y2="-130" stroke="#34d399" stroke-width="1.6" stroke-opacity="0.4"/>
+    <rect x="-150" y="-30" width="300" height="84" rx="10" fill="#0b1220" stroke="#34d399" stroke-width="1.5"/>
+    <text x="0" y="-8" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" letter-spacing="2" font-weight="700" fill="#6ee7b7">SCHOOL 4 · STATISTICAL</text>
+    <text x="0" y="14" text-anchor="middle" font-family="'Inter', sans-serif" font-size="16" font-weight="700" fill="#f8fafc">Bayes-over-thoughts</text>
+    <text x="0" y="36" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" fill="#cbd5e1">CoT = posterior over solution programs</text>
+  </g>
+
+  <!-- Node 5: RL-shaped policy (top left) -->
+  <g transform="translate(260, 280)">
+    <line x1="180" y1="44" x2="280" y2="120" stroke="#f472b6" stroke-width="1.6" stroke-opacity="0.4"/>
+    <rect x="-150" y="-30" width="300" height="84" rx="10" fill="#0b1220" stroke="#f472b6" stroke-width="1.5"/>
+    <text x="0" y="-8" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" letter-spacing="2" font-weight="700" fill="#fbcfe8">SCHOOL 5 · PRACTITIONER</text>
+    <text x="0" y="14" text-anchor="middle" font-family="'Inter', sans-serif" font-size="16" font-weight="700" fill="#f8fafc">RL-shaped policy elicitation</text>
+    <text x="0" y="36" text-anchor="middle" font-family="'Inter', sans-serif" font-size="11" fill="#cbd5e1">RL elicits circuits already in the base</text>
+  </g>
+
+  <!-- Hint -->
+  <text x="600" y="680" text-anchor="middle" font-family="'Inter', sans-serif" font-size="13" fill="#64748b">
+    Each school explains a different fragment. The synthesis essay argues which dominates for which task.
+  </text>
+</svg>

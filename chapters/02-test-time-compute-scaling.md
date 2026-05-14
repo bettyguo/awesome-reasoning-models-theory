@@ -10,6 +10,25 @@
 
 For a wide class of reasoning tasks, accuracy grows roughly log-linearly with inference-time compute (tokens emitted, samples drawn, search expansions), with a task-dependent exponent. Snell et al. (2024) formalized this as a *test-time compute scaling law* and showed that the optimal trade-off between training compute and inference compute is generally *not* "all training" — at some budget, allocating compute to inference dominates. The o1/o3 announcements ride this empirical claim; the open-source community has reproduced it on smaller models (s1, DeepSeek-R1's evaluation curves, Qwen-QwQ). But the law is regime-dependent: it saturates, it differs between inference strategies (BoN vs sequential refinement vs search), and on tasks without good verifiers it largely vanishes.
 
+## The decision tree (which strategy at which budget)
+
+```mermaid
+flowchart TD
+  Q{Verifier available?}
+  Q -- "yes (math answer match, unit tests)" --> V1{How hard is the problem?}
+  Q -- "no (open-ended)" --> N1[Single long-CoT;<br/>self-consistency rarely helps]
+
+  V1 -- "easy" --> S1[Sequential sampling<br/>longer single CoT]
+  V1 -- "medium" --> S2[Self-consistency<br/>cons@K, K≈16–64]
+  V1 -- "hard" --> S3[Best-of-N + PRM<br/>or structured search]
+  V1 -- "OOD (ARC-AGI)" --> S4[Test-time training<br/>or recursive aggregation]
+
+  classDef hl fill:#0b1220,stroke:#38bdf8,color:#f8fafc;
+  class Q,V1 hl;
+```
+
+> **Read this as.** The "test-time compute scaling law" is not a single curve — it is a *family* of curves with different exponents for different (verifier, difficulty) regimes. The right strategy at fixed budget depends on which leaf you land on.
+
 ## The mechanism
 
 Hold the model fixed and turn one knob: number of inference-time tokens *T* the model is allowed to emit before committing to an answer. Three families of inference-time mechanisms each give a different return on *T*:

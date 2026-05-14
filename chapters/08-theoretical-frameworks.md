@@ -12,6 +12,36 @@ Three theoretical accounts compete (and partly cooperate) to explain why reasoni
 
 None alone is sufficient. Different chapters of the empirical literature line up with different frameworks: Ch 1 / Ch 6 with compute-depth, Ch 5 with program synthesis, Ch 1's Prystawski result with Bayes-over-thoughts. A unified theory would have to reconcile all three.
 
+## Three accounts, one diagram
+
+```mermaid
+flowchart TB
+  Phenom["Empirical phenomena<br/>· CoT lifts hard-task accuracy<br/>· Test-time scaling laws<br/>· R1-Zero emergence<br/>· Filler tokens sometimes help<br/>· Faithfulness varies"]
+
+  Phenom --> A["Account 1<br/>Compute-depth extension<br/>(Merrill, Li, Feng)"]
+  Phenom --> B["Account 2<br/>Program synthesis<br/>(amortized planning)"]
+  Phenom --> C["Account 3<br/>Bayes-over-thoughts<br/>(Xie, Prystawski)"]
+
+  A --> A1["Explains: filler tokens, hard-serial tasks<br/>Misses: chain content effects"]
+  B --> B1["Explains: transfer between problem families<br/>Misses: narrative reasoning, judgment"]
+  C --> C1["Explains: few-shot Wei-style CoT gains<br/>Misses: RL-trained reasoners as MAP estimators"]
+
+  A1 --> Synth["Synthesis<br/>which account dominates depends on the task"]
+  B1 --> Synth
+  C1 --> Synth
+
+  classDef phen fill:#0b1220,stroke:#a78bfa,color:#f8fafc;
+  classDef account fill:#1e293b,stroke:#7dd3fc,color:#bae6fd;
+  classDef miss fill:#1e293b,stroke:#fb923c,color:#fdba74;
+  classDef synth fill:#0b1220,stroke:#34d399,color:#6ee7b7;
+  class Phenom phen;
+  class A,B,C account;
+  class A1,B1,C1 miss;
+  class Synth synth;
+```
+
+> **Read this as.** Each account explains a fragment of the phenomenology and misses others. The synthesis essay argues this isn't a failure — it's what we should expect from theories at the empirical-frontier moment. Unification will likely come from formal work that compiles two of the three into the third.
+
 This chapter cross-cites work from the [sister list](https://github.com/bettyguo/awesome-llm-reasoning-foundations) (formal theorems live there) and adds the empirical/explanatory bridging work.
 
 ## The mechanism

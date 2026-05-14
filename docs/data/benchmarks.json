@@ -1,0 +1,51 @@
+{
+  "asof": "2026-05-14",
+  "groups": [
+    {
+      "name": "Math",
+      "rows": [
+        {"benchmark": "AIME 2024", "metric": "pass@1", "model": "DeepSeek-R1", "score": 79.8, "type": "open", "source": "https://arxiv.org/abs/2501.12948"},
+        {"benchmark": "AIME 2024", "metric": "cons@64", "model": "DeepSeek-R1", "score": 86.7, "type": "open", "source": "https://arxiv.org/abs/2501.12948"},
+        {"benchmark": "AIME 2024", "metric": "pass@1", "model": "OpenAI o1", "score": 74.4, "type": "closed", "source": "https://openai.com/index/learning-to-reason-with-llms/"},
+        {"benchmark": "AIME 2024", "metric": "pass@1", "model": "s1-32B", "score": 56.7, "type": "open", "source": "https://arxiv.org/abs/2501.19393"},
+        {"benchmark": "AIME 2025", "metric": "pass@1", "model": "Frontier reasoners (range)", "score": null, "type": "mixed", "source": "in flux"},
+        {"benchmark": "MATH-500", "metric": "pass@1", "model": "DeepSeek-R1", "score": 97.3, "type": "open", "source": "https://arxiv.org/abs/2501.12948"},
+        {"benchmark": "MATH-500", "metric": "pass@1", "model": "OpenAI o1", "score": 94.8, "type": "closed", "source": "https://openai.com/index/learning-to-reason-with-llms/"},
+        {"benchmark": "MATH-500", "metric": "pass@1", "model": "s1-32B", "score": 93.0, "type": "open", "source": "https://arxiv.org/abs/2501.19393"},
+        {"benchmark": "GSM8K", "metric": "pass@1", "model": "Top frontier reasoners", "score": 97.0, "type": "mixed", "source": "saturated"},
+        {"benchmark": "FrontierMath", "metric": "pass@1", "model": "Top closed reasoners", "score": 13.0, "type": "closed", "source": "Epoch AI", "note": "low-teens, vendor-reported"},
+        {"benchmark": "FrontierMath", "metric": "pass@1", "model": "Open reasoners", "score": 4.0, "type": "open", "source": "various", "note": "single-digit %"}
+      ]
+    },
+    {
+      "name": "Code",
+      "rows": [
+        {"benchmark": "HumanEval", "metric": "pass@1", "model": "Top reasoners", "score": 95.0, "type": "mixed", "source": "saturated", "note": "not a discriminator"},
+        {"benchmark": "LiveCodeBench", "metric": "pass@1", "model": "DeepSeek-R1", "score": 65.9, "type": "open", "source": "https://arxiv.org/abs/2501.12948", "note": "slice not specified"},
+        {"benchmark": "Codeforces", "metric": "percentile", "model": "DeepSeek-R1", "score": 96.3, "type": "open", "source": "https://arxiv.org/abs/2501.12948"},
+        {"benchmark": "Codeforces", "metric": "Elo (est.)", "model": "OpenAI o3 family", "score": 2700, "type": "closed", "source": "vendor-reported", "note": "Grandmaster-tier, no public account"},
+        {"benchmark": "SWE-bench Verified", "metric": "% solved", "model": "Claude w/ extended thinking", "score": null, "type": "closed", "source": "Anthropic release notes", "note": "harness-dependent"},
+        {"benchmark": "SWE-bench Verified", "metric": "% solved", "model": "Open agents", "score": null, "type": "open", "source": "SWE-bench leaderboard"}
+      ]
+    },
+    {
+      "name": "Science / general",
+      "rows": [
+        {"benchmark": "GPQA Diamond", "metric": "pass@1", "model": "DeepSeek-R1", "score": 71.5, "type": "open", "source": "https://arxiv.org/abs/2501.12948"},
+        {"benchmark": "GPQA Diamond", "metric": "pass@1", "model": "OpenAI o1", "score": 78.0, "type": "closed", "source": "https://openai.com/index/learning-to-reason-with-llms/", "note": "vendor-reported"},
+        {"benchmark": "GPQA Diamond", "metric": "pass@1", "model": "Claude w/ thinking", "score": null, "type": "closed", "source": "Anthropic system card"},
+        {"benchmark": "MMLU", "metric": "pass@1", "model": "Top reasoners", "score": 88.0, "type": "mixed", "source": "saturated"},
+        {"benchmark": "MMLU-Pro", "metric": "pass@1", "model": "Top reasoners", "score": 80.0, "type": "mixed", "source": "near-saturation"},
+        {"benchmark": "HLE", "metric": "% solved", "model": "Top reasoners", "score": 12.0, "type": "mixed", "source": "designed not to saturate"}
+      ]
+    },
+    {
+      "name": "Abstraction / reasoning",
+      "rows": [
+        {"benchmark": "ARC-AGI-2 (public set)", "metric": "% solved", "model": "Leaderboard top", "score": null, "type": "mixed", "source": "https://arcprize.org/"},
+        {"benchmark": "ARC-AGI-3", "metric": "% solved", "model": "—", "score": null, "type": "mixed", "source": "launched 2026-03-25", "note": "SOTA not yet stable"},
+        {"benchmark": "BIG-Bench Hard", "metric": "pass@1", "model": "Top reasoners", "score": 90.0, "type": "mixed", "source": "use BBH subsets selectively"}
+      ]
+    }
+  ]
+}

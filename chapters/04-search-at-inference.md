@@ -6,6 +6,45 @@
 
 If sampling is a flat distribution over CoTs and best-of-N picks the best one, *search* introduces structure: the model can branch from promising prefixes, abandon dead ends, and aggregate partial solutions. Tree of Thoughts (Yao et al. 2023) and Graph of Thoughts (Besta et al. 2023) formalized this. AlphaCode-style massive parallel sampling-and-rerank (Li et al. 2022) is its industrial precursor. The 2025 wave of "recursive self-aggregation" methods unifies search with iterative refinement. The empirical picture: search helps when the partial-solution value function is informative, hurts when it isn't, and is consistently outperformed in compute-per-accuracy terms by RL training that *internalizes* the search procedure into the policy (Ch 5).
 
+## The search topology zoo
+
+```mermaid
+flowchart TB
+  subgraph Flat["Flat sampling"]
+    Q1[Q] --> C1a[c₁]
+    Q1 --> C1b[c₂]
+    Q1 --> C1c[c₃]
+  end
+
+  subgraph Tree["Tree of Thoughts"]
+    Q2[Q] --> T1[step₁]
+    T1 --> T1a[step₂ₐ]
+    T1 --> T1b[step₂ᵦ]
+    T1a --> T1aa[step₃]
+    T1b -.->|"prune"| X1((×))
+  end
+
+  subgraph Graph["Graph of Thoughts"]
+    Q3[Q] --> G1[step₁]
+    Q3 --> G2[step₁']
+    G1 --> G3[merge]
+    G2 --> G3
+    G3 --> G4[step₂]
+  end
+
+  subgraph Recurse["Recursive aggregation"]
+    Q4[Q] --> R1[batch K chains]
+    R1 --> R2[summarize]
+    R2 --> R3[batch K chains]
+    R3 --> R4[…]
+  end
+
+  classDef hl fill:#0b1220,stroke:#34d399,color:#f8fafc;
+  class Q1,Q2,Q3,Q4 hl;
+```
+
+> **Read this as.** *Flat* sampling is what self-consistency / best-of-N do. *Tree* search adds branch evaluation and pruning. *Graph* search adds explicit merging of partial solutions. *Recursive aggregation* trades depth for branching across iterations. Each topology dominates a different niche; none uniformly wins.
+
 ## The mechanism
 
 Three families of inference-time search, in order of structural complexity:

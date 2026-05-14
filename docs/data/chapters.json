@@ -1,0 +1,74 @@
+[
+  {
+    "n": 1,
+    "slug": "01-cot-and-scratchpads",
+    "title": "CoT and Scratchpads",
+    "mech": "Intermediate tokens turn a fixed-depth forward pass into an unbounded serial program.",
+    "color": "#6aa9ff",
+    "tag": "Foundation",
+    "pages": 12
+  },
+  {
+    "n": 2,
+    "slug": "02-test-time-compute-scaling",
+    "title": "Test-Time Compute Scaling",
+    "mech": "Inference compute trades off against parameters with task-dependent exchange rate.",
+    "color": "#9aa9ff",
+    "tag": "Empirical law",
+    "pages": 14
+  },
+  {
+    "n": 3,
+    "slug": "03-sampling-and-verification",
+    "title": "Sampling and Verification",
+    "mech": "Reranking / voting over samples extracts answer-quality faster than improving any single sample.",
+    "color": "#b07cff",
+    "tag": "Inference",
+    "pages": 12
+  },
+  {
+    "n": 4,
+    "slug": "04-search-at-inference",
+    "title": "Search at Inference",
+    "mech": "Structured exploration over CoT prefixes recovers solutions a greedy decode misses.",
+    "color": "#c47cff",
+    "tag": "Inference",
+    "pages": 11
+  },
+  {
+    "n": 5,
+    "slug": "05-rl-for-reasoning",
+    "title": "RL for Reasoning",
+    "mech": "RL with verifiable rewards reshapes the policy toward long, self-correcting chains.",
+    "color": "#6ce6c5",
+    "tag": "Training",
+    "pages": 14
+  },
+  {
+    "n": 6,
+    "slug": "06-overthinking-and-optimal-length",
+    "title": "Overthinking & Optimal Length",
+    "mech": "Beyond a task-dependent optimum, more CoT hurts — long chains compound errors.",
+    "color": "#ffc56e",
+    "tag": "Failure modes",
+    "pages": 12
+  },
+  {
+    "n": 7,
+    "slug": "07-faithfulness-of-reasoning",
+    "title": "Faithfulness of Reasoning",
+    "mech": "CoTs are often post-hoc rationalizations; the visible chain ≠ the computation.",
+    "color": "#ff7d7d",
+    "tag": "Critique",
+    "pages": 12
+  },
+  {
+    "n": 8,
+    "slug": "08-theoretical-frameworks",
+    "title": "Theoretical Frameworks",
+    "mech": "Candidate unifying accounts: compute-depth, program synthesis, Bayes-over-thoughts.",
+    "color": "#5fd49f",
+    "tag": "Theory",
+    "pages": 16
+  }
+]

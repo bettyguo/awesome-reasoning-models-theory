@@ -9,15 +9,19 @@
   <a href="LICENSE-code"><img src="https://img.shields.io/badge/code-MIT-green.svg" alt="MIT"></a>
   <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/actions/workflows/linkcheck.yml"><img src="https://github.com/bettyguo/awesome-reasoning-models-theory/actions/workflows/linkcheck.yml/badge.svg" alt="Structure + link check"></a>
   <img src="https://img.shields.io/badge/chapters-8-818cf8.svg" alt="8 chapters"/>
-  <img src="https://img.shields.io/badge/papers-90%2B-34d399.svg" alt="90+ papers"/>
+  <img src="https://img.shields.io/badge/papers-120%2B-34d399.svg" alt="120+ papers"/>
   <img src="https://img.shields.io/badge/notebooks-5-fb923c.svg" alt="5 notebooks"/>
+  <img src="https://img.shields.io/badge/benchmarks%20tracked-14-f472b6.svg" alt="14 benchmarks tracked"/>
+  <img src="https://img.shields.io/badge/essays-7-7dd3fc.svg" alt="7 essays"/>
 </p>
 
 <p align="center">
   <b>
     <a href="https://bettyguo.github.io/awesome-reasoning-models-theory">→ Open the live site</a> &nbsp;·&nbsp;
-    <a href="https://bettyguo.github.io/awesome-reasoning-models-theory/timeline.html">Interactive timeline</a> &nbsp;·&nbsp;
+    <a href="https://bettyguo.github.io/awesome-reasoning-models-theory/timeline.html">Timeline</a> &nbsp;·&nbsp;
     <a href="https://bettyguo.github.io/awesome-reasoning-models-theory/explore.html">Field map</a> &nbsp;·&nbsp;
+    <a href="https://bettyguo.github.io/awesome-reasoning-models-theory/tracker.html">Tracker</a> &nbsp;·&nbsp;
+    <a href="https://bettyguo.github.io/awesome-reasoning-models-theory/glossary.html">Glossary</a> &nbsp;·&nbsp;
     <a href="https://bettyguo.github.io/awesome-reasoning-models-theory/cheatsheet.html">Cheat sheet</a>
   </b>
 </p>
@@ -25,6 +29,16 @@
 ---
 
 > *Why do reasoning models actually work? A theoretical and empirical map of the o-series / R1 / Claude-thinking paradigm.*
+
+## 60-second tour
+
+| If you have… | Open this |
+|---|---|
+| **30 seconds** — give me the field on one line | The chain isn't computation; RL elicits what pretraining installed; longer chains aren't always better; closed models are 3–6 months ahead, but the gap closes. |
+| **5 minutes** — show me the visuals | [Field map](https://bettyguo.github.io/awesome-reasoning-models-theory/explore.html) → [interactive timeline](https://bettyguo.github.io/awesome-reasoning-models-theory/timeline.html) → [tracker](https://bettyguo.github.io/awesome-reasoning-models-theory/tracker.html). |
+| **30 minutes** — I want the recipe | [Cheat sheet](docs/cheatsheet.md) — one page covers the R1 recipe, when CoT helps, faithfulness tests, vendor-vs-verified rules. |
+| **A weekend** — I'm entering the field | Read the 8 chapters in order; do [reproduction notebook 03](notebooks/03-tiny-r1-zero-style-training.ipynb) on a single GPU. |
+| **A month** — I'm doing research here | Full chapters + 4 essays + the [12 controversies](docs/controversies.md) + [index of evidence](docs/index-of-evidence.md). |
 
 The 2024–2026 emergence of reasoning models — OpenAI o1/o3, DeepSeek-R1, Qwen-QwQ, Claude with thinking, Gemini reasoning variants — is the most consequential paradigm shift in LLM behavior since the transformer. **But the theoretical foundations are surprisingly disputed.** Is the gain coming from:
 
@@ -70,6 +84,48 @@ The field's recent arc, compressed:
 
 Where this leaves us: a partly-shared set of empirical facts, multiple competing theoretical accounts, and a vibrant disagreement about whether reasoning models are doing *more* than amortized search + RL-shaped policy selection.
 
+## The arc, in one diagram
+
+```mermaid
+timeline
+    title 2022–2026 reasoning-model paradigm shift
+    2022 Q1 : CoT prompting (Wei et al.)
+            : Self-consistency (Wang et al.)
+    2023 Q2 : Tree of Thoughts (Yao et al.)
+            : Process reward models (Lightman et al.)
+    2024 Q1 : DeepSeekMath / GRPO
+    2024 Q3 : Test-time compute scaling (Snell et al.)
+            : o1 announcement (OpenAI) — closed
+    2024 Q4 : Tülu 3 — RLVR named (AI2)
+            : "Don't think 2+3" (Chen et al.) — overthinking named
+    2025 Q1 : DeepSeek-R1 / R1-Zero — open
+            : s1 — simple test-time scaling
+            : Claude 3.7 extended thinking
+    2025 Q2 : Faithfulness re-litigated (Anthropic)
+            : "Don't Overthink it" (Hassid et al.)
+    2025 Q3 : Gemini Deep Think — IMO gold
+    2026    : ARC-AGI-3 launches
+            : Reasoning-as-pretraining argument crystallizes
+```
+
+## Five schools of thought
+
+Why does CoT work? At least five mechanistic accounts are in active circulation. Most are partly true; none alone explains everything we see.
+
+<p align="center">
+  <img src="assets/schools-of-thought.svg" alt="Five schools of thought on why reasoning models work" width="1100"/>
+</p>
+
+| # | School | Best explains | Weak at |
+|---|---|---|---|
+| 1 | **Compute-depth extension** | Hard serial / multi-step problems (math, algorithms) | Stylistic effects, "Aha moments," unfaithful chains |
+| 2 | **Implicit / amortized search** | R1 phenomenology — chain-length increase, self-correction | Formal claims about *what* is searchable |
+| 3 | **Program synthesis** | Transfer between problem families | Narrative reasoning, qualitative judgment |
+| 4 | **Bayes-over-thoughts** | Few-shot Wei-style CoT improvements | RL-trained reasoners (chain is optimization target, not posterior sample) |
+| 5 | **RL-shaped policy elicitation** | R1-Zero results, the no-SFT finding | Cases where the base lacks the circuit |
+
+[**→ Open the schools-of-thought map (interactive)**](https://bettyguo.github.io/awesome-reasoning-models-theory/explore.html) — with debate-by-debate breakdown.
+
 ## Field map
 
 How the eight chapters depend on each other. Solid arrows: mechanism dependency. Dashed: open debate. Color: foundation (blue), inference-time (green), training-time (orange), failure modes (pink), synthesis (purple).
@@ -107,9 +163,41 @@ Each notebook isolates a single chapter's *empirical claim* and reproduces it at
 
 The notebooks are *demonstrations of the signal*, not benchmark contributions. Where compute prohibits a faithful reproduction, the notebook documents the gap and links a fuller hosted run.
 
+## Method × task — pick the right strategy
+
+Which inference strategy wins on which problem? At fixed compute budget:
+
+<p align="center">
+  <img src="assets/method-task-matrix.svg" alt="Method × task matrix for reasoning techniques" width="1100"/>
+</p>
+
+| Strategy | Math | Code | Open writing | Multi-hop QA | OOD |
+|---|:-:|:-:|:-:|:-:|:-:|
+| Greedy long-CoT | 🟠 | 🟠 | 🟢 | 🟠 | 🔴 |
+| Self-consistency (cons@K) | 🟢 | 🟢 | 🔴 | 🟠 | 🔴 |
+| Best-of-N + PRM | 🟢 | 🟢 | 🟠 | 🟢 | 🟠 |
+| Tree of Thoughts | 🟢 | 🟠 | 🟠 | 🟢 | 🟠 |
+| Recursive self-aggregation | 🟢 | 🟠 | 🟢 | 🟢 | 🟠 |
+| RLVR-trained reasoner (single pass) | 🟢 | 🟢 | 🟠 | 🟠 | 🔴 |
+| Test-time training | 🟠 | 🟠 | 🔴 | 🟠 | 🟢 |
+
+🟢 well-suited · 🟠 partial / verifier-dependent · 🔴 known to underperform.
+
 ## Benchmarks tracker
 
 The [`tracker/`](tracker/) directory hosts a living table of the reasoning benchmarks the field is currently chasing: AIME 2024/2025, MATH-500, GSM8K, HumanEval, LiveCodeBench, SWE-bench Verified, FrontierMath, ARC-AGI-2, HLE, GPQA Diamond, Codeforces Elo. Updated monthly via [`scripts/update_benchmarks.py`](scripts/update_benchmarks.py); each refresh ships with a digest summary in [`tracker/digests/`](tracker/digests/).
+
+[**→ Open the interactive tracker**](https://bettyguo.github.io/awesome-reasoning-models-theory/tracker.html)
+
+### Closed → open, in 4 months
+
+The defining 2024–2025 dynamic: a closed lab ships a frontier reasoner, and 3–6 months later open weights catch up. Headline numbers across four benchmarks:
+
+<p align="center">
+  <img src="assets/closed-vs-open.svg" alt="Closed vs open reasoning model gap, by benchmark" width="1100"/>
+</p>
+
+Full essay: [The closed–open gap, tracked](essays/closed-open-gap-tracked.md).
 
 ## Essays
 
@@ -126,6 +214,8 @@ Longer-form synthesis pieces — the kind a survey would compress to a paragraph
 ## Auxiliary docs
 
 - [`docs/cheatsheet.md`](docs/cheatsheet.md) — one-page reference. Print, screenshot, share.
+- [`docs/controversies.md`](docs/controversies.md) — the 12 fault lines the field is actively disagreeing about.
+- [`docs/index-of-evidence.md`](docs/index-of-evidence.md) — every load-bearing claim, paired with its supporting evidence (✅ / 🟡 / 🔴).
 - [`docs/reading-paths.md`](docs/reading-paths.md) — 7 cross-chapter reading sequences (skim / weekend / research depth).
 - [`docs/FAQ.md`](docs/FAQ.md) — scope and curation questions.
 - [`docs/model-families.md`](docs/model-families.md) — catalog disambiguating the closed and open reasoning model families.

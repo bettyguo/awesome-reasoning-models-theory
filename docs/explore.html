@@ -4,9 +4,103 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Field map · Awesome Reasoning Models Theory</title>
-  <meta name="description" content="The eight-chapter field map: mechanism dependencies and open debates."/>
+  <meta name="description" content="The schools-of-thought map for the reasoning-models field: five mechanistic accounts, the open debates, and a method-vs-task comparison matrix."/>
   <meta name="theme-color" content="#0b1220"/>
   <link rel="stylesheet" href="style.css"/>
+  <style>
+    .map-canvas {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin: 24px 0 32px;
+      overflow: hidden;
+    }
+    .map-canvas img, .map-canvas svg {
+      display: block; width: 100%; max-width: 100%; height: auto;
+    }
+    .schools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .school {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--col, var(--accent));
+      border-radius: 10px;
+      padding: 20px 22px;
+    }
+    .school h3 { margin: 0 0 4px; font-size: 1.05rem; color: var(--fg); }
+    .school .who {
+      font-size: 0.75rem; color: var(--fg-faint);
+      letter-spacing: 0.08em; text-transform: uppercase;
+      font-weight: 600; margin-bottom: 12px;
+    }
+    .school p { font-size: 0.92rem; margin: 8px 0; color: var(--fg-muted); }
+    .school .ev {
+      font-size: 0.82rem; color: var(--fg-dim);
+      padding-top: 12px; margin-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+    .school .ev strong { color: var(--fg); }
+
+    .debate {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 22px;
+      margin-bottom: 14px;
+    }
+    .debate-q {
+      font-size: 1.02rem; font-weight: 700; color: var(--fg);
+      margin-bottom: 6px; letter-spacing: -0.01em;
+    }
+    .debate-q em { color: var(--accent); font-style: normal; }
+    .debate-vs {
+      display: flex; gap: 14px; flex-wrap: wrap;
+      margin-top: 14px; font-size: 0.88rem;
+    }
+    .debate-side {
+      flex: 1; min-width: 260px;
+      padding: 14px 16px; border-radius: 8px;
+      background: rgba(30, 41, 59, 0.4);
+      color: var(--fg-muted);
+    }
+    .debate-side strong { color: var(--fg); }
+    .debate-side.a { border-left: 3px solid var(--accent-green); }
+    .debate-side.b { border-left: 3px solid var(--accent-pink); }
+
+    .matrix {
+      width: 100%; border-collapse: separate; border-spacing: 0;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 10px; overflow: hidden; font-size: 0.92rem;
+      margin-top: 24px;
+    }
+    .matrix th, .matrix td {
+      padding: 10px 12px; border-bottom: 1px solid var(--border);
+      text-align: left; vertical-align: middle;
+    }
+    .matrix tr:last-child td { border-bottom: none; }
+    .matrix th {
+      background: var(--bg-card-hover); color: var(--fg-dim);
+      font-weight: 600; font-size: 0.78rem;
+      text-transform: uppercase; letter-spacing: 0.08em;
+    }
+    .matrix td.score {
+      font-weight: 700; text-align: center;
+      font-family: 'JetBrains Mono', monospace; font-size: 1.05rem;
+    }
+    .matrix td.s-y { color: var(--accent-green); }
+    .matrix td.s-n { color: var(--accent-pink); }
+    .matrix td.s-p { color: var(--accent-warm); }
+
+    .legend-mini {
+      font-size: 0.85rem; color: var(--fg-dim); margin-top: 14px;
+    }
+    .legend-mini span { font-weight: 700; }
+  </style>
 </head>
 <body>
 
@@ -16,113 +110,272 @@
     <div class="topnav-links">
       <a href="timeline.html">Timeline</a>
       <a href="explore.html" style="color: var(--fg);">Field map</a>
+      <a href="tracker.html">Tracker</a>
+      <a href="glossary.html">Glossary</a>
       <a href="cheatsheet.html">Cheat sheet</a>
-      <a href="FAQ.html">FAQ</a>
       <a href="https://github.com/bettyguo/awesome-reasoning-models-theory" class="topnav-cta">★ GitHub</a>
     </div>
   </div>
 </nav>
 
-<div class="timeline-page">
-  <span class="chip">Field map</span>
-  <h1 style="margin-top: 16px;">The eight chapters, related</h1>
-  <p style="font-size: 1.05rem; color: var(--fg-muted); max-width: 720px;">
-    Solid arrows are mechanism dependencies. Dashed arrows are open debates.
-    Click any chapter card below to jump to its full annotation on GitHub.
-  </p>
-
-  <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin: 32px 0;">
-    <img src="assets/field-map.svg" alt="Field map" style="width: 100%; height: auto; display: block;"/>
+<header class="hero" style="padding: 80px 0 32px;">
+  <div class="container">
+    <span class="chip">Field map</span>
+    <h1 style="margin-top: 12px;">The schools of thought</h1>
+    <p class="hero-tagline">
+      The reasoning-models field has at least <strong>five mechanistic accounts</strong> in active circulation.
+      Most are partly true; none alone explains everything we see. This map is honest about that —
+      it shows the schools, where the evidence supports them, and where the open debates live.
+    </p>
   </div>
+</header>
 
-  <h2 style="margin-top: 48px;">Chapter cards</h2>
-  <p>Click for the full chapter on GitHub.</p>
-
-  <div class="chapters-grid" style="margin-top: 24px;">
-    <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/chapters/01-cot-and-scratchpads.md" class="chapter-card cat-foundation">
-      <div class="ch-num">CH 01</div>
-      <h3>CoT &amp; Scratchpads</h3>
-      <p>Compute-extension: intermediate tokens give a fixed-depth transformer unbounded serial steps.</p>
-    </a>
-    <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/chapters/02-test-time-compute-scaling.md" class="chapter-card cat-inference">
-      <div class="ch-num">CH 02</div>
-      <h3>Test-Time Compute Scaling</h3>
-      <p>Snell, s1, R1, o1 — accuracy vs inference compute, regime-dependent.</p>
-    </a>
-    <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/chapters/03-sampling-and-verification.md" class="chapter-card cat-inference">
-      <div class="ch-num">CH 03</div>
-      <h3>Sampling &amp; Verification</h3>
-      <p>Self-consistency, best-of-N, ORMs, PRMs. Verifier-side scaling is real.</p>
-    </a>
-    <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/chapters/04-search-at-inference.md" class="chapter-card cat-inference">
-      <div class="ch-num">CH 04</div>
-      <h3>Search at Inference</h3>
-      <p>ToT, GoT, AlphaProof, recursive aggregation. Where explicit search still dominates.</p>
-    </a>
-    <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/chapters/05-rl-for-reasoning.md" class="chapter-card cat-training">
-      <div class="ch-num">CH 05</div>
-      <h3>RL for Reasoning</h3>
-      <p>R1-Zero, GRPO, Tülu, RLVR. Elicitation, not learning.</p>
-    </a>
-    <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/chapters/06-overthinking-and-optimal-length.md" class="chapter-card cat-failure">
-      <div class="ch-num">CH 06</div>
-      <h3>Overthinking &amp; Length</h3>
-      <p>Chen 2024, Hassid, Yang, Chain of Draft. Length should be conditional on difficulty.</p>
-    </a>
-    <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/chapters/07-faithfulness-of-reasoning.md" class="chapter-card cat-failure">
-      <div class="ch-num">CH 07</div>
-      <h3>Faithfulness of Traces</h3>
-      <p>Turpin, Lanham, Anthropic 2025. The chain is not the computation.</p>
-    </a>
-    <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/chapters/08-theoretical-frameworks.md" class="chapter-card cat-synthesis">
-      <div class="ch-num">CH 08</div>
-      <h3>Theoretical Frameworks</h3>
-      <p>Compute-depth, program synthesis, Bayes-over-thoughts. Three accounts, no unification.</p>
-    </a>
+<section style="padding-top: 32px;">
+  <div class="container">
+    <div class="eyebrow">Mechanism graph</div>
+    <h2>How the eight chapters depend on each other</h2>
+    <p>Solid edges = mechanism dependencies. Dashed = open debates. Color groups by role.</p>
+    <div class="map-canvas">
+      <img src="../assets/field-map.svg" alt="Field map showing the eight chapters and their connections"/>
+    </div>
   </div>
+</section>
 
-  <h2 style="margin-top: 56px;">Reading paths</h2>
-  <p>Cross-chapter sequences calibrated for skim / weekend / research depth.</p>
-  <div class="tocish" style="margin-top: 24px;">
-    <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/docs/reading-paths.md#path-1--what-is-the-o1--r1-paradigm-in-two-evenings">
-      <div class="item-label">PATH 1</div>
-      <div class="item-title">The o1 / R1 paradigm in two evenings</div>
-      <div class="item-desc">For the practitioner needing the dominant recipe end-to-end.</div>
-    </a>
-    <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/docs/reading-paths.md#path-2--i-dont-trust-cot-as-thought-convince-me-one-way-or-the-other">
-      <div class="item-label">PATH 2</div>
-      <div class="item-title">Is CoT thought, or rationalization?</div>
-      <div class="item-desc">For the reader entering the faithfulness debate.</div>
-    </a>
-    <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/docs/reading-paths.md#path-3--is-reasoning-search-or-rl">
-      <div class="item-label">PATH 3</div>
-      <div class="item-title">Is reasoning search or RL?</div>
-      <div class="item-desc">Where explicit search wins; where RL absorbs it.</div>
-    </a>
-    <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/docs/reading-paths.md#path-4--theory-of-why-cot-helps-formal--informal">
-      <div class="item-label">PATH 4</div>
-      <div class="item-title">Theory of why CoT helps</div>
-      <div class="item-desc">Formal + informal. Crosses both lists.</div>
-    </a>
-    <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/docs/reading-paths.md#path-5--the-overthinking-debate">
-      <div class="item-label">PATH 5</div>
-      <div class="item-title">The overthinking debate</div>
-      <div class="item-desc">Chain length, calibration, length-misallocation.</div>
-    </a>
-    <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/docs/reading-paths.md#path-6--rl-for-reasoning-fast-track">
-      <div class="item-label">PATH 6</div>
-      <div class="item-title">RL-for-reasoning, fast track</div>
-      <div class="item-desc">For someone implementing RLVR on their own model.</div>
-    </a>
-    <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/docs/reading-paths.md#path-7--sampling-and-verification-fast-track">
-      <div class="item-label">PATH 7</div>
-      <div class="item-title">Sampling and verification, fast track</div>
-      <div class="item-desc">For the inference-side practitioner.</div>
-    </a>
+<section>
+  <div class="container">
+    <div class="eyebrow">Schools of thought</div>
+    <h2>Five accounts of "why CoT works"</h2>
+    <p>Each school explains a different fragment of what we observe. The labels are the curator's; they aren't standard, but they're the cleanest cuts. Most papers blend two or three.</p>
+
+    <div class="schools-grid">
+
+      <div class="school" style="--col: var(--accent)">
+        <h3>1. Compute-depth extension</h3>
+        <div class="who">Merrill &amp; Sabharwal · Li · Feng — formal</div>
+        <p>A fixed-depth transformer is in TC<sub>0</sub>. T tokens of CoT amount to T extra serial steps — escaping toward problems that require P-class computation.</p>
+        <div class="ev"><strong>Best for:</strong> explaining why CoT helps on inherently serial / multi-step problems. <strong>Weak at:</strong> explaining stylistic effects, "Aha moments," and unfaithful chains.</div>
+      </div>
+
+      <div class="school" style="--col: var(--accent-2)">
+        <h3>2. Implicit / amortized search</h3>
+        <div class="who">Stream of Search · R1-Zero post-mortems</div>
+        <p>RL training compiles a search procedure into the policy distribution. Greedy decoding then mimics what an external search would do — without a search loop at runtime.</p>
+        <div class="ev"><strong>Best for:</strong> the R1 phenomenology — chain length increase, self-correction. <strong>Weak at:</strong> formal claims about <em>what</em> is searchable.</div>
+      </div>
+
+      <div class="school" style="--col: var(--accent-warm)">
+        <h3>3. Program synthesis</h3>
+        <div class="who">CoT-as-source-code interpretations</div>
+        <p>A CoT is the source of a small program the model "compiles" to its answer. Non-CoT inference interprets compiled artifacts of similar programs encountered at training.</p>
+        <div class="ev"><strong>Best for:</strong> explaining transfer between problem families. <strong>Weak at:</strong> cases where the chain doesn't match a program — narrative reasoning, qualitative judgment.</div>
+      </div>
+
+      <div class="school" style="--col: var(--accent-green)">
+        <h3>4. Bayesian posterior over thoughts</h3>
+        <div class="who">Xie · Prystawski — extended to multi-step</div>
+        <p>CoT generation is implicit posterior inference over a latent "solution program." Extends the ICL-as-Bayes account to chains of intermediate states.</p>
+        <div class="ev"><strong>Best for:</strong> Wei-style few-shot CoT improvements. <strong>Weak at:</strong> RL-trained reasoners where the chain is the optimization target, not a posterior sample.</div>
+      </div>
+
+      <div class="school" style="--col: var(--accent-pink)">
+        <h3>5. RL-shaped policy elicitation</h3>
+        <div class="who">DeepSeek-R1 — the practitioner story</div>
+        <p>Reasoning circuits are already in the base from pretraining. RLVR is an <em>elicitation</em> procedure — it raises probability mass on paths that lead to verifiably correct answers.</p>
+        <div class="ev"><strong>Best for:</strong> R1-Zero results, the "no-SFT" finding. <strong>Weak at:</strong> cases where the base lacks the circuit — R1-Zero fails on weak bases (threshold uncharacterized).</div>
+      </div>
+
+    </div>
+
+    <p class="hero-tagline" style="margin-top: 28px; font-size: 0.95rem;">
+      The synthesis essay <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/essays/why-do-reasoning-models-work-a-synthesis.md">Why do reasoning models work? A synthesis</a> argues these aren't competitors so much as views of different layers of the same elephant — and proposes which layer dominates for which task.
+    </p>
   </div>
-</div>
+</section>
 
-<footer style="margin-top: 48px;">
+<section>
+  <div class="container">
+    <div class="eyebrow">Open debates</div>
+    <h2>What the field actively disagrees about</h2>
+    <p>Each row is a real fault line — defenders on each side cite peer-reviewed evidence. The repo's job is to platform the disagreement, not to declare a winner.</p>
+
+    <div class="debate">
+      <div class="debate-q">Are reasoning gains <em>elicitation</em> of latent capability, or new <em>learning</em>?</div>
+      <p style="margin:0; color: var(--fg-muted); font-size:0.92rem;">If elicitation, RL re-shapes the base distribution. If learning, RL teaches the model new circuits.</p>
+      <div class="debate-vs">
+        <div class="debate-side a"><strong>Elicitation camp</strong> — DeepSeek (R1-Zero), Lambert. <em>Evidence:</em> pure RL from base reaches o1-class. Predicts new bases will dominate after RL across recipes.</div>
+        <div class="debate-side b"><strong>Learning camp</strong> — implicit in some Anthropic / OpenAI framings; distillation literature. <em>Evidence:</em> distillation transfers reasoning to weaker bases that wouldn't elicit it via RL alone.</div>
+      </div>
+    </div>
+
+    <div class="debate">
+      <div class="debate-q">Is CoT <em>faithful enough</em> to use as evidence about model computation?</div>
+      <p style="margin:0; color: var(--fg-muted); font-size:0.92rem;">If yes, CoT-monitoring is a viable safety primitive. If no, the safety story needs alternative tools.</p>
+      <div class="debate-vs">
+        <div class="debate-side a"><strong>Faithful-enough</strong> — practitioners using CoT inspection in eval. <em>Evidence:</em> RL-trained reasoners pass more Lanham probes than instruct-only models.</div>
+        <div class="debate-side b"><strong>Not faithful enough</strong> — Turpin, Lanham, Anthropic 2025. <em>Evidence:</em> targeted reward-hack scenarios produce systematic post-hoc rationalization in current frontier reasoners.</div>
+      </div>
+    </div>
+
+    <div class="debate">
+      <div class="debate-q">Does explicit search add value <em>on top of</em> an RL-trained reasoner?</div>
+      <p style="margin:0; color: var(--fg-muted); font-size:0.92rem;">The intuition: RL has already absorbed the easy search. Practice: it depends.</p>
+      <div class="debate-vs">
+        <div class="debate-side a"><strong>Search adds value</strong> — recursive aggregation, MCTS-over-CoT. <em>Evidence:</em> explicit search improves over single-pass long-CoT at fixed budget on hard tasks.</div>
+        <div class="debate-side b"><strong>RL absorbs search</strong> — Stream of Search, R1-Zero. <em>Evidence:</em> trained reasoners match search-augmented baselines on benchmarks the RL covered.</div>
+      </div>
+    </div>
+
+    <div class="debate">
+      <div class="debate-q">Should test-time compute scaling <em>laws</em> hold across model scales?</div>
+      <p style="margin:0; color: var(--fg-muted); font-size:0.92rem;">The Snell-style curves were measured at one scale. Whether the optimal allocation transfers is unsettled.</p>
+      <div class="debate-vs">
+        <div class="debate-side a"><strong>Universal exchange-rate</strong> — Snell et al., follow-ups. <em>Evidence:</em> log-linear curves replicate on multiple model families at multiple scales.</div>
+        <div class="debate-side b"><strong>Task- and scale-specific</strong> — Yang et al. (thinking-optimal scaling), overthinking literature. <em>Evidence:</em> optimal length depends on task difficulty and base capability — no universal recipe.</div>
+      </div>
+    </div>
+
+    <div class="debate">
+      <div class="debate-q">Is "reasoning" doing anything different from <em>amortized search + style-shaped policy</em>?</div>
+      <p style="margin:0; color: var(--fg-muted); font-size:0.92rem;">The deepest fault line. Determines whether the reasoning-model paradigm is qualitative or quantitative.</p>
+      <div class="debate-vs">
+        <div class="debate-side a"><strong>Quantitative only</strong> — RL elicits, doesn't add. Same circuits, more usage. Predicts scaling will plateau in line with base-model scaling.</div>
+        <div class="debate-side b"><strong>Qualitative shift</strong> — long-horizon RL produces genuinely new behaviors (Aha moments, self-correction). Predicts the compute axis will keep paying off after pretraining plateaus.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="eyebrow">Method × task matrix</div>
+    <h2>Which technique helps which problem</h2>
+    <p>A condensed cross-tabulation. Read each row as: at fixed compute budget, this strategy is the right choice when the problem looks like the column.</p>
+
+    <table class="matrix">
+      <thead>
+        <tr>
+          <th>Strategy</th>
+          <th style="text-align:center;">Math (closed answer)</th>
+          <th style="text-align:center;">Code (unit-test)</th>
+          <th style="text-align:center;">Open-ended writing</th>
+          <th style="text-align:center;">Multi-hop QA</th>
+          <th style="text-align:center;">OOD (ARC-AGI)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Greedy long-CoT</td>                  <td class="score s-p">○</td><td class="score s-p">○</td><td class="score s-y">●</td><td class="score s-p">○</td><td class="score s-n">×</td></tr>
+        <tr><td>Self-consistency (cons@K)</td>         <td class="score s-y">●</td><td class="score s-y">●</td><td class="score s-n">×</td><td class="score s-p">○</td><td class="score s-n">×</td></tr>
+        <tr><td>Best-of-N + PRM</td>                  <td class="score s-y">●</td><td class="score s-y">●</td><td class="score s-p">○</td><td class="score s-y">●</td><td class="score s-p">○</td></tr>
+        <tr><td>Tree of Thoughts</td>                 <td class="score s-y">●</td><td class="score s-p">○</td><td class="score s-p">○</td><td class="score s-y">●</td><td class="score s-p">○</td></tr>
+        <tr><td>Recursive self-aggregation</td>        <td class="score s-y">●</td><td class="score s-p">○</td><td class="score s-y">●</td><td class="score s-y">●</td><td class="score s-p">○</td></tr>
+        <tr><td>RLVR-trained reasoner (single pass)</td><td class="score s-y">●</td><td class="score s-y">●</td><td class="score s-p">○</td><td class="score s-p">○</td><td class="score s-n">×</td></tr>
+        <tr><td>Test-time training</td>               <td class="score s-p">○</td><td class="score s-p">○</td><td class="score s-n">×</td><td class="score s-p">○</td><td class="score s-y">●</td></tr>
+      </tbody>
+    </table>
+    <p class="legend-mini">
+      <span style="color: var(--accent-green);">●</span> well-suited &nbsp;
+      <span style="color: var(--accent-warm);">○</span> partial / verifier-dependent &nbsp;
+      <span style="color: var(--accent-pink);">×</span> known to underperform
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="eyebrow">Eight chapters</div>
+    <h2>Open the chapters on GitHub</h2>
+    <div class="chapters-grid" style="margin-top: 24px;">
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/chapters/01-cot-and-scratchpads.md" class="chapter-card cat-foundation">
+        <div class="ch-num">CH 01 · FOUNDATION</div>
+        <h3>CoT &amp; Scratchpads</h3>
+        <p>Compute-extension: intermediate tokens give a fixed-depth transformer unbounded serial steps.</p>
+      </a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/chapters/02-test-time-compute-scaling.md" class="chapter-card cat-inference">
+        <div class="ch-num">CH 02 · INFERENCE</div>
+        <h3>Test-Time Compute Scaling</h3>
+        <p>Snell, s1, R1, o1 — accuracy vs inference compute, regime-dependent.</p>
+      </a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/chapters/03-sampling-and-verification.md" class="chapter-card cat-inference">
+        <div class="ch-num">CH 03 · INFERENCE</div>
+        <h3>Sampling &amp; Verification</h3>
+        <p>Self-consistency, best-of-N, ORMs, PRMs. Verifier-side scaling is real.</p>
+      </a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/chapters/04-search-at-inference.md" class="chapter-card cat-inference">
+        <div class="ch-num">CH 04 · INFERENCE</div>
+        <h3>Search at Inference</h3>
+        <p>ToT, GoT, AlphaProof, recursive aggregation. Where explicit search still dominates.</p>
+      </a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/chapters/05-rl-for-reasoning.md" class="chapter-card cat-training">
+        <div class="ch-num">CH 05 · TRAINING</div>
+        <h3>RL for Reasoning</h3>
+        <p>R1-Zero, GRPO, Tülu, RLVR. Elicitation, not learning.</p>
+      </a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/chapters/06-overthinking-and-optimal-length.md" class="chapter-card cat-failure">
+        <div class="ch-num">CH 06 · FAILURE</div>
+        <h3>Overthinking &amp; Length</h3>
+        <p>Chen 2024, Hassid, Yang. Length should be conditional on difficulty.</p>
+      </a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/chapters/07-faithfulness-of-reasoning.md" class="chapter-card cat-failure">
+        <div class="ch-num">CH 07 · FAILURE</div>
+        <h3>Faithfulness of Traces</h3>
+        <p>Turpin, Lanham, Anthropic 2025. The chain is not the computation.</p>
+      </a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/chapters/08-theoretical-frameworks.md" class="chapter-card cat-synthesis">
+        <div class="ch-num">CH 08 · SYNTHESIS</div>
+        <h3>Theoretical Frameworks</h3>
+        <p>Compute-depth, program synthesis, Bayes-over-thoughts. Three accounts, no unification.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="eyebrow">Reading paths</div>
+    <h2>Cross-chapter sequences</h2>
+    <p>Calibrated for skim / weekend / research depth.</p>
+    <div class="tocish" style="margin-top: 24px;">
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/docs/reading-paths.md#path-1--what-is-the-o1--r1-paradigm-in-two-evenings">
+        <div class="item-label">PATH 1</div>
+        <div class="item-title">The o1 / R1 paradigm in two evenings</div>
+        <div class="item-desc">For the practitioner needing the dominant recipe end-to-end.</div>
+      </a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/docs/reading-paths.md#path-2--i-dont-trust-cot-as-thought-convince-me-one-way-or-the-other">
+        <div class="item-label">PATH 2</div>
+        <div class="item-title">Is CoT thought, or rationalization?</div>
+        <div class="item-desc">For the reader entering the faithfulness debate.</div>
+      </a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/docs/reading-paths.md#path-3--is-reasoning-search-or-rl">
+        <div class="item-label">PATH 3</div>
+        <div class="item-title">Is reasoning search or RL?</div>
+        <div class="item-desc">Where explicit search wins; where RL absorbs it.</div>
+      </a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/docs/reading-paths.md#path-4--theory-of-why-cot-helps-formal--informal">
+        <div class="item-label">PATH 4</div>
+        <div class="item-title">Theory of why CoT helps</div>
+        <div class="item-desc">Formal + informal. Crosses both lists.</div>
+      </a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/docs/reading-paths.md#path-5--the-overthinking-debate">
+        <div class="item-label">PATH 5</div>
+        <div class="item-title">The overthinking debate</div>
+        <div class="item-desc">Chain length, calibration, length-misallocation.</div>
+      </a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/docs/reading-paths.md#path-6--rl-for-reasoning-fast-track">
+        <div class="item-label">PATH 6</div>
+        <div class="item-title">RL-for-reasoning, fast track</div>
+        <div class="item-desc">For someone implementing RLVR on their own model.</div>
+      </a>
+      <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/docs/reading-paths.md#path-7--sampling-and-verification-fast-track">
+        <div class="item-label">PATH 7</div>
+        <div class="item-title">Sampling and verification, fast track</div>
+        <div class="item-desc">For the inference-side practitioner.</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
   <div class="container">
     <div>
       <div class="topnav-brand" style="font-size: 1rem;"><span class="dot"></span>Reasoning Models Theory</div>
@@ -134,21 +387,23 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="timeline.html">Timeline</a></li>
         <li><a href="explore.html">Field map</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4>Docs</h4>
-      <ul>
-        <li><a href="cheatsheet.html">Cheat sheet</a></li>
-        <li><a href="FAQ.html">FAQ</a></li>
-        <li><a href="reading-paths.html">Reading paths</a></li>
+        <li><a href="tracker.html">Tracker</a></li>
+        <li><a href="glossary.html">Glossary</a></li>
       </ul>
     </div>
     <div>
       <h4>Repo</h4>
       <ul>
         <li><a href="https://github.com/bettyguo/awesome-reasoning-models-theory">GitHub</a></li>
+        <li><a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/CONTRIBUTING.md">Contributing</a></li>
         <li><a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/WANTED.md">WANTED gaps</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>License</h4>
+      <ul>
+        <li><a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/LICENSE-content">Content · CC0</a></li>
+        <li><a href="https://github.com/bettyguo/awesome-reasoning-models-theory/blob/main/LICENSE-code">Code · MIT</a></li>
       </ul>
     </div>
   </div>

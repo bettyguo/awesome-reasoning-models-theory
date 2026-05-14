@@ -10,6 +10,29 @@
 
 The dominant 2024–2026 recipe for producing a reasoning model: take a strong base, run RL with verifiable rewards (RLVR) on tasks with cheap correctness signals (math problems with known answers, code with unit tests). The DeepSeek-R1 result (Jan 2025) was the field's shock: doing this with *no* supervised CoT seed — pure RL from the base, "R1-Zero" — produces a strong reasoner. The chain-of-thought *emerges* during RL; specifically, it lengthens, becomes self-correcting, and develops "Aha moments" where the model notices its own mistake mid-chain. GRPO (Shao et al. 2024) replaced PPO as the workhorse algorithm. Open reproductions (Tulu 3, SimpleRL, Open-Reasoner-Zero) confirm the recipe is not DeepSeek-specific.
 
+## The R1 recipe in one diagram
+
+```mermaid
+flowchart LR
+  Base["Pretrained base model<br/>(strong, ≥7B)"] --> R1Z[R1-Zero:<br/>pure RL with verifiable rewards]
+  R1Z --> Capable["Capable reasoner<br/>(o1-class on math/code)<br/>but: language-mixing, unreadable"]
+  Capable --> Cold[Cold-start SFT<br/>~few thousand high-quality CoTs]
+  Cold --> R1Final[Final RL pass]
+  R1Final --> R1["DeepSeek-R1<br/>(readable + capable)"]
+
+  Base -. distillation .-> SmallStudent["R1-Distill-{Qwen,Llama}<br/>(7B–70B students)"]
+  R1 -. teacher .-> SmallStudent
+
+  classDef stage fill:#0b1220,stroke:#34d399,color:#f8fafc;
+  classDef out fill:#1e293b,stroke:#7dd3fc,color:#bae6fd;
+  classDef opt fill:#0b1220,stroke:#fb923c,color:#fdba74,stroke-dasharray:4 4;
+  class Base,R1Z,Cold,R1Final stage;
+  class Capable,R1 out;
+  class SmallStudent opt;
+```
+
+> **Read this as.** R1-Zero is the load-bearing step — that's where the reasoning *capability* emerges from RL. The cold-start SFT + final RL is *cosmetic* refinement (readability, language consistency). The capability is in R1-Zero; R1 just polishes it.
+
 ## The mechanism
 
 **The setup.** Base model π₀ → policy π trained to maximize E[r(question, completion)] where r is `1` if the answer is correct, `0` otherwise (or a continuous proxy from a verifier). Tasks: math problems with extractable answers, code with executable tests, sometimes symbolic logic puzzles. RLVR sidesteps the reward-model bottleneck of RLHF — no learned reward, no preference labels.
