@@ -4,39 +4,45 @@
   <circle cx="40.0" cy="110" r="6" fill="#16a34a"/>
   <text x="40.0" y="70" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">CoT prompting (Wei et al.)</text>
   <text x="40.0" y="54" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2022-01</text>
-  <circle cx="125.0" cy="110" r="6" fill="#16a34a"/>
-  <text x="125.0" y="170" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">Self-consistency (Wang et al.)</text>
-  <text x="125.0" y="186" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2022-03</text>
-  <circle cx="210.0" cy="110" r="6" fill="#16a34a"/>
-  <text x="210.0" y="70" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">PRMs / Let's Verify (Lightman et al.)</text>
-  <text x="210.0" y="54" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2023-05</text>
-  <circle cx="295.0" cy="110" r="6" fill="#16a34a"/>
-  <text x="295.0" y="170" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">Tree of Thoughts (Yao et al.)</text>
-  <text x="295.0" y="186" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2023-05</text>
-  <circle cx="380.0" cy="110" r="6" fill="#16a34a"/>
-  <text x="380.0" y="70" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">Test-time scaling (Snell et al.)</text>
-  <text x="380.0" y="54" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2024-08</text>
-  <circle cx="465.0" cy="110" r="6" fill="#3a7afe"/>
-  <text x="465.0" y="170" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">OpenAI o1 announcement</text>
-  <text x="465.0" y="186" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2024-09</text>
-  <circle cx="550.0" cy="110" r="6" fill="#16a34a"/>
-  <text x="550.0" y="70" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">'Don't think 2+3=' overthinking</text>
-  <text x="550.0" y="54" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2024-12</text>
-  <circle cx="635.0" cy="110" r="6" fill="#3a7afe"/>
-  <text x="635.0" y="170" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">DeepSeek-R1 / R1-Zero</text>
-  <text x="635.0" y="186" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2025-01</text>
-  <circle cx="720.0" cy="110" r="6" fill="#16a34a"/>
-  <text x="720.0" y="70" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">s1: simple test-time scaling</text>
-  <text x="720.0" y="54" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2025-01</text>
-  <circle cx="805.0" cy="110" r="6" fill="#16a34a"/>
-  <text x="805.0" y="170" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">Anthropic faithfulness paper</text>
-  <text x="805.0" y="186" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2025-02</text>
-  <circle cx="890.0" cy="110" r="6" fill="#3a7afe"/>
-  <text x="890.0" y="70" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">Claude with extended thinking</text>
-  <text x="890.0" y="54" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2025-Q1</text>
-  <circle cx="975.0" cy="110" r="6" fill="#3a7afe"/>
-  <text x="975.0" y="170" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">OpenAI o3 family</text>
-  <text x="975.0" y="186" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2025-Q2</text>
+  <circle cx="112.9" cy="110" r="6" fill="#16a34a"/>
+  <text x="112.9" y="170" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">Self-consistency (Wang et al.)</text>
+  <text x="112.9" y="186" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2022-03</text>
+  <circle cx="185.7" cy="110" r="6" fill="#16a34a"/>
+  <text x="185.7" y="70" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">PRMs / Let's Verify (Lightman et al.)</text>
+  <text x="185.7" y="54" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2023-05</text>
+  <circle cx="258.6" cy="110" r="6" fill="#16a34a"/>
+  <text x="258.6" y="170" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">Tree of Thoughts (Yao et al.)</text>
+  <text x="258.6" y="186" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2023-05</text>
+  <circle cx="331.4" cy="110" r="6" fill="#3a7afe"/>
+  <text x="331.4" y="70" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">AlphaProof IMO silver</text>
+  <text x="331.4" y="54" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2024-07</text>
+  <circle cx="404.3" cy="110" r="6" fill="#16a34a"/>
+  <text x="404.3" y="170" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">Test-time scaling (Snell et al.)</text>
+  <text x="404.3" y="186" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2024-08</text>
+  <circle cx="477.1" cy="110" r="6" fill="#3a7afe"/>
+  <text x="477.1" y="70" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">OpenAI o1 announcement</text>
+  <text x="477.1" y="54" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2024-09</text>
+  <circle cx="550.0" cy="110" r="6" fill="#3a7afe"/>
+  <text x="550.0" y="170" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">Tülu 3 (RLVR named)</text>
+  <text x="550.0" y="186" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2024-11</text>
+  <circle cx="622.9" cy="110" r="6" fill="#16a34a"/>
+  <text x="622.9" y="70" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">'Don't think 2+3=' overthinking</text>
+  <text x="622.9" y="54" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2024-12</text>
+  <circle cx="695.7" cy="110" r="6" fill="#3a7afe"/>
+  <text x="695.7" y="170" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">DeepSeek-R1 / R1-Zero</text>
+  <text x="695.7" y="186" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2025-01</text>
+  <circle cx="768.6" cy="110" r="6" fill="#16a34a"/>
+  <text x="768.6" y="70" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">s1: simple test-time scaling</text>
+  <text x="768.6" y="54" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2025-01</text>
+  <circle cx="841.4" cy="110" r="6" fill="#3a7afe"/>
+  <text x="841.4" y="170" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">Claude 3.7 with extended thinking</text>
+  <text x="841.4" y="186" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2025-02</text>
+  <circle cx="914.3" cy="110" r="6" fill="#16a34a"/>
+  <text x="914.3" y="70" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">Anthropic reasoning-faithfulness</text>
+  <text x="914.3" y="54" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2025-05</text>
+  <circle cx="987.1" cy="110" r="6" fill="#3a7afe"/>
+  <text x="987.1" y="170" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">Gemini Deep Think IMO gold</text>
+  <text x="987.1" y="186" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2025-07</text>
   <circle cx="1060.0" cy="110" r="6" fill="#dc2626"/>
   <text x="1060.0" y="70" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">ARC-AGI-3 launch</text>
   <text x="1060.0" y="54" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2026-03</text>
