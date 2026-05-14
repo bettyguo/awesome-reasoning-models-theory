@@ -1,14 +1,28 @@
 <p align="center">
-  <img src="assets/banner.svg" alt="Awesome Reasoning Models Theory" width="720"/>
+  <img src="assets/banner.svg" alt="Awesome Reasoning Models Theory" width="1100"/>
 </p>
-
-<h1 align="center">Awesome Reasoning Models Theory</h1>
 
 <p align="center">
   <a href="https://awesome.re"><img src="https://awesome.re/badge.svg" alt="Awesome"></a>
+  <a href="https://bettyguo.github.io/awesome-reasoning-models-theory"><img src="https://img.shields.io/badge/live%20site-online-38bdf8.svg" alt="Live site"></a>
   <a href="LICENSE-content"><img src="https://img.shields.io/badge/content-CC0%201.0-blue.svg" alt="CC0"></a>
   <a href="LICENSE-code"><img src="https://img.shields.io/badge/code-MIT-green.svg" alt="MIT"></a>
+  <a href="https://github.com/bettyguo/awesome-reasoning-models-theory/actions/workflows/linkcheck.yml"><img src="https://github.com/bettyguo/awesome-reasoning-models-theory/actions/workflows/linkcheck.yml/badge.svg" alt="Structure + link check"></a>
+  <img src="https://img.shields.io/badge/chapters-8-818cf8.svg" alt="8 chapters"/>
+  <img src="https://img.shields.io/badge/papers-90%2B-34d399.svg" alt="90+ papers"/>
+  <img src="https://img.shields.io/badge/notebooks-5-fb923c.svg" alt="5 notebooks"/>
 </p>
+
+<p align="center">
+  <b>
+    <a href="https://bettyguo.github.io/awesome-reasoning-models-theory">→ Open the live site</a> &nbsp;·&nbsp;
+    <a href="https://bettyguo.github.io/awesome-reasoning-models-theory/timeline.html">Interactive timeline</a> &nbsp;·&nbsp;
+    <a href="https://bettyguo.github.io/awesome-reasoning-models-theory/explore.html">Field map</a> &nbsp;·&nbsp;
+    <a href="https://bettyguo.github.io/awesome-reasoning-models-theory/cheatsheet.html">Cheat sheet</a>
+  </b>
+</p>
+
+---
 
 > *Why do reasoning models actually work? A theoretical and empirical map of the o-series / R1 / Claude-thinking paradigm.*
 
@@ -56,9 +70,19 @@ The field's recent arc, compressed:
 
 Where this leaves us: a partly-shared set of empirical facts, multiple competing theoretical accounts, and a vibrant disagreement about whether reasoning models are doing *more* than amortized search + RL-shaped policy selection.
 
+## Field map
+
+How the eight chapters depend on each other. Solid arrows: mechanism dependency. Dashed: open debate. Color: foundation (blue), inference-time (green), training-time (orange), failure modes (pink), synthesis (purple).
+
+<p align="center">
+  <img src="assets/field-map.svg" alt="Field map: the eight chapters and their interconnections" width="1100"/>
+</p>
+
+[**→ Open the interactive field map**](https://bettyguo.github.io/awesome-reasoning-models-theory/explore.html)
+
 ## The eight chapters
 
-Each chapter has a TL;DR, the proposed *mechanism*, 8–15 annotated papers, the live debates, reading paths, an open-problems list, and a pointer to its reproduction notebook.
+Each chapter has a TL;DR, the proposed *mechanism*, 10+ annotated papers, the live debates, reading paths, an open-problems list, and a pointer to its reproduction notebook.
 
 | # | Chapter | Mechanism in one line |
 |---|---------|------------------------|
@@ -94,10 +118,14 @@ Longer-form synthesis pieces — the kind a survey would compress to a paragraph
 - [Why do reasoning models work? A synthesis.](essays/why-do-reasoning-models-work-a-synthesis.md)
 - [Is CoT faithful? The state of the debate.](essays/is-cot-faithful-the-state-of-the-debate.md)
 - [Search vs RL: the deep tension.](essays/search-vs-rl-the-deep-tension.md)
+- [Common misconceptions about reasoning models.](essays/common-misconceptions.md)
+- [The closed–open gap, tracked.](essays/closed-open-gap-tracked.md)
+- [How to read a reasoning-model paper.](essays/how-to-read-a-reasoning-paper.md)
 - [Reasoning and mechanistic interpretability.](essays/reasoning-and-mechanistic-interpretability.md)
 
 ## Auxiliary docs
 
+- [`docs/cheatsheet.md`](docs/cheatsheet.md) — one-page reference. Print, screenshot, share.
 - [`docs/reading-paths.md`](docs/reading-paths.md) — 7 cross-chapter reading sequences (skim / weekend / research depth).
 - [`docs/FAQ.md`](docs/FAQ.md) — scope and curation questions.
 - [`docs/model-families.md`](docs/model-families.md) — catalog disambiguating the closed and open reasoning model families.
