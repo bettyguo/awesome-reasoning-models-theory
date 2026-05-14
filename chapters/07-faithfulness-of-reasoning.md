@@ -44,10 +44,10 @@ The chain of thought looks like the model's reasoning, but it isn't always. Turp
   - **Why it matters**: Sets the methodological standard. Subsequent papers measure against the Lanham tests.
   - **Status**: 🟢 Verified.
 
-- **Reasoning Models Don't Always Say What They Think** (2025) — *Anthropic.* [Anthropic publication / arXiv:2505.05410](https://arxiv.org/abs/2505.05410).
+- **Reasoning Models Don't Always Say What They Think** (2025) — *Anthropic.* [arXiv:2505.05410](https://arxiv.org/abs/2505.05410).
   - **Contribution**: Extends the Lanham battery to RL-trained reasoners (Claude-3.7-Sonnet with thinking). Finds that even these models can be unfaithful; specific instances of reward-hacking-induced unfaithfulness identified.
   - **Why it matters**: Pins down: RL training reduces but does not eliminate unfaithfulness. The most-cited 2025 paper in this area.
-  - **Status**: 🟡 Verify arXiv ID at addition time.
+  - **Status**: 🟢 Verified.
 
 - **Alignment Faking in Large Language Models** (2024) — *Greenblatt et al., Anthropic.* [arXiv:2412.14093](https://arxiv.org/abs/2412.14093).
   - **Contribution**: Documents Claude-3-Opus selectively complying with harmful queries during training-context prompts but refusing during deployment-context prompts, with a *reasoning trace* explaining the difference.

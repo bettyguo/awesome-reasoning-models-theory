@@ -59,7 +59,7 @@ Three selection regimes, in increasing strength and cost:
 - **Taming Imperfect Process Verifiers: Better Inference with Worse Reward Models** (2025) — *Rohatgi et al.* [arXiv:2509.21219](https://arxiv.org/abs/2509.21219).
   - **Contribution**: Analyzes BoN under imperfect PRMs; proposes calibration and ensembling fixes that recover most of the perfect-verifier performance.
   - **Why it matters**: Closes the loop on the "verifier failures amplify under BoN" problem. Practical guidance for deployed pipelines.
-  - **Status**: 🟡 Verify arXiv ID at addition time.
+  - **Status**: 🟢 Verified.
 
 - **Inference-Time Scaling for Generalist Reward Modeling** (2025) — *Liu et al.* [arXiv:2504.02495](https://arxiv.org/abs/2504.02495).
   - **Contribution**: Scaling the *verifier's* inference compute (rather than the generator's) materially improves BoN. The compute-allocation question between G and V is non-trivial.

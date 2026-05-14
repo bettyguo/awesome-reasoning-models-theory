@@ -40,7 +40,7 @@ The three predict different remedies — see open problems.
 - **Don't Overthink it. Preferring Shorter Thinking Chains for Improved LLM Reasoning** (2025) — *Hassid et al.* [arXiv:2505.17813](https://arxiv.org/abs/2505.17813).
   - **Contribution**: Trains policies via DPO on (shorter-and-correct, longer) preference pairs; shows accuracy gains and substantial chain-length reductions.
   - **Why it matters**: The cleanest training-time fix; concrete recipe.
-  - **Status**: 🟡 Verify arXiv ID at addition time.
+  - **Status**: 🟢 Verified.
 
 - **Towards Thinking-Optimal Scaling of Test-Time Compute for LLM Reasoning** (2025) — *Yang et al.* [arXiv:2502.18080](https://arxiv.org/abs/2502.18080).
   - **Contribution**: Argues for *task-conditional* chain length: short on easy problems, long on hard. Training-time intervention to make the model calibrate.

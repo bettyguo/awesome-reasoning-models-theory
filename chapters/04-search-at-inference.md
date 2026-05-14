@@ -52,22 +52,22 @@ Three families of inference-time search, in order of structural complexity:
 - **Recursive Self-Aggregation Unlocks Deep Thinking in Large Language Models** (2025) — *Venkatraman et al.* [arXiv:2509.26626](https://arxiv.org/abs/2509.26626).
   - **Contribution**: Recursive loop: sample K chains, summarize them into a meta-prompt, recurse. Empirically competitive with explicit tree search at lower implementation complexity.
   - **Why it matters**: Suggests a simpler search regime that achieves much of the benefit. The 2025 trend toward "search-by-iterative-self-prompting" over explicit tree data structures.
-  - **Status**: 🟡 Verify arXiv ID at addition time.
+  - **Status**: 🟢 Verified.
 
-- **Reasoning with Reinforced Functional Token Tuning** (2025) — *e.g. ReFT and its successors.* [arXiv:2401.08967](https://arxiv.org/abs/2401.08967).
-  - **Contribution**: Train the policy to emit special tokens that trigger tree-search-like behavior at inference. Internalize part of the search.
-  - **Why it matters**: A concrete example of the search-vs-RL collapse: the search is partially baked into the policy.
-  - **Status**: 🟡 Verify.
+- **ReFT: Reasoning with Reinforced Fine-Tuning** (2024) — *Luong et al.* [arXiv:2401.08967](https://arxiv.org/abs/2401.08967).
+  - **Contribution**: Combine SFT on math chains with PPO-style fine-tuning. Pre-R1 demonstration that RL on math improves reasoning without supervised CoT for every step.
+  - **Why it matters**: A concrete example of the search-vs-RL collapse: search behavior is partially baked into the policy via RL rather than implemented externally.
+  - **Status**: 🟢 Verified.
 
 - **Stream of Search (SoS): Learning to Search in Language** (2024) — *Gandhi, Lee, Grand, Liu, Cheng, Sharma, Goodman.* [arXiv:2404.03683](https://arxiv.org/abs/2404.03683).
   - **Contribution**: Train language models to perform search inline, emitting backtracking and exploration as natural language. Outperforms in-context CoT on countdown-style puzzles.
   - **Why it matters**: Most direct demonstration that search can be *learned* rather than externally implemented. Important precedent for the o1/R1-style internalization.
   - **Status**: 🟢 Verified.
 
-- **AlphaProof / AlphaGeometry-style theorem-proving systems** (DeepMind, 2024–2025). [project page](https://deepmind.google/research/projects/ai-mathematical-olympiad/).
-  - **Contribution**: Tree search over formal proof steps with neural value functions. Achieves IMO-medal-level performance in formal-proof settings.
-  - **Why it matters**: Demonstrates that on the *right* task (formal verifier exists), explicit search remains the dominant approach. Open evidence for the regime structure of search.
-  - **Status**: 🟢 Verified, primary-source DeepMind.
+- **AlphaProof / AlphaGeometry-style theorem-proving systems** (DeepMind, 2024–2025). [blog](https://deepmind.google/blog/ai-solves-imo-problems-at-silver-medal-level/) · [Nature paper (Nov 2025)](https://www.nature.com/articles/s41586-025-09833-y).
+  - **Contribution**: Couples a pretrained LM with AlphaZero-style RL on the Lean formal language; tree search over formal proof steps with a neural value function. Solved 4/6 IMO 2024 problems (silver-medal score 28/42).
+  - **Why it matters**: Demonstrates that on the *right* task (formal verifier exists, search space is well-defined), explicit search remains the dominant approach. The clearest counterexample to "RL alone subsumes search" claims.
+  - **Status**: 🟢 Verified, primary-source DeepMind (Nature, 2025).
 
 - **OpenAI o1 / Strawberry rumored MCTS** — *unconfirmed.*
   - **Contribution**: Rumored to use MCTS over CoT during training and/or inference. *(closed-model, unconfirmed)* — no architectural details released.
