@@ -74,6 +74,11 @@ Three families of inference-time search, in order of structural complexity:
   - **Why it matters**: Mostly fodder for speculation. R1's open release suggests MCTS may not be load-bearing; pure RL with verifiable rewards reproduces the phenomenon.
   - **Status**: 🔴 Unverified. Cite for context only.
 
+- **Language Agent Tree Search (LATS) Unifies Reasoning, Acting, and Planning** (2023) — *Zhou et al.* [arXiv:2310.04406](https://arxiv.org/abs/2310.04406).
+  - **Contribution**: Integrates tree search with a value function over partial reasoning + action sequences for agentic tasks. Generalizes ToT to settings with environment feedback.
+  - **Why it matters**: Bridges the search-at-inference literature with agent / tool-using systems. The cleanest demonstration that tree search at inference helps even when the model is also taking actions in an environment.
+  - **Status**: 🟢 Verified.
+
 ## Debates
 
 - **Explicit search vs internalized policy.** R1 is the empirical anchor: pure RL with verifiable rewards reproduces o1-class scaling without external search. If true at frontier scale, explicit inference-time search is less load-bearing than the 2023 ToT/GoT framing suggested. Critics: this is a function of the training distribution; on novel tasks, search re-emerges.

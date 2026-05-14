@@ -2,6 +2,10 @@
 
 > *Inference compute trades off against parameters with task-dependent exchange rate.*
 
+<p align="center">
+  <img src="../assets/scaling-regimes.svg" alt="Test-time compute scaling regimes: long-CoT, self-consistency, best-of-N+PRM, naive sampling, with regime divisions by problem difficulty" width="900"/>
+</p>
+
 ## TL;DR
 
 For a wide class of reasoning tasks, accuracy grows roughly log-linearly with inference-time compute (tokens emitted, samples drawn, search expansions), with a task-dependent exponent. Snell et al. (2024) formalized this as a *test-time compute scaling law* and showed that the optimal trade-off between training compute and inference compute is generally *not* "all training" — at some budget, allocating compute to inference dominates. The o1/o3 announcements ride this empirical claim; the open-source community has reproduced it on smaller models (s1, DeepSeek-R1's evaluation curves, Qwen-QwQ). But the law is regime-dependent: it saturates, it differs between inference strategies (BoN vs sequential refinement vs search), and on tasks without good verifiers it largely vanishes.

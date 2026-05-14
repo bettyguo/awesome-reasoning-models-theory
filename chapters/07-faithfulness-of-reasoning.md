@@ -79,6 +79,11 @@ The chain of thought looks like the model's reasoning, but it isn't always. Turp
   - **Why it matters**: Don't conflate the two; accuracy and faithfulness are separately measurable.
   - **Status**: 🟡 Conceptual reference.
 
+- **Faithful Chain-of-Thought Reasoning** (2023) — *Lyu et al.* [arXiv:2301.13379](https://arxiv.org/abs/2301.13379).
+  - **Contribution**: Proposes a two-stage pipeline where the model first translates a problem into a deterministic symbolic intermediate (e.g., Python code, Datalog) and then executes it. The execution result, not the natural-language chain, is the answer.
+  - **Why it matters**: Construction that *guarantees* faithfulness by making the chain mechanically executable. Tradeoff: limited to problems with deterministic symbolic translations.
+  - **Status**: 🟢 Verified.
+
 ## Debates
 
 - **Does RL training improve faithfulness?** The optimistic view: rewarding correct final answers via verifiable rewards aligns the CoT with computation. The pessimistic view: not enough — the chain is still a separately-emitted artifact and the policy is free to make it look like whatever-genre. The Anthropic 2025 paper splits the difference: RL helps but doesn't suffice.

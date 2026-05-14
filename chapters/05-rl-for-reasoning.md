@@ -2,6 +2,10 @@
 
 > *RL with verifiable rewards reshapes the policy toward long, self-correcting chains.*
 
+<p align="center">
+  <img src="../assets/r1-recipe.svg" alt="The R1-Zero / R1 recipe: pretrained base, then pure RL with verifiable rewards (R1-Zero), then optional cold-start SFT and second RL pass (R1)" width="900"/>
+</p>
+
 ## TL;DR
 
 The dominant 2024–2026 recipe for producing a reasoning model: take a strong base, run RL with verifiable rewards (RLVR) on tasks with cheap correctness signals (math problems with known answers, code with unit tests). The DeepSeek-R1 result (Jan 2025) was the field's shock: doing this with *no* supervised CoT seed — pure RL from the base, "R1-Zero" — produces a strong reasoner. The chain-of-thought *emerges* during RL; specifically, it lengthens, becomes self-correcting, and develops "Aha moments" where the model notices its own mistake mid-chain. GRPO (Shao et al. 2024) replaced PPO as the workhorse algorithm. Open reproductions (Tulu 3, SimpleRL, Open-Reasoner-Zero) confirm the recipe is not DeepSeek-specific.
@@ -86,6 +90,16 @@ Neither is fully settled. PRMs (Ch 3) offer a step-level alternative, but R1's s
 - **ReFT: Reasoning with Reinforced Fine-Tuning** (2024) — *Luong, Zhang, Nguyen, Cai, Yang, Vu.* [arXiv:2401.08967](https://arxiv.org/abs/2401.08967).
   - **Contribution**: Combine SFT on math chains with PPO-style fine-tuning on the same answers. Pre-R1 demonstration that RL on math improves reasoning without supervised CoT for every step.
   - **Why it matters**: Predecessor to the R1 recipe; informs how much of R1's gain is attributable to RL vs to the choice of base model.
+  - **Status**: 🟢 Verified.
+
+- **Back to Basics: Revisiting REINFORCE-Style Optimization for Learning from Human Feedback in LLMs** (2024) — *Ahmadian et al.* [arXiv:2402.14740](https://arxiv.org/abs/2402.14740).
+  - **Contribution**: Shows that plain REINFORCE (with a simple leave-one-out baseline — RLOO) matches PPO on RLHF benchmarks. Strong evidence that the PPO machinery is over-engineered for many LLM RL settings.
+  - **Why it matters**: Demystifies the algorithm-choice question. GRPO, RLOO, and REINFORCE++ all work; the algorithm is not the load-bearing variable.
+  - **Status**: 🟢 Verified.
+
+- **KTO: Model Alignment as Prospect Theoretic Optimization** (2024) — *Ethayarajh, Xu, Muennighoff, Jurafsky, Kiela.* [arXiv:2402.01306](https://arxiv.org/abs/2402.01306).
+  - **Contribution**: Aligns LLMs from binary (good / bad) feedback rather than pairwise preferences, using a loss inspired by Kahneman–Tversky prospect theory. Cheaper labeling.
+  - **Why it matters**: Adjacent to RLVR — both replace pairwise preferences with simpler signal forms. KTO with verifiable correctness as the "good" signal is a viable RLVR alternative.
   - **Status**: 🟢 Verified.
 
 ## Debates

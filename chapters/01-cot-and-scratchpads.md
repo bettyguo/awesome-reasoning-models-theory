@@ -81,6 +81,16 @@ Two complementary perspectives. Take them together; either alone is misleading.
   - **Why it matters**: Evidence against a pure "CoT is execution of a stable program" view. Points to CoT being prompt-sensitive heuristic chaining, not robust algorithmic reasoning.
   - **Status**: 🟢 Verified.
 
+- **Emergent Abilities of Large Language Models** (2022) — *Wei et al.* TMLR. [arXiv:2206.07682](https://arxiv.org/abs/2206.07682).
+  - **Contribution**: Documents capability discontinuities as a function of training scale; CoT-elicited multi-step reasoning is one of the canonical "emergent" abilities in the original framing.
+  - **Why it matters**: The framing has been challenged (Schaeffer et al. argue emergence is metric-dependent) but the empirical pattern — CoT works much better past a scale threshold — is real and load-bearing.
+  - **Status**: 🟢 Verified.
+
+- **Challenging BIG-Bench Tasks and Whether Chain-of-Thought Can Solve Them** (2022) — *Suzgun et al.* (BBH). [arXiv:2210.09261](https://arxiv.org/abs/2210.09261).
+  - **Contribution**: Identifies 23 BIG-Bench tasks where models underperform humans; tests CoT prompting on each. CoT lifts accuracy substantially on math/symbolic subsets, less on others.
+  - **Why it matters**: Predecessor to the Sprague et al. (2024) meta-analysis; provides the canonical task set for CoT-vs-direct comparisons.
+  - **Status**: 🟢 Verified.
+
 ## Debates
 
 - **Compute-extension vs structure-induction**: Pfau et al. say filler tokens help (pure compute matters); Prystawski et al. say chain content helps via Bayesian-locality recovery. Both are right on *different* tasks; the unsettled question is the relative magnitude. Defenders of the structure view: Prystawski, Wei. Defenders of the compute view: Pfau, Goyal, Merrill (theoretically). Synthesis emerging: depends on task structure (parallel-decomposable → filler suffices; serial-dependency → content matters).
