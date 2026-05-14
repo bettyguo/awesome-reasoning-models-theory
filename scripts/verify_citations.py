@@ -28,6 +28,17 @@ URL_RE = re.compile(r"\((https?://[^)\s]+)\)")
 TIMEOUT_S = 15
 WORKERS = 8
 
+# URLs the checker should skip without failing.
+# Use for self-references that resolve only after deployment (live site, CI badges).
+SKIP_PATTERNS = [
+    "bettyguo.github.io/awesome-reasoning-models-theory",
+    "actions/workflows/linkcheck.yml/badge.svg",
+]
+
+
+def _skip(url: str) -> bool:
+    return any(pat in url for pat in SKIP_PATTERNS)
+
 
 @dataclass
 class CheckResult:
@@ -81,8 +92,15 @@ def main() -> int:
     args = parser.parse_args()
 
     url_map = collect_urls()
-    flat: list[tuple[str, str]] = [(src, u) for src, us in url_map.items() for u in us]
-    print(f"Checking {len(flat)} unique URLs across {len(url_map)} files.")
+    flat: list[tuple[str, str]] = []
+    skipped = 0
+    for src, us in url_map.items():
+        for u in us:
+            if _skip(u):
+                skipped += 1
+                continue
+            flat.append((src, u))
+    print(f"Checking {len(flat)} unique URLs across {len(url_map)} files (skipped {skipped} self-references).")
 
     results: list[CheckResult] = []
     with cf.ThreadPoolExecutor(max_workers=WORKERS) as ex:
