@@ -128,16 +128,21 @@
   <!-- CH4 → CH8 (search-at-inference theory feeds frameworks) - vertical up in right column -->
   <line x1="1000" y1="330" x2="1000" y2="270" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#arrow)"/>
 
-  <!-- CH7 → CH8 (faithfulness theory feeds frameworks) - L-routed around the right edge -->
-  <polyline points="1140,505 1175,505 1175,250 1140,250" fill="none" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#arrow)"/>
+  <!-- CH7 → CH8 (faithfulness theory feeds frameworks) - L-routed around the right edge at x=1170 -->
+  <polyline points="1140,505 1170,505 1170,250 1140,250" fill="none" stroke="#94a3b8" stroke-width="1.8" marker-end="url(#arrow)"/>
 
-  <!-- Dashed open debates -->
+  <!-- Dashed open debates — orthogonal routes through the inter-row gaps so they never cross any box -->
 
-  <!-- CH4 ↔ CH5 (search-vs-RL debate) - clean diagonal between the two corners -->
-  <line x1="860" y1="420" x2="340" y2="480" stroke="#a78bfa" stroke-width="1.6" stroke-dasharray="6 5" stroke-opacity="0.7"/>
+  <!-- CH4 ↔ CH5 (search-vs-RL debate)
+       Z-route through row-2/3 gap (y=450): CH4 bottom (1000,420) ↓ to gap, ← across gap, ↓ into CH5 top -->
+  <polyline points="1000,420 1000,450 200,450 200,480"
+            fill="none" stroke="#a78bfa" stroke-width="1.6" stroke-dasharray="6 5" stroke-opacity="0.75"/>
 
-  <!-- CH1 ↔ CH7 (CoT-as-thought vs unfaithful debate) - vertical-ish arc on left -->
-  <line x1="280" y1="270" x2="880" y2="480" stroke="#a78bfa" stroke-width="1.6" stroke-dasharray="6 5" stroke-opacity="0.7"/>
+  <!-- CH1 ↔ CH7 (CoT-as-thought vs unfaithful debate)
+       Right-perimeter route at x=1210 (outside col-3) through both inter-row gaps:
+       CH1 bottom (300,270) ↓ to row-1/2 gap, → far right, ↓ down the right margin, ← into CH7 top -->
+  <polyline points="300,270 300,300 1210,300 1210,540 1140,540"
+            fill="none" stroke="#a78bfa" stroke-width="1.6" stroke-dasharray="6 5" stroke-opacity="0.75"/>
 
   <!-- ============== LEGEND ============== -->
   <g transform="translate(60, 660)" font-family="'Inter', system-ui, sans-serif">
