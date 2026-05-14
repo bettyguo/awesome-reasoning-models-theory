@@ -1,0 +1,59 @@
+name: New paper suggestion
+description: Propose a paper for one of the chapters or the tracker.
+title: "[paper] <short title>"
+labels: ["paper-suggestion"]
+body:
+  - type: input
+    id: title
+    attributes:
+      label: Paper title
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Primary-source URL
+      description: arXiv abstract page, OpenReview, ACL Anthology, official blog. Not a Notion / Medium aggregator.
+      placeholder: https://arxiv.org/abs/...
+    validations:
+      required: true
+  - type: dropdown
+    id: chapter
+    attributes:
+      label: Target chapter
+      options:
+        - "01 — CoT and Scratchpads"
+        - "02 — Test-Time Compute Scaling"
+        - "03 — Sampling and Verification"
+        - "04 — Search at Inference"
+        - "05 — RL for Reasoning"
+        - "06 — Overthinking and Optimal Length"
+        - "07 — Faithfulness of Reasoning Traces"
+        - "08 — Theoretical Frameworks"
+        - "tracker — Benchmarks"
+        - "unsure / cross-cutting"
+    validations:
+      required: true
+  - type: textarea
+    id: annotation
+    attributes:
+      label: One-paragraph annotation
+      description: ≤ 40 words. State the mechanism the paper proposes, not what it claims.
+    validations:
+      required: true
+  - type: dropdown
+    id: open_closed
+    attributes:
+      label: Model type
+      options:
+        - "Open-weight / fully reproducible"
+        - "Closed-weight, methods public"
+        - "Closed-weight, vendor-reported only"
+        - "Pure theory (no model)"
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else?
+      description: e.g. proposed status flag, related-paper conflicts, recommended re-categorization.

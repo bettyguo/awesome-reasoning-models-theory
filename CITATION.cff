@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this list in your work, please cite it as below."
+title: "Awesome Reasoning Models Theory: A theoretical and empirical map of the o-series / R1 / Claude-thinking paradigm"
+type: dataset
+date-released: 2026-05-14
+license: CC0-1.0
+repository-code: "https://github.com/bettyguo/awesome-reasoning-models-theory"
+abstract: >-
+  A curated, theory-first map of the literature on why reasoning models work.
+  Covers test-time compute scaling, chain-of-thought mechanism, sampling and
+  verification, search at inference, RL-for-reasoning, overthinking, faithfulness,
+  and theoretical frameworks bridging the empirical observations. Includes
+  reproduction notebooks and a living benchmarks tracker.
+keywords:
+  - large language models
+  - chain of thought
+  - reasoning
+  - test-time compute
+  - reinforcement learning
+  - process reward models
+  - DeepSeek-R1
+  - o1

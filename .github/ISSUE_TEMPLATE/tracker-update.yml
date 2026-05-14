@@ -1,0 +1,65 @@
+name: Tracker update
+description: Propose a benchmark-tracker update (new SOTA, new benchmark, methodological note).
+title: "[tracker] <benchmark> — <short description>"
+labels: ["tracker"]
+body:
+  - type: input
+    id: benchmark
+    attributes:
+      label: Benchmark
+      placeholder: AIME 2025 / MATH-500 / FrontierMath / SWE-bench Verified / ...
+    validations:
+      required: true
+  - type: input
+    id: model
+    attributes:
+      label: Model
+    validations:
+      required: true
+  - type: input
+    id: org
+    attributes:
+      label: Org
+  - type: input
+    id: score
+    attributes:
+      label: Score
+      placeholder: "e.g. 92.5% pass@1"
+    validations:
+      required: true
+  - type: input
+    id: source_url
+    attributes:
+      label: Primary source URL
+      description: Paper, model card, official leaderboard. Not vendor marketing.
+    validations:
+      required: true
+  - type: input
+    id: source_section
+    attributes:
+      label: Source section / table
+      placeholder: "e.g. Table 3, page 7"
+  - type: dropdown
+    id: conditions
+    attributes:
+      label: Evaluation conditions
+      options:
+        - "pass@1, single-attempt, no tools"
+        - "pass@1, with tools / agent mode"
+        - "pass@k (specify k in description)"
+        - "majority-vote / self-consistency"
+        - "other (describe)"
+    validations:
+      required: true
+  - type: input
+    id: date_reported
+    attributes:
+      label: Date reported (the report's date, not today's)
+      placeholder: YYYY-MM-DD
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Anything not captured above — contamination concerns, methodology caveats.
