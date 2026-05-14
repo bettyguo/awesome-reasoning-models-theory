@@ -1,0 +1,4 @@
+# Lightweight requirements for scripts only.
+# The reproduction notebooks have their own (much heavier) dependency lists.
+# Pinned loosely to avoid breaking on minor releases.
+PyYAML>=6.0
