@@ -1,21 +1,122 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" width="720" height="200">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 360" width="1280" height="360" role="img" aria-label="Awesome Reasoning Models Theory">
   <defs>
-    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
-      <stop offset="0%" stop-color="#0b1220"/>
-      <stop offset="100%" stop-color="#1f3057"/>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#070b1a"/>
+      <stop offset="55%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.78" cy="0.5" r="0.55">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.42"/>
+      <stop offset="60%" stop-color="#38bdf8" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="1" opacity="0.6"/>
+    </pattern>
+    <linearGradient id="title-grad" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="55%" stop-color="#e0e7ff"/>
+      <stop offset="100%" stop-color="#bae6fd"/>
+    </linearGradient>
+    <linearGradient id="accent-grad" x1="0" x2="1" y1="0" y2="0">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#818cf8"/>
     </linearGradient>
   </defs>
-  <rect width="720" height="200" fill="url(#g)"/>
-  <text x="40" y="80" font-family="Inter, system-ui, sans-serif" font-size="28" font-weight="700" fill="#f7fafc">
-    Awesome Reasoning Models Theory
-  </text>
-  <text x="40" y="120" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#cbd5e1">
-    Why do reasoning models actually work?
-  </text>
-  <text x="40" y="142" font-family="Inter, system-ui, sans-serif" font-size="14" fill="#cbd5e1">
-    A theoretical and empirical map of the o-series / R1 / Claude-thinking paradigm.
-  </text>
-  <text x="40" y="172" font-family="Inter, system-ui, sans-serif" font-size="12" fill="#94a3b8">
-    8 chapters · 5 reproduction notebooks · monthly benchmarks tracker
-  </text>
+
+  <rect width="1280" height="360" fill="url(#bg)"/>
+  <rect width="1280" height="360" fill="url(#grid)"/>
+  <rect width="1280" height="360" fill="url(#glow)"/>
+
+  <!-- Title block -->
+  <g font-family="'Inter', system-ui, -apple-system, sans-serif">
+    <!-- Tagline above -->
+    <text x="60" y="78" font-size="14" font-weight="500" letter-spacing="6" fill="#7dd3fc" opacity="0.85">
+      WHY DO REASONING MODELS ACTUALLY WORK?
+    </text>
+
+    <!-- Main title -->
+    <text x="60" y="148" font-size="58" font-weight="800" letter-spacing="-1.5" fill="url(#title-grad)">
+      Awesome Reasoning
+    </text>
+    <text x="60" y="212" font-size="58" font-weight="800" letter-spacing="-1.5" fill="url(#title-grad)">
+      Models Theory
+    </text>
+
+    <!-- Sub-tagline -->
+    <text x="60" y="252" font-size="16" font-weight="400" fill="#cbd5e1" opacity="0.85">
+      A theory-and-mechanism-first map of the o-series / R1 / Claude-thinking paradigm.
+    </text>
+
+    <!-- Stat row -->
+    <g transform="translate(60, 290)">
+      <g>
+        <text x="0" y="0" font-size="22" font-weight="700" fill="url(#accent-grad)">8</text>
+        <text x="28" y="0" font-size="13" font-weight="500" fill="#94a3b8">chapters</text>
+      </g>
+      <g transform="translate(140, 0)">
+        <text x="0" y="0" font-size="22" font-weight="700" fill="url(#accent-grad)">90+</text>
+        <text x="44" y="0" font-size="13" font-weight="500" fill="#94a3b8">papers</text>
+      </g>
+      <g transform="translate(255, 0)">
+        <text x="0" y="0" font-size="22" font-weight="700" fill="url(#accent-grad)">5</text>
+        <text x="20" y="0" font-size="13" font-weight="500" fill="#94a3b8">notebooks</text>
+      </g>
+      <g transform="translate(380, 0)">
+        <text x="0" y="0" font-size="22" font-weight="700" fill="url(#accent-grad)">10</text>
+        <text x="32" y="0" font-size="13" font-weight="500" fill="#94a3b8">benchmarks tracked</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Right-side schematic: question -> CoT chain -> answer with branching (search/RL hybrid) -->
+  <g transform="translate(820, 60)" font-family="'Inter', system-ui, -apple-system, sans-serif">
+    <!-- Question node -->
+    <circle cx="40" cy="120" r="22" fill="#0ea5e9" opacity="0.9"/>
+    <text x="40" y="125" text-anchor="middle" font-size="11" font-weight="600" fill="#0b1220">Q</text>
+
+    <!-- Chain dots -->
+    <g stroke="#38bdf8" stroke-width="2" stroke-linecap="round" opacity="0.85">
+      <line x1="62" y1="120" x2="98" y2="120"/>
+      <line x1="120" y1="120" x2="156" y2="120"/>
+      <line x1="178" y1="120" x2="214" y2="120"/>
+      <line x1="236" y1="120" x2="272" y2="120"/>
+    </g>
+    <g fill="#bae6fd">
+      <circle cx="109" cy="120" r="6"/>
+      <circle cx="167" cy="120" r="6"/>
+      <circle cx="225" cy="120" r="6"/>
+    </g>
+
+    <!-- Branches above (search) -->
+    <g stroke="#38bdf8" stroke-width="1.5" opacity="0.55" stroke-dasharray="3 3">
+      <line x1="109" y1="120" x2="80" y2="60"/>
+      <line x1="167" y1="120" x2="148" y2="40"/>
+      <line x1="225" y1="120" x2="206" y2="60"/>
+    </g>
+    <g fill="#a5b4fc" opacity="0.75">
+      <circle cx="80" cy="60" r="4"/>
+      <circle cx="148" cy="40" r="4"/>
+      <circle cx="206" cy="60" r="4"/>
+    </g>
+
+    <!-- Branches below (alternative chains) -->
+    <g stroke="#818cf8" stroke-width="1.5" opacity="0.45" stroke-dasharray="3 3">
+      <line x1="109" y1="120" x2="92" y2="180"/>
+      <line x1="167" y1="120" x2="180" y2="200"/>
+    </g>
+    <g fill="#a5b4fc" opacity="0.55">
+      <circle cx="92" cy="180" r="4"/>
+      <circle cx="180" cy="200" r="4"/>
+    </g>
+
+    <!-- Answer node -->
+    <circle cx="294" cy="120" r="22" fill="#818cf8" opacity="0.95"/>
+    <text x="294" y="125" text-anchor="middle" font-size="11" font-weight="700" fill="#0b1220">A</text>
+
+    <!-- Annotations -->
+    <text x="40" y="170" text-anchor="middle" font-size="10" font-weight="500" letter-spacing="1.2" fill="#7dd3fc" opacity="0.75">QUESTION</text>
+    <text x="167" y="280" text-anchor="middle" font-size="10" font-weight="500" letter-spacing="1.2" fill="#94a3b8" opacity="0.7">CHAIN OF THOUGHT &nbsp;·&nbsp; SAMPLED, SEARCHED, RL-SHAPED</text>
+    <text x="294" y="170" text-anchor="middle" font-size="10" font-weight="500" letter-spacing="1.2" fill="#c7d2fe" opacity="0.75">ANSWER</text>
+  </g>
 </svg>

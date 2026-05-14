@@ -1,0 +1,145 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700" role="img" aria-label="The reasoning model field map: eight chapters and their interconnections">
+  <defs>
+    <linearGradient id="fm-bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0b1220"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <pattern id="fm-grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M 48 0 L 0 0 0 48" fill="none" stroke="#1e293b" stroke-width="1" opacity="0.5"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+    </marker>
+    <filter id="card-glow" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="700" fill="url(#fm-bg)"/>
+  <rect width="1200" height="700" fill="url(#fm-grid)"/>
+
+  <!-- Title -->
+  <g font-family="'Inter', system-ui, -apple-system, sans-serif">
+    <text x="60" y="56" font-size="13" letter-spacing="4" font-weight="500" fill="#7dd3fc">FIELD MAP</text>
+    <text x="60" y="100" font-size="34" font-weight="800" fill="#f8fafc">The eight chapters and how they hang together</text>
+    <text x="60" y="128" font-size="14" font-weight="400" fill="#94a3b8">
+      Solid arrows: mechanism dependency. Dashed arrows: debate / open question.
+    </text>
+  </g>
+
+  <!-- Layer 1: Mechanism core -->
+  <!-- Chapter 1: CoT (foundation) -->
+  <g transform="translate(60, 180)">
+    <rect width="230" height="76" rx="10" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    <text x="16" y="26" font-family="'Inter', sans-serif" font-size="11" font-weight="600" letter-spacing="2" fill="#7dd3fc">CH 1</text>
+    <text x="16" y="50" font-family="'Inter', sans-serif" font-size="16" font-weight="700" fill="#f8fafc">CoT &amp; Scratchpads</text>
+    <text x="16" y="66" font-family="'Inter', sans-serif" font-size="11" font-weight="400" fill="#cbd5e1">Why intermediate tokens matter</text>
+  </g>
+
+  <!-- Chapter 8: Theoretical frameworks (anchor) -->
+  <g transform="translate(910, 180)">
+    <rect width="230" height="76" rx="10" fill="#1e293b" stroke="#a78bfa" stroke-width="1.5"/>
+    <text x="16" y="26" font-family="'Inter', sans-serif" font-size="11" font-weight="600" letter-spacing="2" fill="#c4b5fd">CH 8</text>
+    <text x="16" y="50" font-family="'Inter', sans-serif" font-size="16" font-weight="700" fill="#f8fafc">Theoretical Frameworks</text>
+    <text x="16" y="66" font-family="'Inter', sans-serif" font-size="11" font-weight="400" fill="#cbd5e1">Unifying the three accounts</text>
+  </g>
+
+  <!-- Layer 2: Inference -->
+  <g transform="translate(60, 310)">
+    <rect width="230" height="76" rx="10" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
+    <text x="16" y="26" font-family="'Inter', sans-serif" font-size="11" font-weight="600" letter-spacing="2" fill="#6ee7b7">CH 2</text>
+    <text x="16" y="50" font-family="'Inter', sans-serif" font-size="16" font-weight="700" fill="#f8fafc">Test-Time Compute</text>
+    <text x="16" y="66" font-family="'Inter', sans-serif" font-size="11" font-weight="400" fill="#cbd5e1">Scaling inference instead of params</text>
+  </g>
+
+  <g transform="translate(330, 310)">
+    <rect width="230" height="76" rx="10" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
+    <text x="16" y="26" font-family="'Inter', sans-serif" font-size="11" font-weight="600" letter-spacing="2" fill="#6ee7b7">CH 3</text>
+    <text x="16" y="50" font-family="'Inter', sans-serif" font-size="16" font-weight="700" fill="#f8fafc">Sampling &amp; Verification</text>
+    <text x="16" y="66" font-family="'Inter', sans-serif" font-size="11" font-weight="400" fill="#cbd5e1">BoN, self-consistency, PRMs</text>
+  </g>
+
+  <g transform="translate(600, 310)">
+    <rect width="230" height="76" rx="10" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
+    <text x="16" y="26" font-family="'Inter', sans-serif" font-size="11" font-weight="600" letter-spacing="2" fill="#6ee7b7">CH 4</text>
+    <text x="16" y="50" font-family="'Inter', sans-serif" font-size="16" font-weight="700" fill="#f8fafc">Search at Inference</text>
+    <text x="16" y="66" font-family="'Inter', sans-serif" font-size="11" font-weight="400" fill="#cbd5e1">ToT, GoT, recursive aggregation</text>
+  </g>
+
+  <!-- Layer 3: Training -->
+  <g transform="translate(60, 440)">
+    <rect width="230" height="76" rx="10" fill="#1e293b" stroke="#fb923c" stroke-width="1.5"/>
+    <text x="16" y="26" font-family="'Inter', sans-serif" font-size="11" font-weight="600" letter-spacing="2" fill="#fdba74">CH 5</text>
+    <text x="16" y="50" font-family="'Inter', sans-serif" font-size="16" font-weight="700" fill="#f8fafc">RL for Reasoning</text>
+    <text x="16" y="66" font-family="'Inter', sans-serif" font-size="11" font-weight="400" fill="#cbd5e1">R1-Zero, GRPO, RLVR</text>
+  </g>
+
+  <!-- Layer 4: Failure modes -->
+  <g transform="translate(330, 440)">
+    <rect width="230" height="76" rx="10" fill="#1e293b" stroke="#f472b6" stroke-width="1.5"/>
+    <text x="16" y="26" font-family="'Inter', sans-serif" font-size="11" font-weight="600" letter-spacing="2" fill="#fbcfe8">CH 6</text>
+    <text x="16" y="50" font-family="'Inter', sans-serif" font-size="16" font-weight="700" fill="#f8fafc">Overthinking &amp; Length</text>
+    <text x="16" y="66" font-family="'Inter', sans-serif" font-size="11" font-weight="400" fill="#cbd5e1">When more CoT hurts</text>
+  </g>
+
+  <g transform="translate(600, 440)">
+    <rect width="230" height="76" rx="10" fill="#1e293b" stroke="#f472b6" stroke-width="1.5"/>
+    <text x="16" y="26" font-family="'Inter', sans-serif" font-size="11" font-weight="600" letter-spacing="2" fill="#fbcfe8">CH 7</text>
+    <text x="16" y="50" font-family="'Inter', sans-serif" font-size="16" font-weight="700" fill="#f8fafc">Faithfulness of Traces</text>
+    <text x="16" y="66" font-family="'Inter', sans-serif" font-size="11" font-weight="400" fill="#cbd5e1">CoT ≠ computation</text>
+  </g>
+
+  <!-- Mechanism arrows (solid) -->
+  <!-- Ch1 -> Ch2 (CoT enables test-time compute) -->
+  <line x1="175" y1="256" x2="175" y2="310" stroke="#64748b" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <!-- Ch1 -> Ch5 (CoT is what RL shapes) -->
+  <line x1="120" y1="256" x2="120" y2="440" stroke="#64748b" stroke-width="1.6" marker-end="url(#arrow)" stroke-opacity="0.7"/>
+  <!-- Ch2 -> Ch3 (BoN/SC are TTC strategies) -->
+  <line x1="290" y1="348" x2="330" y2="348" stroke="#64748b" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <!-- Ch3 -> Ch4 (search uses verifiers) -->
+  <line x1="560" y1="348" x2="600" y2="348" stroke="#64748b" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <!-- Ch5 -> Ch6 (RL produces overthinking) -->
+  <line x1="290" y1="478" x2="330" y2="478" stroke="#64748b" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <!-- Ch5 -> Ch7 (RL training and faithfulness interact) -->
+  <line x1="200" y1="516" x2="700" y2="516" stroke="#64748b" stroke-width="1.4" stroke-dasharray="5 5" marker-end="url(#arrow)" stroke-opacity="0.55"/>
+
+  <!-- Debate arrows (dashed) -->
+  <!-- Ch4 <-> Ch5 (search vs RL tension) -->
+  <line x1="715" y1="386" x2="175" y2="440" stroke="#a78bfa" stroke-width="1.4" stroke-dasharray="6 4" stroke-opacity="0.55"/>
+  <!-- Ch1 <-> Ch7 (CoT-as-thought debate) -->
+  <line x1="290" y1="218" x2="715" y2="440" stroke="#a78bfa" stroke-width="1.4" stroke-dasharray="6 4" stroke-opacity="0.55"/>
+
+  <!-- Everything -> Ch8 -->
+  <line x1="715" y1="218" x2="910" y2="218" stroke="#64748b" stroke-width="1.6" marker-end="url(#arrow)"/>
+  <line x1="830" y1="348" x2="935" y2="244" stroke="#64748b" stroke-width="1.4" stroke-opacity="0.55"/>
+  <line x1="830" y1="478" x2="935" y2="252" stroke="#64748b" stroke-width="1.4" stroke-opacity="0.55"/>
+
+  <!-- Legend -->
+  <g transform="translate(60, 600)" font-family="'Inter', system-ui, sans-serif">
+    <text x="0" y="0" font-size="11" font-weight="600" letter-spacing="2" fill="#94a3b8">LEGEND</text>
+    <g transform="translate(0, 24)">
+      <line x1="0" y1="6" x2="40" y2="6" stroke="#64748b" stroke-width="1.6"/>
+      <text x="50" y="10" font-size="12" fill="#cbd5e1">mechanism dependency</text>
+    </g>
+    <g transform="translate(220, 24)">
+      <line x1="0" y1="6" x2="40" y2="6" stroke="#a78bfa" stroke-width="1.4" stroke-dasharray="5 4"/>
+      <text x="50" y="10" font-size="12" fill="#cbd5e1">open debate</text>
+    </g>
+    <g transform="translate(0, 50)">
+      <rect width="14" height="14" rx="2" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+      <text x="22" y="11" font-size="12" fill="#cbd5e1">foundation</text>
+      <rect x="120" width="14" height="14" rx="2" fill="#1e293b" stroke="#34d399" stroke-width="1.5"/>
+      <text x="142" y="11" font-size="12" fill="#cbd5e1">inference-time</text>
+      <rect x="260" width="14" height="14" rx="2" fill="#1e293b" stroke="#fb923c" stroke-width="1.5"/>
+      <text x="282" y="11" font-size="12" fill="#cbd5e1">training-time</text>
+      <rect x="400" width="14" height="14" rx="2" fill="#1e293b" stroke="#f472b6" stroke-width="1.5"/>
+      <text x="422" y="11" font-size="12" fill="#cbd5e1">failure modes</text>
+      <rect x="555" width="14" height="14" rx="2" fill="#1e293b" stroke="#a78bfa" stroke-width="1.5"/>
+      <text x="577" y="11" font-size="12" fill="#cbd5e1">synthesis</text>
+    </g>
+  </g>
+</svg>

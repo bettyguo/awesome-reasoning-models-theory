@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" width="900" height="460" role="img" aria-label="Test-time compute scaling regimes">
+  <defs>
+    <linearGradient id="srbg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0b1220"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="460" fill="url(#srbg)"/>
+
+  <!-- Title -->
+  <g font-family="'Inter', system-ui, sans-serif">
+    <text x="40" y="44" font-size="13" letter-spacing="4" fill="#7dd3fc" font-weight="500">CHAPTER 2 · SCHEMATIC</text>
+    <text x="40" y="78" font-size="22" font-weight="700" fill="#f8fafc">Test-time compute scaling has regimes, not one curve</text>
+  </g>
+
+  <!-- Axes -->
+  <g transform="translate(80, 120)" stroke="#475569" stroke-width="1.5">
+    <line x1="0" y1="280" x2="780" y2="280"/>
+    <line x1="0" y1="0" x2="0" y2="280"/>
+  </g>
+
+  <!-- Axis labels -->
+  <g font-family="'Inter', sans-serif" font-size="12" fill="#94a3b8">
+    <text x="80" y="430" font-weight="500">test-time compute (log tokens) →</text>
+    <text x="40" y="120" transform="rotate(-90 40 120)" font-weight="500">accuracy →</text>
+  </g>
+
+  <!-- Curves -->
+  <!-- 1. Single long-CoT: rises then plateaus -->
+  <path d="M 80 380 Q 220 360 320 290 Q 460 230 580 220 Q 700 215 860 220"
+        fill="none" stroke="#38bdf8" stroke-width="3" stroke-linecap="round"/>
+  <text x="700" y="208" font-family="'Inter', sans-serif" font-size="12" fill="#7dd3fc" font-weight="600">single long-CoT</text>
+
+  <!-- 2. Self-consistency: steeper start, similar plateau -->
+  <path d="M 80 360 Q 200 280 320 220 Q 460 180 580 175 Q 700 170 860 172"
+        fill="none" stroke="#34d399" stroke-width="3" stroke-linecap="round" stroke-dasharray="6 4"/>
+  <text x="700" y="160" font-family="'Inter', sans-serif" font-size="12" fill="#6ee7b7" font-weight="600">self-consistency</text>
+
+  <!-- 3. Best-of-N with verifier: highest -->
+  <path d="M 80 340 Q 190 240 300 170 Q 440 130 580 122 Q 700 118 860 120"
+        fill="none" stroke="#818cf8" stroke-width="3" stroke-linecap="round"/>
+  <text x="700" y="108" font-family="'Inter', sans-serif" font-size="12" fill="#a5b4fc" font-weight="600">best-of-N + PRM</text>
+
+  <!-- 4. Naive sampling (no aggregation) -->
+  <path d="M 80 380 Q 220 372 320 360 Q 460 350 580 348 Q 700 347 860 348"
+        fill="none" stroke="#94a3b8" stroke-width="2" stroke-linecap="round" stroke-dasharray="3 3" opacity="0.7"/>
+  <text x="700" y="340" font-family="'Inter', sans-serif" font-size="12" fill="#94a3b8" font-weight="500">pass@1 (no aggregation)</text>
+
+  <!-- Regime annotations -->
+  <g font-family="'Inter', sans-serif" font-size="11" fill="#cbd5e1">
+    <line x1="240" y1="100" x2="240" y2="400" stroke="#475569" stroke-width="1" stroke-dasharray="4 4" opacity="0.5"/>
+    <line x1="460" y1="100" x2="460" y2="400" stroke="#475569" stroke-width="1" stroke-dasharray="4 4" opacity="0.5"/>
+    <text x="100" y="105" font-weight="600" letter-spacing="1" fill="#94a3b8">EASY</text>
+    <text x="100" y="120" fill="#64748b">sampling dominates</text>
+    <text x="280" y="105" font-weight="600" letter-spacing="1" fill="#94a3b8">MEDIUM</text>
+    <text x="280" y="120" fill="#64748b">self-consistency wins</text>
+    <text x="500" y="105" font-weight="600" letter-spacing="1" fill="#94a3b8">HARD</text>
+    <text x="500" y="120" fill="#64748b">BoN + PRM &gt; rest</text>
+  </g>
+
+  <!-- Citation footer -->
+  <text x="80" y="450" font-family="'Inter', sans-serif" font-size="11" fill="#64748b" font-style="italic">
+    Schematic only. Real curves: Snell et al. 2024 (arXiv:2408.03314); Brown et al. 2024 (arXiv:2407.21787); s1 (arXiv:2501.19393).
+  </text>
+</svg>
