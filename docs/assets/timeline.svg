@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 220" width="1100" height="220">
+  <rect width="100%" height="100%" fill="white"/>
+  <line x1="40" y1="110" x2="1060" y2="110" stroke="#222" stroke-width="2"/>
+  <circle cx="40.0" cy="110" r="6" fill="#16a34a"/>
+  <text x="40.0" y="70" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">CoT prompting (Wei et al.)</text>
+  <text x="40.0" y="54" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2022-01</text>
+  <circle cx="112.9" cy="110" r="6" fill="#16a34a"/>
+  <text x="112.9" y="170" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">Self-consistency (Wang et al.)</text>
+  <text x="112.9" y="186" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2022-03</text>
+  <circle cx="185.7" cy="110" r="6" fill="#16a34a"/>
+  <text x="185.7" y="70" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">PRMs / Let's Verify (Lightman et al.)</text>
+  <text x="185.7" y="54" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2023-05</text>
+  <circle cx="258.6" cy="110" r="6" fill="#16a34a"/>
+  <text x="258.6" y="170" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">Tree of Thoughts (Yao et al.)</text>
+  <text x="258.6" y="186" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2023-05</text>
+  <circle cx="331.4" cy="110" r="6" fill="#3a7afe"/>
+  <text x="331.4" y="70" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">AlphaProof IMO silver</text>
+  <text x="331.4" y="54" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2024-07</text>
+  <circle cx="404.3" cy="110" r="6" fill="#16a34a"/>
+  <text x="404.3" y="170" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">Test-time scaling (Snell et al.)</text>
+  <text x="404.3" y="186" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2024-08</text>
+  <circle cx="477.1" cy="110" r="6" fill="#3a7afe"/>
+  <text x="477.1" y="70" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">OpenAI o1 announcement</text>
+  <text x="477.1" y="54" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2024-09</text>
+  <circle cx="550.0" cy="110" r="6" fill="#3a7afe"/>
+  <text x="550.0" y="170" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">Tülu 3 (RLVR named)</text>
+  <text x="550.0" y="186" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2024-11</text>
+  <circle cx="622.9" cy="110" r="6" fill="#16a34a"/>
+  <text x="622.9" y="70" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">'Don't think 2+3=' overthinking</text>
+  <text x="622.9" y="54" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2024-12</text>
+  <circle cx="695.7" cy="110" r="6" fill="#3a7afe"/>
+  <text x="695.7" y="170" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">DeepSeek-R1 / R1-Zero</text>
+  <text x="695.7" y="186" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2025-01</text>
+  <circle cx="768.6" cy="110" r="6" fill="#16a34a"/>
+  <text x="768.6" y="70" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">s1: simple test-time scaling</text>
+  <text x="768.6" y="54" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2025-01</text>
+  <circle cx="841.4" cy="110" r="6" fill="#3a7afe"/>
+  <text x="841.4" y="170" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">Claude 3.7 with extended thinking</text>
+  <text x="841.4" y="186" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2025-02</text>
+  <circle cx="914.3" cy="110" r="6" fill="#16a34a"/>
+  <text x="914.3" y="70" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">Anthropic reasoning-faithfulness</text>
+  <text x="914.3" y="54" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2025-05</text>
+  <circle cx="987.1" cy="110" r="6" fill="#3a7afe"/>
+  <text x="987.1" y="170" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">Gemini Deep Think IMO gold</text>
+  <text x="987.1" y="186" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2025-07</text>
+  <circle cx="1060.0" cy="110" r="6" fill="#dc2626"/>
+  <text x="1060.0" y="70" font-family="Inter, sans-serif" font-size="11" text-anchor="middle" fill="#222">ARC-AGI-3 launch</text>
+  <text x="1060.0" y="54" font-family="Inter, sans-serif" font-size="10" text-anchor="middle" fill="#555">2026-03</text>
+  <text x="40" y="30" font-family="Inter, sans-serif" font-size="16" font-weight="bold" fill="#111">Reasoning models — a timeline</text>
+  <circle cx="820" cy="30" r="5" fill="#3a7afe"/>
+  <text x="830" y="34" font-family="Inter, sans-serif" font-size="11" fill="#333">model</text>
+  <circle cx="910" cy="30" r="5" fill="#16a34a"/>
+  <text x="920" y="34" font-family="Inter, sans-serif" font-size="11" fill="#333">paper</text>
+  <circle cx="1000" cy="30" r="5" fill="#dc2626"/>
+  <text x="1010" y="34" font-family="Inter, sans-serif" font-size="11" fill="#333">benchmark</text>
+</svg>

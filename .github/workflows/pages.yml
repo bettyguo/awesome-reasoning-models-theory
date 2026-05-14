@@ -23,17 +23,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Stage site (copy /assets into /docs/assets so Jekyll bundles them)
+
+      # Belt-and-braces: even though docs/assets/ is committed, mirror the
+      # canonical /assets/ tree on top so the deployed site can never go
+      # stale relative to the README.
+      - name: Mirror /assets into /docs/assets
         run: |
           mkdir -p docs/assets
           cp -R assets/. docs/assets/
+
       - name: Setup Pages
+        id: pages
         uses: actions/configure-pages@v5
+
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
           source: ./docs
           destination: ./_site
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -49,3 +57,19 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+# ---------------------------------------------------------------------------
+# ONE-TIME SETUP REQUIRED IN REPO SETTINGS
+# ---------------------------------------------------------------------------
+# This workflow's "Setup Pages" step will fail until the repo owner enables
+# Pages with source = "GitHub Actions":
+#
+#   1. Settings → Pages
+#   2. Source: "GitHub Actions"   (NOT "Deploy from a branch")
+#   3. Save
+#
+# Alternative (no workflow needed): set Source to "Deploy from a branch",
+# branch "main", folder "/docs". Since docs/assets/ is committed, this
+# also works — but the workflow's Jekyll-build step won't run, so any
+# Jekyll plugin features in _config.yml may not apply.
+# ---------------------------------------------------------------------------

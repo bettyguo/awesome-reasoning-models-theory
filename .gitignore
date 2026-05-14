@@ -1,5 +1,4 @@
-# CI-only — populated by the Pages workflow, never commit.
-docs/assets/
+# CI-only — never commit.
 _site/
 
 __pycache__/

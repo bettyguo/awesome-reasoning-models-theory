@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 360" width="900" height="360" role="img" aria-label="The R1 recipe: SFT then RL with verifiable rewards">
+  <defs>
+    <linearGradient id="r1bg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0b1220"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <marker id="r1arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#cbd5e1"/>
+    </marker>
+  </defs>
+  <rect width="900" height="360" fill="url(#r1bg)"/>
+
+  <g font-family="'Inter', system-ui, sans-serif">
+    <text x="40" y="44" font-size="13" letter-spacing="4" fill="#fdba74" font-weight="500">CHAPTER 5 · SCHEMATIC</text>
+    <text x="40" y="78" font-size="22" font-weight="700" fill="#f8fafc">The R1-Zero / R1 recipe, at a glance</text>
+  </g>
+
+  <!-- Boxes -->
+  <g font-family="'Inter', sans-serif">
+    <!-- Base -->
+    <g transform="translate(40, 140)">
+      <rect width="170" height="100" rx="10" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+      <text x="16" y="28" font-size="11" letter-spacing="2" font-weight="600" fill="#94a3b8">STEP 0</text>
+      <text x="16" y="56" font-size="16" font-weight="700" fill="#f8fafc">Strong base model</text>
+      <text x="16" y="78" font-size="11" font-weight="400" fill="#cbd5e1">pretrained on web-scale</text>
+      <text x="16" y="92" font-size="11" font-weight="400" fill="#cbd5e1">text; reasoning circuits</text>
+    </g>
+
+    <!-- R1-Zero arrow -->
+    <line x1="220" y1="190" x2="280" y2="190" stroke="#cbd5e1" stroke-width="2" marker-end="url(#r1arrow)"/>
+
+    <!-- R1-Zero step -->
+    <g transform="translate(290, 140)">
+      <rect width="200" height="100" rx="10" fill="#1e293b" stroke="#fb923c" stroke-width="1.5"/>
+      <text x="16" y="28" font-size="11" letter-spacing="2" font-weight="600" fill="#fdba74">STEP A · R1-Zero</text>
+      <text x="16" y="56" font-size="16" font-weight="700" fill="#f8fafc">Pure RL, no SFT</text>
+      <text x="16" y="78" font-size="11" font-weight="400" fill="#cbd5e1">GRPO with verifiable</text>
+      <text x="16" y="92" font-size="11" font-weight="400" fill="#cbd5e1">rewards. CoT emerges.</text>
+    </g>
+
+    <!-- R1 path: cold start -->
+    <line x1="500" y1="190" x2="560" y2="190" stroke="#cbd5e1" stroke-width="2" marker-end="url(#r1arrow)"/>
+
+    <!-- Cold start SFT -->
+    <g transform="translate(570, 140)">
+      <rect width="140" height="100" rx="10" fill="#1e293b" stroke="#fb923c" stroke-width="1.5"/>
+      <text x="14" y="28" font-size="11" letter-spacing="2" font-weight="600" fill="#fdba74">STEP B</text>
+      <text x="14" y="56" font-size="15" font-weight="700" fill="#f8fafc">Cold-start SFT</text>
+      <text x="14" y="78" font-size="11" font-weight="400" fill="#cbd5e1">curated CoT for tone</text>
+      <text x="14" y="92" font-size="11" font-weight="400" fill="#cbd5e1">+ readability</text>
+    </g>
+
+    <line x1="720" y1="190" x2="760" y2="190" stroke="#cbd5e1" stroke-width="2" marker-end="url(#r1arrow)"/>
+
+    <!-- Final RL -->
+    <g transform="translate(770, 140)">
+      <rect width="100" height="100" rx="10" fill="#1e293b" stroke="#fb923c" stroke-width="1.5"/>
+      <text x="14" y="28" font-size="11" letter-spacing="2" font-weight="600" fill="#fdba74">STEP C</text>
+      <text x="14" y="56" font-size="15" font-weight="700" fill="#f8fafc">RL again</text>
+      <text x="14" y="78" font-size="11" font-weight="400" fill="#cbd5e1">final polish</text>
+    </g>
+
+    <!-- Key insight callout -->
+    <g transform="translate(40, 290)">
+      <text x="0" y="0" font-size="12" font-weight="600" letter-spacing="2" fill="#fdba74">KEY FINDING</text>
+      <text x="0" y="22" font-size="14" font-weight="500" fill="#e2e8f0">
+        R1-Zero alone reaches o1-class accuracy. SFT is cosmetic — RL elicits, not learns.
+      </text>
+    </g>
+  </g>
+</svg>
