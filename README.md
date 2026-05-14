@@ -96,6 +96,15 @@ Longer-form synthesis pieces — the kind a survey would compress to a paragraph
 - [Search vs RL: the deep tension.](essays/search-vs-rl-the-deep-tension.md)
 - [Reasoning and mechanistic interpretability.](essays/reasoning-and-mechanistic-interpretability.md)
 
+## Auxiliary docs
+
+- [`docs/reading-paths.md`](docs/reading-paths.md) — 7 cross-chapter reading sequences (skim / weekend / research depth).
+- [`docs/FAQ.md`](docs/FAQ.md) — scope and curation questions.
+- [`docs/model-families.md`](docs/model-families.md) — catalog disambiguating the closed and open reasoning model families.
+- [`docs/bibtex.md`](docs/bibtex.md) — machine-readable citations for the anchor papers.
+- [`WANTED.md`](WANTED.md) — gaps the curators know about; high-impact PR opportunities.
+- [`CHANGELOG.md`](CHANGELOG.md) — substantive content changes.
+
 ## Glossary
 
 Field-specific terminology is dense and shifting. The [`GLOSSARY.md`](GLOSSARY.md) defines 50+ terms (GRPO, RLVR, PRM, ORM, verifier-free, R1-Zero, refusal-to-think, sandbagging, ...).
@@ -104,7 +113,22 @@ Field-specific terminology is dense and shifting. The [`GLOSSARY.md`](GLOSSARY.m
 
 - **Practitioner picking a recipe:** start with the chapter intros and the *Reading paths* sections — they are calibrated for skim / weekend / research depth.
 - **Researcher entering the field:** read the essays in order, then the chapter open-problems lists.
-- **Reviewer or instructor:** the YAML-discoverable annotations + reproduction notebooks are designed to be cite-and-assign-able.
+- **Reviewer or instructor:** the structured chapter annotations + reproduction notebooks are designed to be cite-and-assign-able.
+
+### Decision tree — which chapter first?
+
+| If you are asking… | Go to |
+|---|---|
+| *"How can a fixed-depth transformer do unbounded reasoning?"* | [Chapter 1](chapters/01-cot-and-scratchpads.md), then [sister list](https://github.com/bettyguo/awesome-llm-reasoning-foundations) for formal proofs. |
+| *"Why does throwing more inference tokens at the problem work?"* | [Chapter 2](chapters/02-test-time-compute-scaling.md). |
+| *"Should I use self-consistency, best-of-N, or a PRM?"* | [Chapter 3](chapters/03-sampling-and-verification.md). |
+| *"Does explicit tree search help, or does RL absorb it?"* | [Chapter 4](chapters/04-search-at-inference.md) and [the search-vs-RL essay](essays/search-vs-rl-the-deep-tension.md). |
+| *"How does R1 actually work, and can I reproduce it?"* | [Chapter 5](chapters/05-rl-for-reasoning.md) and [notebook 03](notebooks/03-tiny-r1-zero-style-training.ipynb). |
+| *"Why does my reasoner emit 500 tokens to answer 2+3?"* | [Chapter 6](chapters/06-overthinking-and-optimal-length.md). |
+| *"Can I trust what the model writes in its CoT?"* | [Chapter 7](chapters/07-faithfulness-of-reasoning.md) and [the faithfulness essay](essays/is-cot-faithful-the-state-of-the-debate.md). |
+| *"What does the field's theory actually say?"* | [Chapter 8](chapters/08-theoretical-frameworks.md) and [the synthesis essay](essays/why-do-reasoning-models-work-a-synthesis.md). |
+| *"Where are the SOTA numbers tracked?"* | [`tracker/benchmarks.md`](tracker/benchmarks.md). |
+| *"How do I cite this list / its anchor papers?"* | [`CITATION.cff`](CITATION.cff) for the list, [`docs/bibtex.md`](docs/bibtex.md) for anchor papers. |
 
 ## Related lists
 
