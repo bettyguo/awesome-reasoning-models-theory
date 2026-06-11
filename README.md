@@ -276,8 +276,3 @@ Field-specific terminology is dense and shifting. The [`GLOSSARY.md`](GLOSSARY.m
 | *"Where are the SOTA numbers tracked?"* | [`tracker/benchmarks.md`](tracker/benchmarks.md). |
 | *"How do I cite this list / its anchor papers?"* | [`CITATION.cff`](CITATION.cff) for the list, [`docs/bibtex.md`](docs/bibtex.md) for anchor papers. |
 
-
-## License
-
-- List content (`README.md`, `chapters/`, `essays/`, `tracker/`, `GLOSSARY.md`, `DECISIONS.md`) — [CC0 1.0](LICENSE-content) (public domain).
-- Source code under `scripts/`, `notebooks/` — [MIT](LICENSE-code).
