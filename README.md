@@ -276,27 +276,6 @@ Field-specific terminology is dense and shifting. The [`GLOSSARY.md`](GLOSSARY.m
 | *"Where are the SOTA numbers tracked?"* | [`tracker/benchmarks.md`](tracker/benchmarks.md). |
 | *"How do I cite this list / its anchor papers?"* | [`CITATION.cff`](CITATION.cff) for the list, [`docs/bibtex.md`](docs/bibtex.md) for anchor papers. |
 
-## Related lists
-
-Adjacent lists with deliberately disjoint scope:
-
-- [bettyguo/awesome-llm-reasoning-foundations](https://github.com/bettyguo/awesome-llm-reasoning-foundations) — *formal* foundations: transformer expressivity, CoT error bounds, circuit complexity, logical characterizations, learnability. Sister to this list.
-- [atfortes/Awesome-LLM-Reasoning](https://github.com/atfortes/Awesome-LLM-Reasoning) — broad CoT → o1 → R1 method list.
-- [srush/awesome-o1](https://github.com/srush/awesome-o1) — o1-centric bibliography (largely stale post-R1).
-- [hemingkx/Awesome-Efficient-Reasoning](https://github.com/hemingkx/Awesome-Efficient-Reasoning) — efficiency-focused.
-- [reasoning-survey/Awesome-Reasoning-Foundation-Models](https://github.com/reasoning-survey/Awesome-Reasoning-Foundation-Models) — foundation-models-for-reasoning survey.
-
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md). Bar to entry: every paper needs a primary-source URL (arXiv, OpenReview, ACL Anthology, official blog) and an annotation that adds value beyond the title. Out-of-scope PRs may be redirected to a related list — that's the boundary of *this* list, not a judgment of the work.
-
-## Decisions log
-
-Non-obvious scope and structural decisions are recorded in [DECISIONS.md](DECISIONS.md).
-
-## Citation
-
-If this list is useful to your research, please cite it via the [CITATION.cff](CITATION.cff) file.
 
 ## License
 
